@@ -5,8 +5,8 @@ import Admin from './Admin/Container/Admin'
 function AppCont() {
   return (
     <div>
-        <Wrapper />
-        {/* <Admin /> */}
+        {/* <Wrapper /> */}
+        <Admin />
     </div>
   )
 }

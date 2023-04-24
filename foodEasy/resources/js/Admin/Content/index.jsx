@@ -5,7 +5,7 @@ function Content() {
     return (
         <div>
             <NavBar />
-            <div className="relative left-96 top-40 md:w-[72em]">
+            <div className="relative md:left-96 md:top-40 left-28 top-44 md:w-[72em] w-[30em] overflow-auto">
             <div class="overflow-hidden rounded-lg border border-gray-200 shadow-md">
   <table class="w-full border-collapse bg-white text-left text-sm text-gray-500">
     <thead class="bg-gray-50">
