@@ -64,3 +64,20 @@ if(document.getElementById('root')){
 Route::get('{any}', function(){
     return view('welcome');
 })->where('any','.*');
+
+# add tailwind
+### npm install -D tailwindcss postcss autoprefixer
+### npx tailwindcss init -p
+### Next, you need to add a template path in tailwind.config.js.
+content: [
+    "./resources/**/*.blade.php",
+    "./resources/**/*.js",
+  ],
+### Add Tailwind CSS to app.css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+### Remove resources/css/app.css in vite.config.js
+### Next,  you need to import your CSS via JavaScript. Typically, this would be done in your application's resources/js/app.jsx file:
+import '../css/app.css'
