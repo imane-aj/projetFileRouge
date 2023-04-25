@@ -22,7 +22,7 @@ export default defineConfig({
         react(),
     ],
 });
-
+..
 ### Create Reactjs Component
 import React from 'react'
 
