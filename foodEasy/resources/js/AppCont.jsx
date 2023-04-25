@@ -6,15 +6,13 @@ import ModalWindow from './Admin/Components/Modal/ModalWindow';
 
 
 function AppCont() {
-  // const modalOpen = useSelector((state)=>state.toggle.modalOpen)
-  const [modalOpen,setModalOpen] = useState(false)
   return (
     <div>
         {/* <Wrapper /> */}
         <Admin />
-        <AnimatePresence mode="wait" initial={false} onExitComplete={()=>null}>
+        {/* <AnimatePresence mode="wait" initial={false} onExitComplete={()=>null}>
            {modalOpen && <ModalWindow modalOpen={modalOpen} handleClose={close} />}
-        </AnimatePresence>
+        </AnimatePresence> */}
     </div>
   )
 }

@@ -13,4 +13,7 @@ export default defineConfig({
         postcss(),
         
     ],
+    optimizeDeps: {
+        include: ['framer-motion'],
+      },
 });

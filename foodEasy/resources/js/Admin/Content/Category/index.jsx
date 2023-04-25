@@ -1,18 +1,20 @@
-import React, {useState} from 'react'
-import { motion } from "framer-motion";
+import React, {useState, Fragment} from 'react'
+import { AnimatePresence, motion } from 'framer-motion';
+import ModalWindow from './../../Components/Modal/ModalWindow/index';
 
 function Category() {
-    const [modalOpen, setModalOpen] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
 
-    const close = () => setModalOpen(false);
-    const open = () => setModalOpen(true);
+  const close = () => setModalOpen(false);
+  const open = () => setModalOpen(true);
   return (
+    <Fragment>
     <div className="absolute md:left-96 md:right-10 md:top-40 left-28 top-44">
         <motion.button
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         className="save-button btn btn-main-gradient mb-5"
-        onClick={() => (modalOpen ? close() : open())}
+        onClick={() => (modalOpen ? close8() : open())}
       >
         + Add Category
       </motion.button>
@@ -114,6 +116,10 @@ function Category() {
 </table>
 </div>
 </div>
+   <AnimatePresence initial={false} mode='wait' onExitComplete={()=>null}>
+           {modalOpen && <ModalWindow modalOpen={modalOpen} handleClose={close} />}
+        </AnimatePresence>
+        </Fragment>
   )
 }
 
