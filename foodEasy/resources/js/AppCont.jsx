@@ -12,7 +12,7 @@ function AppCont() {
     <div>
         {/* <Wrapper /> */}
         <Admin />
-        <AnimatePresence initial={false} exitBeforeEnter={true} onExitComplete={()=>null}>
+        <AnimatePresence mode="wait" initial={false} onExitComplete={()=>null}>
            {modalOpen && <ModalWindow modalOpen={modalOpen} handleClose={close} />}
         </AnimatePresence>
     </div>
