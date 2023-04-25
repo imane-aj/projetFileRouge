@@ -49,7 +49,9 @@ border: 1px solid var(--main-gradient);
   display: block;
 }
   
-
+body{
+  background: var(--front-bg);
+}
 .front-wrapper {
     min-height: 100vh;
     background: var(--front-bg);

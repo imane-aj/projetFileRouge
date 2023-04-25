@@ -1,12 +1,12 @@
 import React from 'react'
 import Content from '../Content'
-import SideBar from '../Layouts/SideBar'
+import SideBar from '../Components/Layouts/SideBar'
 
 function Admin() {
   return (
-    <div className='admin h-screen overflow-x-hidden flex flex-row'>
+    <div className='admin h-screen  w-full'>
     <div>
-    <SideBar/>
+    <SideBar />
     </div>
        <div>
         <Content />
