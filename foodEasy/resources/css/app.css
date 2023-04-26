@@ -341,7 +341,7 @@ body{
   border-radius: 12px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
   overflow: hidden !important;
   z-index: 1000;
 }

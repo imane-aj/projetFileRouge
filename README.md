@@ -81,3 +81,10 @@ content: [
 ### Remove resources/css/app.css in vite.config.js
 ### Next,  you need to import your CSS via JavaScript. Typically, this would be done in your application's resources/js/app.jsx file:
 import '../css/app.css'
+
+# redux
+## npm install @reduxjs/toolkit
+## npm install react-redux
+
+# react router dom
+## npm i react-router-dom

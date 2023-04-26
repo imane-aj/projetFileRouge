@@ -16,7 +16,7 @@ function NavBar() {
                     <div className="flex flex-row">
                     <button className="btn-link mx-6">
                         <small>
-                            <span className="ti-power-off text-red-600"></span> Logout
+                            <span className="ti-power-off text-orange-600"></span> Logout
                         </small>
                     </button>
                     |

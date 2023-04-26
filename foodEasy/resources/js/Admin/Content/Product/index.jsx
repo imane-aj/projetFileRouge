@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { useDispatch, useSelector } from 'react-redux';
 import { ModalOpen } from '../../../redux/ToggleSlice';
 
-function Category() {
+function Product() {
   // const [modalOpen, setModalOpen] = useState(false);
 
   // const close = () => setModalOpen(false);
@@ -21,7 +21,7 @@ function Category() {
         className="save-buttonb btn btn-main-gradient mb-5"
         onClick={() => (modalOpen ? close() : open())}
       >
-        + Add Category
+        + Add Product
       </motion.button>
     <div className="rounded-lg border border-gray-200 shadow-md ">
 <table className="w-full border-collapse overflow-auto bg-white text-left text-sm text-gray-500">
@@ -83,7 +83,7 @@ function Category() {
         viewBox="0 0 24 24"
         strokeWidth="1.5"
         stroke="currentColor"
-        className="h-6 w-6 text-orange-600"
+        className="h-6 w-6 text-red-600"
         x-tooltip="tooltip"
       >
         <path
@@ -124,4 +124,4 @@ function Category() {
   )
 }
 
-export default Category
+export default Product
