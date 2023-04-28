@@ -1,7 +1,8 @@
 <details>
 <summary>Password for Api</summary>
-    - we will make a new middleware :
-        - php artisan make:middleware CheckPassword
+    <ul>we will make a new middleware :
+        <li>php artisan make:middleware CheckPassword</li>
+    </ul>
     - we will call it in api route, and then register it in the http/kernel 
         - Route::group(['middleware' => ['api', 'checkpassword'], 'namespace' => 'Api'], function(){
             all routes/api here must be api authenticated
