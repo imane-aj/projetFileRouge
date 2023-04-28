@@ -1,13 +1,16 @@
 <details>
 <summary>Password for Api</summary>
-    <ul>we will make a new middleware :
+    <ul>
         <li>php artisan make:middleware CheckPassword</li>
-    </ul>
-    - we will call it in api route, and then register it in the http/kernel 
-        - Route::group(['middleware' => ['api', 'checkpassword'], 'namespace' => 'Api'], function(){
+        <li>we will call it in api route, and then register it in the http/kernel
+            > Route::group(['middleware' => ['api', 'checkpassword'], 'namespace' => 'Api'], function(){
             all routes/api here must be api authenticated
         })
-        - register the path of the middleware in the kernel
+        </li>
+        <li>register the path of the middleware in the kernel</li>
+    </ul>
+     
+        
     - in the handle fun inside the middleware, u write he logic :
         if( $request->api_password != env('API_PASSWROD')){
             return response()->json(['message'=>'unauthenticated.']);
