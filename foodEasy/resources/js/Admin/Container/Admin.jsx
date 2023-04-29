@@ -1,5 +1,4 @@
 import React from 'react'
-import Content from '../Content'
 import SideBar from '../Components/Layouts/SideBar'
 import NavBar from '../Components/Layouts/NavBar'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
@@ -12,7 +11,6 @@ import Transaction from '../Content/Transaction'
 
 
 function Admin() {
- 
   return (
     <div className='admin h-screen  w-full'>
     <div>

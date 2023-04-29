@@ -5,6 +5,10 @@ import { useDispatch, useSelector } from 'react-redux'
 import { AnimatePresence } from 'framer-motion';
 import ModalWindow from './Modal/ModalWindow';
 import { ModalOpen } from './redux/ToggleSlice';
+import Auth from './Auth';
+import Register from './Auth/Register';
+import Login from './Auth/Login';
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 
 function AppCont() {
@@ -14,7 +18,15 @@ function AppCont() {
   return (
     <Fragment>
         {/* <Wrapper /> */}
-        <Admin />
+        {/* <Admin /> */}
+        <BrowserRouter>
+          <Auth />
+          <Routes>
+            <Route path='/register' exact element={<Register />} />
+            <Route path='/login' exact element={<Login />} />
+          </Routes>
+        </BrowserRouter>
+        
         <AnimatePresence mode="wait" initial={false} onExitComplete={()=>null}>
            {modalOpen && <ModalWindow modalOpen={modalOpen} handleClose={close} />}
         </AnimatePresence>
@@ -23,3 +35,5 @@ function AppCont() {
 }
 
 export default AppCont
+
+ 

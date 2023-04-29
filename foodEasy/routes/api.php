@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\CategoryController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -20,7 +21,23 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::group(['middleware' => ['api', 'checkpassword'], 'namespace' => 'Api'], function(){
-    Route::get('category', [CategoryController::class, 'index']);
+
+    Route::post('register', [AuthController::class, 'register']);
+    Route::post('login', [AuthController::class, 'login']);
+    Route::post('logout', [AuthController::class, 'logout'])->middleware('auth:api');
+    
+    //admin routes
+    Route::middleware(['auth:api', 'role:admin'])->prefix('admin')->group(function () {
+        Route::get('category', [CategoryController::class, 'index']);
+    });
+
+    //user routes
+    Route::middleware(['auth:api', 'role:user'])->group(function () {
+        // Route::get('profile', [userController::class, 'index']);
+    });
+ 
 });
+
+
 
 

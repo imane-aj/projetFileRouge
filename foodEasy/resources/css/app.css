@@ -34,7 +34,7 @@ height: 40px;
 border: 1px solid var(--main-gradient);
 }
 .btn-main-gradient,
-.bg-main-gradient {
+.bg-main-gradient, .register {
   background: var(--main-gradient) !important;
   color: #fff !important;
 }
