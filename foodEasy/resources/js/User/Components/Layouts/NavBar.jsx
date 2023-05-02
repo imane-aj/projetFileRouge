@@ -1,6 +1,8 @@
 import React from "react";
+import { Link, useLocation } from "react-router-dom";
 
 function NavBar() {
+      
     return (
             <div className="front-header fixed top-6 z-50 bg-white rounded-xl px-7 py-5">
                 <nav className="flex flex-col md:flex-row justify-between items-center">
@@ -24,19 +26,18 @@ function NavBar() {
                         {/* <div>
           <a><small>Login</small></a> | <a><small>Register</small></a>
         </div> */}
-
                         <div>
-                            <button className="btn-link">
+                            <Link className="btn-link" to='/auth/register'>
                                 <small>
-                                    <span className="ti-user"></span> Profile
+                                    <span className="ti-user"></span> Register
                                 </small>
-                            </button>
+                            </Link>
                             |
-                            <button className="btn-link">
+                            <Link className="btn-link" to='/auth/login'>
                                 <small>
-                                    <span className="ti-power-off"></span> Logout
+                                    <span className="ti-power-off"></span> Login
                                 </small>
-                            </button>
+                            </Link>
                         </div>
 
                         <div>

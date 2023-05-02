@@ -26,7 +26,7 @@ function SideBar() {
                 <ul className='ml-2'>
 
                 <li className="mb-5 cursor-pointer active:p-2 rounded-lg relative">
-                        <Link to="/" className={`middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-gray-500
+                        <Link to="/admin" className={`middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-gray-500
                              hover:bg-gray-100 ${location.pathname === '/'? "bg-gray-100" : ""} w-full flex items-center gap-4 px-4 capitalize relative overflow-hidden`}>
                 
                             <img src={dashboardImg} class="w-9 text-inherit"/>
@@ -36,7 +36,7 @@ function SideBar() {
                     </li>
 
                     <li className="mb-5 cursor-pointer active:p-2 rounded-lg relative">
-                        <Link to="/categories" className={`middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-gray-500
+                        <Link to="categories" className={`middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-gray-500
                              hover:bg-gray-100 ${location.pathname === '/categories'? "bg-gray-100" : ""} w-full flex items-center gap-4 px-4 capitalize relative overflow-hidden`}>
                             <img src={categoryImg} class="w-9 text-inherit"/>
                             <p class="md:block hidden antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize">Categories</p>
@@ -44,7 +44,7 @@ function SideBar() {
                     </li>
 
                     <li className="mb-5 cursor-pointer active:p-2 rounded-lg relative">
-                        <Link to="/products" className={`middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-gray-500
+                        <Link to="products" className={`middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-gray-500
                              hover:bg-gray-100 ${location.pathname === '/products'? "bg-gray-100" : ""} w-full flex items-center gap-4 px-4 capitalize relative overflow-hidden`}>
                             <img src={productImg} class="w-9 text-inherit"/>
                             <p class="md:block hidden antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize">Products</p>
@@ -52,7 +52,7 @@ function SideBar() {
                     </li>
 
                     <li className="mb-5 cursor-pointer active:p-2 rounded-lg relative">
-                        <Link to="/orders" className={`middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-gray-500
+                        <Link to="orders" className={`middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-gray-500
                              hover:bg-gray-100 ${location.pathname === '/orders'? "bg-gray-100" : ""} w-full flex items-center gap-4 px-4 capitalize relative overflow-hidden`}>
                             <img src={orderImg} class="w-9 text-inherit"/>
                             <p class="md:block hidden antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize">Orders</p>
@@ -60,7 +60,7 @@ function SideBar() {
                     </li>
 
                     <li className="mb-5 cursor-pointer active:p-2 rounded-lg relative">
-                        <Link to="/customers" className={`middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-gray-500
+                        <Link to="customers" className={`middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-gray-500
                              hover:bg-gray-100 ${location.pathname === '/customers'? "bg-gray-100" : ""} w-full flex items-center gap-4 px-4 capitalize relative overflow-hidden`}>
                             <img src={customersImg} class="w-9 text-inherit"/>
                             <p class="md:block hidden antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize">Customers</p>
@@ -68,7 +68,7 @@ function SideBar() {
                     </li>
 
                     <li className="mb-5 cursor-pointer active:p-2 rounded-lg relative">
-                        <Link to="/transactions" className={`middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-gray-500
+                        <Link to="transactions" className={`middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-gray-500
                              hover:bg-gray-100 ${location.pathname === '/transactions'? "bg-gray-100" : ""} w-full flex items-center gap-4 px-4 capitalize relative overflow-hidden`}>
                             <img src={transImg} class="w-9 text-inherit"/>
                             <p class="md:block hidden antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize">Transactions</p>

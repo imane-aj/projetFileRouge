@@ -1,17 +1,13 @@
 import React, {useState, Fragment} from 'react'
 import { motion } from 'framer-motion';
 import { useDispatch, useSelector } from 'react-redux';
-import { ModalOpen } from '../../../redux/ToggleSlice';
+import { ModalOpen } from '../../../../redux/ToggleSlice';
 
-function Product() {
-  // const [modalOpen, setModalOpen] = useState(false);
-
-  // const close = () => setModalOpen(false);
-  // const open = () => setModalOpen(true);
+function Category() {
   const modalOpen = useSelector((state)=>state.toggle.modalOpen)
   const dispatch = useDispatch()
-  const close = () => dispatch(ModalOpen(false));
-  const open = () => dispatch(ModalOpen(true));
+  const handleClose = () => dispatch(ModalOpen(false));
+    const handleOpen = () => dispatch(ModalOpen(true));
   return (
     <Fragment>
     <div className="absolute md:left-96 md:right-10 md:top-40 left-28 top-44">
@@ -19,9 +15,9 @@ function Product() {
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         className="save-buttonb btn btn-main-gradient mb-5"
-        onClick={() => (modalOpen ? close() : open())}
+        onClick={() => (modalOpen ? handleClose() : handleOpen())}
       >
-        + Add Product
+        + Add Category
       </motion.button>
     <div className="rounded-lg border border-gray-200 shadow-md ">
 <table className="w-full border-collapse overflow-auto bg-white text-left text-sm text-gray-500">
@@ -83,7 +79,7 @@ function Product() {
         viewBox="0 0 24 24"
         strokeWidth="1.5"
         stroke="currentColor"
-        className="h-6 w-6 text-red-600"
+        className="h-6 w-6 text-orange-600"
         x-tooltip="tooltip"
       >
         <path
@@ -124,4 +120,4 @@ function Product() {
   )
 }
 
-export default Product
+export default Category

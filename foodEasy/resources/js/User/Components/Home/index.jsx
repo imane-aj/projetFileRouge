@@ -1,10 +1,8 @@
 import React from 'react'
 import NavBar from '../Layouts/NavBar'
 
-function Content() {
+function Home() {
   return (
-    <div className='w-contentW'>
-        <NavBar />
         <div className="front-main">
           <div className="main-grid">
             <div className="menu-section">
@@ -196,8 +194,7 @@ function Content() {
             </div>
           </div>
         </div>
-    </div>
   )
 }
 
-export default Content
+export default Home

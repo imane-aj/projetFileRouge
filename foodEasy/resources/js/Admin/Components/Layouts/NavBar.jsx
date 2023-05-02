@@ -1,6 +1,21 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { logoutUser } from "../../../redux/ApiSlice";
 
 function NavBar() {
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+    const handleLogout = () => {
+        try{
+            dispatch(logoutUser()).unwrap().then(
+                navigate('/auth/login', { replace: true })
+            )
+        }catch(e){
+            console.log(e)
+        }
+      };
+    
     return (
         <div className="fixed top-6 rounded-xl bg-white px-7 py-5 left-28 right-5 md:left-96 md:right-10">
             <nav className="flex flex-row justify-between items-center">
@@ -14,7 +29,7 @@ function NavBar() {
                 </div>
                 <div className="front-nav-links flex flex-col-reverse md:flex-row justify-between items-center">
                     <div className="flex flex-row">
-                    <button className="btn-link mx-6">
+                    <button className="btn-link mx-6" onClick={handleLogout}>
                         <small>
                             <span className="ti-power-off text-orange-600"></span> Logout
                         </small>

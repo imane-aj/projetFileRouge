@@ -21,14 +21,15 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::group(['middleware' => ['api', 'checkpassword'], 'namespace' => 'Api'], function(){
-
+    Route::get('category', [CategoryController::class, 'index']);
     Route::post('register', [AuthController::class, 'register']);
     Route::post('login', [AuthController::class, 'login']);
     Route::post('logout', [AuthController::class, 'logout'])->middleware('auth:api');
     
+    
     //admin routes
     Route::middleware(['auth:api', 'role:admin'])->prefix('admin')->group(function () {
-        Route::get('category', [CategoryController::class, 'index']);
+        // Route::get('category', [CategoryController::class);
     });
 
     //user routes

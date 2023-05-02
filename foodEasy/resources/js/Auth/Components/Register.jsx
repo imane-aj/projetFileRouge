@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import  { NewUser, setSuccess } from "../redux/ApiSlice";
-import { useNavigate} from 'react-router-dom'
+import  { NewUser } from "../../redux/ApiSlice";
+import { Link, useNavigate} from 'react-router-dom'
 
 function Register() {
     const [name,setName] = useState('')
@@ -21,7 +21,7 @@ function Register() {
             }
         })
     }
-    const errors = useSelector((state)=>state.api.errors)
+    const errors = useSelector((state)=>state.api.error)
 
     return (
         <form>
@@ -103,12 +103,13 @@ function Register() {
 
             <div className="flex items-center justify-between pb-6">
                 <p className="mb-0 mr-2">Have an account?</p>
-                <button
+                <Link
+                    to='auth/login'
                     type="button"
                     className="inline-block rounded border-2 border-danger px-6 pb-[6px] pt-2 text-xs font-medium uppercase leading-normal text-danger transition duration-150 ease-in-out hover:border-orange-600 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-orange-600"
                 >
                     Login
-                </button>
+                </Link>
             </div>
         </form>
     );

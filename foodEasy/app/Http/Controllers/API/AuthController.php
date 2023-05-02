@@ -22,7 +22,7 @@ class AuthController extends BaseController
         ]);
    
         if($validator->fails()){
-            return $this->sendError('Validation Error.', $validator->errors());       
+            return $this->sendError($validator->errors(),422);       
         }
       
         $user = User::create([
@@ -42,7 +42,7 @@ class AuthController extends BaseController
         $credentials = $request->only('email', 'password');
 
         if (! $token = JWTAuth::attempt($credentials)) {
-            return $this->sendError('Unauthorised.', ['error'=>'Unauthorised']);
+            return $this->sendError('Invalid email or password.', 401);
         }
 
         return $this->respondWithToken($token);
