@@ -29,8 +29,8 @@ function SideBar() {
                         <Link to="/admin" className={`middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-gray-500
                              hover:bg-gray-100 ${location.pathname === '/'? "bg-gray-100" : ""} w-full flex items-center gap-4 px-4 capitalize relative overflow-hidden`}>
                 
-                            <img src={dashboardImg} class="w-9 text-inherit"/>
-                            <p class="md:block hidden antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize">Dashboard</p>
+                            <img src={dashboardImg} className="w-9 text-inherit"/>
+                            <p className="md:block hidden antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize">Dashboard</p>
                    
                         </Link>
                     </li>
@@ -38,40 +38,40 @@ function SideBar() {
                     <li className="mb-5 cursor-pointer active:p-2 rounded-lg relative">
                         <Link to="categories" className={`middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-gray-500
                              hover:bg-gray-100 ${location.pathname === '/categories'? "bg-gray-100" : ""} w-full flex items-center gap-4 px-4 capitalize relative overflow-hidden`}>
-                            <img src={categoryImg} class="w-9 text-inherit"/>
-                            <p class="md:block hidden antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize">Categories</p>
+                            <img src={categoryImg} className="w-9 text-inherit"/>
+                            <p className="md:block hidden antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize">Categories</p>
                         </Link>
                     </li>
 
                     <li className="mb-5 cursor-pointer active:p-2 rounded-lg relative">
                         <Link to="products" className={`middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-gray-500
                              hover:bg-gray-100 ${location.pathname === '/products'? "bg-gray-100" : ""} w-full flex items-center gap-4 px-4 capitalize relative overflow-hidden`}>
-                            <img src={productImg} class="w-9 text-inherit"/>
-                            <p class="md:block hidden antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize">Products</p>
+                            <img src={productImg} className="w-9 text-inherit"/>
+                            <p className="md:block hidden antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize">Products</p>
                         </Link>
                     </li>
 
                     <li className="mb-5 cursor-pointer active:p-2 rounded-lg relative">
                         <Link to="orders" className={`middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-gray-500
                              hover:bg-gray-100 ${location.pathname === '/orders'? "bg-gray-100" : ""} w-full flex items-center gap-4 px-4 capitalize relative overflow-hidden`}>
-                            <img src={orderImg} class="w-9 text-inherit"/>
-                            <p class="md:block hidden antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize">Orders</p>
+                            <img src={orderImg} className="w-9 text-inherit"/>
+                            <p className="md:block hidden antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize">Orders</p>
                         </Link>
                     </li>
 
                     <li className="mb-5 cursor-pointer active:p-2 rounded-lg relative">
                         <Link to="customers" className={`middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-gray-500
                              hover:bg-gray-100 ${location.pathname === '/customers'? "bg-gray-100" : ""} w-full flex items-center gap-4 px-4 capitalize relative overflow-hidden`}>
-                            <img src={customersImg} class="w-9 text-inherit"/>
-                            <p class="md:block hidden antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize">Customers</p>
+                            <img src={customersImg} className="w-9 text-inherit"/>
+                            <p className="md:block hidden antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize">Customers</p>
                         </Link>
                     </li>
 
                     <li className="mb-5 cursor-pointer active:p-2 rounded-lg relative">
                         <Link to="transactions" className={`middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-gray-500
                              hover:bg-gray-100 ${location.pathname === '/transactions'? "bg-gray-100" : ""} w-full flex items-center gap-4 px-4 capitalize relative overflow-hidden`}>
-                            <img src={transImg} class="w-9 text-inherit"/>
-                            <p class="md:block hidden antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize">Transactions</p>
+                            <img src={transImg} className="w-9 text-inherit"/>
+                            <p className="md:block hidden antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize">Transactions</p>
                         </Link>
                     </li>
 
