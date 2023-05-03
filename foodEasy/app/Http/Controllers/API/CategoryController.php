@@ -40,6 +40,29 @@ class CategoryController extends BaseController
         }; 
     }
 
+    //edit
+    public function edit($id){
+        try{
+            $category = Category::findOrFail($id);
+            return $this->sendResponse($category, '');
+        }catch(\Exception $e){
+            return $this->sendError($e);
+        }; 
+    }
+
+    //update
+    public function update(CategoryRequest $request, $id){
+        $category = Category::findOrFail($id);
+        try{
+            $category->update([
+                'name' => $request->name,
+                'desc' => $request->desc,
+            ]);
+        }catch(\Exception $e){
+            return $this->sendError($e);
+        }; 
+    }
+
     //Delete
     public function destroy($id){
         try{

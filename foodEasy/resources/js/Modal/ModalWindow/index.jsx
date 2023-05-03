@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import Backdrop from './../BackDrop/index';
 import { AddCat } from '../../redux/CategorySlice';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 const dropIn = {
   hidden: {
@@ -28,7 +28,8 @@ const ModalWindow = ({ handleClose, text }) => {
   const [desc, setDesc] = useState('');
   const [imageFile, setImageFile] = useState(null);
   const dispatch = useDispatch();
-
+  const errors = useSelector((state)=>state.category.error)
+console.log(errors?.errors?.desc[0])
   const handleNewCat = (e) => {
     e.preventDefault();
     const item = new FormData();
@@ -68,6 +69,7 @@ const ModalWindow = ({ handleClose, text }) => {
                         placeholder="Name"
                         onChange={(e)=>setName(e.target.value)} value={name}
                     />
+                    {errors?.errors?.name[0] && <span className="text-red-600">{errors?.errors?.name[0]}</span>}
                 </div>
                 <div className="relative z-0 w-full mb-6 group">
                     <input
@@ -76,11 +78,13 @@ const ModalWindow = ({ handleClose, text }) => {
                         name="imageFile"
                         onChange={(e) => setImageFile(e.target.files[0])} 
                     />
+                   {errors?.errors?.img[0] && <span className="text-red-600">{errors?.errors?.img[0]}</span>}
                 </div>
             </div>
             <label htmlFor="message" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
             <textarea id="message" rows="4" className="mb-6 bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-orange-600" placeholder="Leave a description..."
              onChange={(e)=>setDesc(e.target.value)} value={desc}></textarea>
+             {errors?.errors?.desc[0] && <span className="text-red-600">{errors?.errors?.desc[0]}</span>}
         </form>
         </div>
         <div className="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b">
