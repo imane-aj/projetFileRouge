@@ -16,14 +16,19 @@ class CategoryFactory extends Factory
      * @return array<string, mixed>
      */
     protected $model = Category::class;
-    public function definition(): array
+    public function definition()
     {
         $faker = \Faker\Factory::create();
-        return [
-            //
-            'name' => $faker->word,
-            'desc' => $faker->sentence,
-            'img' => $faker->imageUrl($width = 640, $height = 480),
+        static $count = 0;
+        $categories = [
+            ['name' => 'Breakfast', 'desc' => '', 'img' => 'breakfast.svg'],
+            ['name' => 'Food', 'desc' => '', 'img' => 'food.svg'],
+            ['name' => 'Sandwich', 'desc' => '', 'img' => 'sandwich.svg'],
+            ['name' => 'Drinks', 'desc' => '', 'img' => 'drinks.svg'],
         ];
+        $category = $categories[$count % count($categories)];
+        $count++;
+
+        return $category;
     }
 }

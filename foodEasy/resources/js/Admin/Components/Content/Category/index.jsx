@@ -1,7 +1,7 @@
 import React from 'react'
 import { motion } from 'framer-motion';
 import { useDispatch, useSelector } from 'react-redux';
-import { ModalOpen } from '../../../../redux/ToggleSlice';
+import { DefPage, ModalOpen } from '../../../../redux/ToggleSlice';
 import CatList from './CatList';
 
 function Category() {
@@ -13,7 +13,7 @@ function Category() {
   return (
     <div className="absolute md:left-96 md:right-10 md:top-40 left-28 top-44">
       <motion.button  whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} className="save-buttonb btn btn-main-gradient mb-5"
-        onClick={() => (modalOpen ? handleClose() : handleOpen())}>
+        onClick={() => (modalOpen ? handleClose() : handleOpen(), dispatch(DefPage('addCat')))}>
         + Add Category
       </motion.button>
       <div className="rounded-lg border border-gray-200 shadow-md ">
@@ -27,7 +27,7 @@ function Category() {
         </tr>
         </thead>
         <tbody className="divide-y divide-gray-100 border-t border-gray-100">
-            <CatList/>
+            <CatList modalOpen={modalOpen} handleClose={handleClose} handleOpen={handleOpen}/>
 
         </tbody>
         </table>

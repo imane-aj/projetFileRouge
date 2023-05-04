@@ -28,5 +28,6 @@ class CategoryRequest extends FormRequest
             'img' => ['required','mimes:jpeg,png,jpg,gif', 'max:2048'],
             'desc' => ['string', 'max:100', 'min:4'],
         ];
+        
     }
 }

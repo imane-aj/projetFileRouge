@@ -2,10 +2,11 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from './../Utils';
 
 const apiKey = {api_password: "Eld5TBhHgiIZgJk4c4VEtlnNxY"}
+// add
 export const AddCat = createAsyncThunk("category/AddCat",async (item, { rejectWithValue ,dispatch}) => {
     try {
       const response = await axios.post('/admin/category',item,{headers:apiKey});
-      dispatch(getCat())
+      dispatch(getCat());
       return response.data;
     } catch  (er) {
         return rejectWithValue(er.response.data)
@@ -13,6 +14,7 @@ export const AddCat = createAsyncThunk("category/AddCat",async (item, { rejectWi
   }
 );
 
+//get
 export const getCat = createAsyncThunk('category/getCat', async(rejectWithValue)=>{
     try{
         const res = await axios.get('/categories', {headers:apiKey});
@@ -22,6 +24,25 @@ export const getCat = createAsyncThunk('category/getCat', async(rejectWithValue)
     }
 })
 
+//update
+export const updateCat = createAsyncThunk("category/updateCat",async ({id, formData}, { rejectWithValue ,dispatch}) => {
+    try {
+      const response = await axios.post(`/admin/category/update/${id}`, formData,{
+        headers: {
+            'api_password':'Eld5TBhHgiIZgJk4c4VEtlnNxY',
+            'accept': 'application/json',
+            'Accept-Language': 'en-US,en;q=0.8',
+            'Content-Type': 'multipart/form-data',
+        }});
+      dispatch(getCat());
+      return response.data;
+    } catch  (er) {
+        return rejectWithValue(er.response.data)
+    }
+  }
+);
+
+//delete
 export const deletCat = createAsyncThunk('category/deletCat', async(id,{rejectWithValue, dispatch})=>{
     try{
         await axios.delete(`/admin/category/${id}`, {headers:apiKey});
@@ -34,7 +55,7 @@ export const deletCat = createAsyncThunk('category/deletCat', async(id,{rejectWi
 
 const CategorySlice = createSlice({
     name : 'category',
-    initialState : {data : [], isLoading: false, error: '', },
+    initialState : {data : [], isLoading: false, error: '', editData:''},
     extraReducers: (builder) => {
         builder.addCase(AddCat.pending, (state) => {
           state.isLoading = true;
@@ -75,6 +96,20 @@ const CategorySlice = createSlice({
         if (Array.isArray(state.data)) { // check if state.data is an array
             state.data = state.data.filter((el) => el.id !== action.payload);
           }
+        state.error = ""
+        }),
+        //update
+        builder.addCase(updateCat.pending, (state) => {
+            state.isLoading = true;
+        }),
+        builder.addCase(updateCat.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+        console.log(state.error)
+        }),
+        builder.addCase(updateCat.fulfilled, (state, action) => {
+        state.isLoading = false,
+        state.editData = action.payload,
         state.error = ""
         })
       }
