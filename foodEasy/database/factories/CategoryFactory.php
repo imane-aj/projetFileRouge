@@ -21,10 +21,10 @@ class CategoryFactory extends Factory
         $faker = \Faker\Factory::create();
         static $count = 0;
         $categories = [
-            ['name' => 'Breakfast', 'desc' => '', 'img' => 'breakfast.svg'],
-            ['name' => 'Food', 'desc' => '', 'img' => 'food.svg'],
-            ['name' => 'Sandwich', 'desc' => '', 'img' => 'sandwich.svg'],
             ['name' => 'Drinks', 'desc' => '', 'img' => 'drinks.svg'],
+            ['name' => 'Sandwich', 'desc' => '', 'img' => 'sandwich.svg'],
+            ['name' => 'Food', 'desc' => '', 'img' => 'food.svg'],
+            ['name' => 'Breakfast', 'desc' => '', 'img' => 'breakfast.svg']
         ];
         $category = $categories[$count % count($categories)];
         $count++;

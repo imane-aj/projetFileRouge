@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getCat } from "../../../redux/CategorySlice";
+import { Link } from "react-router-dom";
 
 function SideBar() {
     const imgUrl =  import.meta.env.BASE_URL
@@ -20,7 +21,7 @@ function SideBar() {
                 <ul>
                 {Array.isArray(data?.data) ? (
                     data.data.map((item, idx )=>
-                        <li key={idx} className="text-center flex justify-center flex-col mb-5 cursor-pointer active:p-2 rounded-lg">
+                        <Link key={idx} to={`category/${item.id}`} className="text-center flex justify-center flex-col mb-5 cursor-pointer active:p-2 rounded-lg">
                             <div>
                                 <img
                                     src={imgUrl + `images/categories/${item?.img}`} alt={item?.name}
@@ -30,7 +31,7 @@ function SideBar() {
                                     {item.name}
                                 </h3>
                             </div>
-                        </li>
+                        </Link>
                     )) : (<p>isLoding</p>)}
                 </ul>
             </div>
