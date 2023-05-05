@@ -53,10 +53,21 @@ export const deletCat = createAsyncThunk('category/deletCat', async(id,{rejectWi
     }
 })
 
+//show category with product
+export const getCatWithProduct = createAsyncThunk('category/getCatWithProduct', async(id,rejectWithValue)=>{
+  try{
+      const res = await axios.get(`category/${id}`, {headers:apiKey});
+      return res.data;
+  }catch(e){
+      return rejectWithValue(er.res.data);
+  }
+})
+
 const CategorySlice = createSlice({
     name : 'category',
-    initialState : {data : [], isLoading: false, error: '', editData:''},
+    initialState : {data : [], isLoading: false, error: '', editData:'', CatWithProduct:[]},
     extraReducers: (builder) => {
+      //AddCat
         builder.addCase(AddCat.pending, (state) => {
           state.isLoading = true;
         }),
@@ -70,6 +81,7 @@ const CategorySlice = createSlice({
         state.data= action.payload
         state.error = ""
         }),
+        //getCat
         builder.addCase(getCat.pending, (state) => {
             state.isLoading = true;
         }),
@@ -83,6 +95,7 @@ const CategorySlice = createSlice({
         state.data = action.payload,
         state.error = ""
         }),
+        //deletCat
         builder.addCase(deletCat.pending, (state) => {
             state.isLoading = true;
         }),
@@ -110,6 +123,20 @@ const CategorySlice = createSlice({
         builder.addCase(updateCat.fulfilled, (state, action) => {
         state.isLoading = false,
         state.editData = action.payload,
+        state.error = ""
+        }),
+        //getCatWithProduct
+        builder.addCase(getCatWithProduct.pending, (state) => {
+          state.isLoading = true;
+        }),
+        builder.addCase(getCatWithProduct.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+        console.log(state.error)
+        }),
+        builder.addCase(getCatWithProduct.fulfilled, (state, action) => {
+        state.isLoading = false,
+        state.CatWithProduct = action.payload,
         state.error = ""
         })
       }

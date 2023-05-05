@@ -19,6 +19,16 @@ class CategoryController extends BaseController
         }; 
     }
 
+    //show
+    public function show($id){
+        $category = Category::findOrFail($id);
+        try{
+            return $this->sendResponse(['products'=>$category->products,'category'=>$category->name], '');
+        }catch(\Exception $e){
+            return $this->sendError($e);
+        }; 
+    }
+
     //store 
     public function store(CategoryRequest $request){
         try{

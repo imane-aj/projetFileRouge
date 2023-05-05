@@ -17,10 +17,6 @@ import Customer from "./Admin/Components/Content/Customers";
 import Transaction from "./Admin/Components/Content/Transaction";
 import ProtectedRoute from './Auth/Components/ProtectedRoute';
 import Admin from './Admin/index';
-import Breakfast from "./User/Components/Content/MenuProducts/Breakfast";
-import Food from "./User/Components/Content/MenuProducts/Food";
-import Drink from "./User/Components/Content/MenuProducts/Drink";
-import Sandwitch from "./User/Components/Content/MenuProducts/Sandwitch";
 import ProductList from "./User/Components/Content/MenuProducts/ProductList";
 
 const router = createBrowserRouter([
@@ -28,7 +24,7 @@ const router = createBrowserRouter([
       path: "/",element: <User />,
       children: [
         // {index:true,element:<Home />},
-        {path: "category/:categoryId",element:<ProductList />}
+        {path: "category/:id",element:<ProductList />}
       ],
     },
     {
