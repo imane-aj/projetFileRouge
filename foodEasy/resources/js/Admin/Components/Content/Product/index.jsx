@@ -1,13 +1,19 @@
-import React, { useState, Fragment } from "react";
+import React, { useState, Fragment, useEffect } from "react";
 import { motion } from "framer-motion";
-// import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { getProducts } from "../../../../redux/ProductSlice";
 // import { ModalOpen } from '../../../../redux/ToggleSlice';
 
 function Product() {
-    // const modalOpen = useSelector((state)=>state.toggle.modalOpen)H
-    // const dispatch = useDispatch()
+    // const modalOpen = useSelector((state)=>state.toggle.modalOpen)
+    const dispatch = useDispatch()
+    const productsL = useSelector((state)=>state.product.data)
+    console.log(productsL)
     // const close = () => dispatch(ModalOpen(false));
     // const open = () => dispatch(ModalOpen(true));
+    useEffect(()=>{
+        dispatch(getProducts())
+    },[dispatch])
     return (
         <Fragment>
             <div className="absolute md:left-96 md:right-10 md:top-40 left-28 top-44">

@@ -21,7 +21,7 @@ export const loginUser = createAsyncThunk('api/loginUser',async (user, { rejectW
     try {
       const response = await axios.post('/login',user,{ headers: apiKey });
       const token = response.data.access_token;
-      setCookie('token', token, 7);
+      setCookie('token', token, 1);
       localStorage.setItem('role', response.data.user.role);
       return response.data;
     } catch (er) {

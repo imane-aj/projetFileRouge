@@ -21,9 +21,10 @@ class CategoryController extends BaseController
 
     //show
     public function show($id){
-        $category = Category::findOrFail($id);
+        // $category = Category::findOrFail($id);
+        $category = Category::with('products')->find($id);
         try{
-            return $this->sendResponse(['products'=>$category->products,'category'=>$category->name], '');
+            return $this->sendResponse($category, '');
         }catch(\Exception $e){
             return $this->sendError($e);
         }; 

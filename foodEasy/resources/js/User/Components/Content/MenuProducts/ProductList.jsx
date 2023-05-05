@@ -6,8 +6,7 @@ import { getCatWithProduct } from '../../../../redux/CategorySlice';
 
 function ProductList() {
     const { id } = useParams();
-    const products = useSelector((state)=>state.category.CatWithProduct.data)
-    // console.log(products.category);
+    const CategoryP = useSelector((state)=>state.category.CatWithProduct.data)
     const dispatch = useDispatch()
     useEffect(()=>{
         dispatch(getCatWithProduct(id))
@@ -16,9 +15,9 @@ function ProductList() {
     <div className="front-main">
     <div className="main-grid">
       <div className="menu-section">
-      {products && (<h3>{products.category && products.category}</h3>)}
+      {CategoryP && (<h3>{CategoryP.name && CategoryP.name}</h3>)}
         <div className="menu-grid">
-            {products?.products?.map((item,idx)=>
+            {CategoryP?.products?.map((item,idx)=>
                 <div className="menu-card" style={{backgroundImage: 'url("assets/img/front/maxresdefault.jpg")'}}>
                     <div>
                     <span className="bg-main-gradient item-price">
