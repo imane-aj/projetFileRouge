@@ -1,6 +1,7 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateCat } from "../../../../redux/CategorySlice";
+import Swal from "sweetalert2";
 
 function EditCatForm({ handleClose }) {
     const item = useSelector((state) => state.toggle.item);
@@ -44,6 +45,7 @@ function EditCatForm({ handleClose }) {
             setDesc('');
             setImageFile(null);
             handleClose();
+            Swal.fire('Success', 'This item was updated succefuly', 'success');
           }
         });
       };

@@ -4,8 +4,13 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\API\BaseController as BaseController;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ProductRequest;
+use App\Models\Cart;
 use App\Models\Product;
+use GuzzleHttp\Psr7\Response;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class ProductController extends BaseController
 {
@@ -29,27 +34,28 @@ class ProductController extends BaseController
     //     }; 
     // }
 
-    // //store 
-    // public function store(CategoryRequest $request){
-    //     try{
-    //         $Image = null;
-    //         if ($request->hasFile('img')) {
-    //             $file = $request->file('img');
-    //             if ($file != null) {
-    //                 $Image = time() . '_' . $file->getClientOriginalName();
-    //                 $file->move(public_path('images/categories'), $Image);
-    //             }
-    //         }
-    //     $category = Category::create([
-    //         'name' => $request->name,
-    //         'desc' => $request->desc,
-    //         'img' => $Image
-    //     ]);
-    //         return $this->sendResponse($category, 'The category was added successfuly');
-    //     }catch(\Exception $e){
-    //         return $this->sendError($e);
-    //     }; 
-    // }
+    //store 
+    public function store(ProductRequest $request){
+        try{
+            $Image = null;
+            if ($request->hasFile('img')) {
+                $file = $request->file('img');
+                if ($file != null) {
+                    $Image = time() . '_' . $file->getClientOriginalName();
+                    $file->move(public_path('images/products'), $Image);
+                }
+            }
+        $product = Product::create([
+            'name' => $request->name,
+            'desc' => $request->desc,
+            'category_id' => $request->category_id,
+            'img' => $Image
+        ]);
+            return $this->sendResponse($product, 'The product was added successfuly');
+        }catch(\Exception $e){
+            return $this->sendError($e);
+        }; 
+    }
 
     // //edit
     // public function edit($id){
@@ -97,4 +103,5 @@ class ProductController extends BaseController
     //         return $this->sendError($e);
     //     }; 
     // }
+
 }

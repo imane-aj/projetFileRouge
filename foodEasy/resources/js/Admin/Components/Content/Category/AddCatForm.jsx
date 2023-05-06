@@ -1,6 +1,7 @@
 import React, { Fragment, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { AddCat } from '../../../../redux/CategorySlice';
+import Swal from 'sweetalert2';
 
 function AddCatForm({handleClose}) {
     const [name, setName] = useState('');
@@ -17,10 +18,11 @@ function AddCatForm({handleClose}) {
     
         dispatch(AddCat(item)).then((res) => {
           if (res.type === 'category/AddCat/fulfilled') {
+            handleClose();
             setName('');
             setDesc('');
             setImageFile(null);
-            
+            Swal.fire('Success', 'This item was added succefuly', 'success');
           }
         });
       };
@@ -36,7 +38,9 @@ function AddCatForm({handleClose}) {
                 placeholder="Name"
                 onChange={(e)=>setName(e.target.value)} value={name}
             />
-            {errors?.errors?.name[0] && <span className="text-red-600">{errors?.errors?.name[0]}</span>}
+            {errors && errors?.errors?.name && errors.errors.name[0] && (
+              <span className="text-red-600">{errors.errors.name[0]}</span>
+            )}
         </div>
         <div className="relative z-0 w-full mb-6 group">
             <input
@@ -45,13 +49,17 @@ function AddCatForm({handleClose}) {
                 name="imageFile"
                 onChange={(e) => setImageFile(e.target.files[0])} 
             />
-           {errors?.errors?.img[0] && <span className="text-red-600">{errors?.errors?.img[0]}</span>}
+            {errors && errors?.errors?.img && errors.errors.img[0] && (
+              <span className="text-red-600">{errors.errors.img[0]}</span>
+            )}
         </div>
     </div>
     <label htmlFor="message" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
     <textarea id="message" rows="4" className="mb-6 bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-orange-600" placeholder="Leave a description..."
      onChange={(e)=>setDesc(e.target.value)} value={desc}></textarea>
-     {errors?.errors?.desc[0] && <span className="text-red-600">{errors?.errors?.desc[0]}</span>}
+     {errors && errors?.errors?.desc && errors.errors.desc[0] && (
+      <span className="text-red-600">{errors.errors.desc[0]}</span>
+    )}
 </form>
 </div>
         <div className="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b">

@@ -21,10 +21,10 @@ import ProductList from "./User/Components/Content/MenuProducts/ProductList";
 
 const router = createBrowserRouter([
     {
-      path: "/",element: <User />,
+      path: "/*",element: <User />,
       children: [
-        // {index:true,element:<Home />},
-        {path: "category/:id",element:<ProductList />}
+        {index:true, element:<ProductList />},
+        {path: "category/:id", element:<ProductList />}
       ],
     },
     {

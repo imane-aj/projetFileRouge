@@ -47,7 +47,7 @@ export const logoutUser = createAsyncThunk('api/logoutUser',async (_, thunkAPI) 
 
 const Api = createSlice({
     name : 'api',
-    initialState : {userRegister : {}, isLoading: false, error: ''},
+    initialState : {userRegister : {}, isLoading: false, error: '', isLogin:false},
     extraReducers: (builder) => {
         builder.addCase(NewUser.pending, (state) => {
           state.isLoading = true;
@@ -66,12 +66,14 @@ const Api = createSlice({
             state.isLoading = true;
           }),
           builder.addCase(loginUser.rejected, (state, action) => {
+            state.isLogin = false
             state.isLoading = false;
             state.error = action.payload;
             console.log(state.error)
           }),
           builder.addCase(loginUser.fulfilled, (state, action) => {
             state.isLoading = false;
+            state.isLogin = true;
             state.user = action.payload;
             console.log(state.user)
           }),

@@ -25,7 +25,7 @@ class ProductRequest extends FormRequest
             //
             'name' => ['required','string', 'max:50', 'min:4'],
             'img' => ['required','mimes:jpeg,png,jpg,gif', 'max:2048'],
-            'desc' => ['string', 'max:100', 'min:4'],
+            'desc' => ['nullable','string', 'max:100', 'min:4'],
             'price' => ['required', 'numeric', 'min:0'],
             // 'address' => ['required', 'string', 'max:255'],
             // 'phone' => ['required', 'string', 'min:10', 'maax:20']

@@ -1,24 +1,56 @@
 import React from 'react'
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { getCatWithProduct } from '../../../../redux/CategorySlice';
+import { addToCart } from '../../../../redux/ProductSlice';
+import IsLoading from '../../../../IsLoading';
+import Swal from 'sweetalert2';
+import CartBody from './CartBody';
 
 function ProductList() {
+  const loggedIn = localStorage.getItem("role") === "user";
     const { id } = useParams();
     const CategoryP = useSelector((state)=>state.category.CatWithProduct.data)
+    const error = useSelector((state)=>state.product.error)
+    const navigate = useNavigate()
     const dispatch = useDispatch()
     useEffect(()=>{
         dispatch(getCatWithProduct(id))
     },[id, dispatch])
+    const handleAddToCart = (id) => {
+      if(loggedIn){
+        const product_id = {product_id:id}
+        dispatch(addToCart(product_id)).then((res) => {
+          if(res.type === 'product/addToCart/fulfilled'){
+            Swal.fire('Success', res.payload.message, 'success')
+          }else{
+            Swal.fire('Warning', res.payload.error, 'warning')
+          }
+        });
+      }else{
+          Swal.fire({
+            title: 'You need to log in',
+            text: 'Do you want to go to the login page?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes',
+            cancelButtonText: 'No',
+          }).then((result) => {
+            if (result.isConfirmed) {
+              navigate('/auth/login')
+            }
+          });
+      }
+    };
   return (
     <div className="front-main">
     <div className="main-grid">
       <div className="menu-section">
-      {CategoryP && (<h3>{CategoryP.name && CategoryP.name}</h3>)}
+      {CategoryP ? (<h3>{CategoryP.name && CategoryP.name}</h3>): <IsLoading/>}
         <div className="menu-grid">
             {CategoryP?.products?.map((item,idx)=>
-                <div className="menu-card" style={{backgroundImage: 'url("assets/img/front/maxresdefault.jpg")'}}>
+                <div key={idx} className="menu-card" style={{backgroundImage: 'url("assets/img/front/maxresdefault.jpg")'}}>
                     <div>
                     <span className="bg-main-gradient item-price">
                         <span>DH</span> {item?.price}
@@ -28,7 +60,8 @@ function ProductList() {
                     <span className="item-name">{item?.name}</span>
                     </div>
 
-                    <button className="btn btn-main-gradient">
+                    <button onClick={() => handleAddToCart(item?.id)}
+                    className="btn btn-main-gradient">
                     Add to cart
                     </button>
                 </div>
@@ -39,153 +72,9 @@ function ProductList() {
         <div className="cart-card">
           <div className="cart-header">
             <h3>New Order</h3>
-            <small>3 items in cart</small>
+            <small>0 items in cart</small>
           </div>
-
-          <div className="cart-body">
-          <div className='items-container overflow-auto h-[25vh]'>
-            <div className="cart-items">
-              <div className="cart-item">
-                <div className="cart-info">
-                  <span className="ti-trash"></span>
-                  <div>
-                    <h5>Spagheti with bread</h5>
-                    <small>@ 200</small>
-                  </div>
-                </div>
-                <div className="cart-controls">
-                  <input type="text" readOnly defaultValue="item.qty" />
-                  <div>
-                    <span className="ti-angle-up"></span>
-                    <span className="ti-angle-down"></span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="cart-items">
-              <div className="cart-item">
-                <div className="cart-info">
-                  <span className="ti-trash"></span>
-                  <div>
-                    <h5>Spagheti with bread</h5>
-                    <small>@ 200</small>
-                  </div>
-                </div>
-                <div className="cart-controls">
-                  <input type="text" readOnly defaultValue="item.qty" />
-                  <div>
-                    <span className="ti-angle-up"></span>
-                    <span className="ti-angle-down"></span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="cart-items">
-              <div className="cart-item">
-                <div className="cart-info">
-                  <span className="ti-trash"></span>
-                  <div>
-                    <h5>Spagheti with bread</h5>
-                    <small>@ 200</small>
-                  </div>
-                </div>
-                <div className="cart-controls">
-                  <input type="text" readOnly defaultValue="item.qty" />
-                  <div>
-                    <span className="ti-angle-up"></span>
-                    <span className="ti-angle-down"></span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="cart-items">
-              <div className="cart-item">
-                <div className="cart-info">
-                  <span className="ti-trash"></span>
-                  <div>
-                    <h5>Spagheti with bread</h5>
-                    <small>@ 200</small>
-                  </div>
-                </div>
-                <div className="cart-controls">
-                  <input type="text" readOnly defaultValue="item.qty" />
-                  <div>
-                    <span className="ti-angle-up"></span>
-                    <span className="ti-angle-down"></span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="cart-items">
-              <div className="cart-item">
-                <div className="cart-info">
-                  <span className="ti-trash"></span>
-                  <div>
-                    <h5>Spagheti with bread</h5>
-                    <small>@ 200</small>
-                  </div>
-                </div>
-                <div className="cart-controls">
-                  <input type="text" readOnly defaultValue="item.qty" />
-                  <div>
-                    <span className="ti-angle-up"></span>
-                    <span className="ti-angle-down"></span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="cart-items">
-              <div className="cart-item">
-                <div className="cart-info">
-                  <span className="ti-trash"></span>
-                  <div>
-                    <h5>Spagheti with bread</h5>
-                    <small>@ 200</small>
-                  </div>
-                </div>
-                <div className="cart-controls">
-                  <input type="text" readOnly defaultValue="item.qty" />
-                  <div>
-                    <span className="ti-angle-up"></span>
-                    <span className="ti-angle-down"></span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            </div>
-            <div className="cart-sum">
-              <div className="cart-address">
-                <div className="price-flex">
-                  <div>
-                    <small><span className="ti-location-pin"></span> <b>Address</b></small>
-                    <p>address</p>
-                  </div>
-                  <button className="btn btn-main-gradient"> Change
-                  </button>
-                </div>
-              </div>
-
-              <div>
-                <div className="price-flex">
-                  <small>Subtotal</small>
-                  <small>23</small>
-                </div>
-
-                <div className="price-flex">
-                  <small>Total</small>
-                  <h4>345</h4>
-                </div>
-              </div>
-
-              <div className="cart-pay-btn">
-                
-
-                <button className="btn btn-success">
-                  <span className="ti-credit-card"></span> Pay Now
-                </button>
-              </div>
-            </div>
-          </div>
+              <CartBody loggedIn={loggedIn} />
         </div>
       </div>
     </div>

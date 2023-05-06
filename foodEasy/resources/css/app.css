@@ -300,7 +300,7 @@ body{
   .front-main .main-grid .cart-section .cart-card .cart-body .cart-sum .cart-pay-btn {
     margin-top: 1.2rem;
   }
-  .front-main .main-grid .cart-section .cart-card .cart-body .cart-sum .cart-pay-btn button {
+  .front-main .main-grid .cart-section .cart-card .cart-body .cart-sum .cart-pay-btn .button {
     background: #24b056;
     color: #fff;
     font-size: 1rem;

@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getCat } from "../../../redux/CategorySlice";
 import { Link } from "react-router-dom";
+import IsLoading from "../../../IsLoading";
 
 function SideBar() {
     const imgUrl =  import.meta.env.BASE_URL
@@ -32,7 +33,7 @@ function SideBar() {
                                 </h3>
                             </div>
                         </Link>
-                    )) : (<p>isLoding</p>)}
+                    )) : <IsLoading />}
                 </ul>
             </div>
         </div>

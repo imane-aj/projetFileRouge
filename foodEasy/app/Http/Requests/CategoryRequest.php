@@ -26,7 +26,7 @@ class CategoryRequest extends FormRequest
             //
             'name' => ['required','string', 'max:50', 'min:4'],
             'img' => ['required','mimes:jpeg,png,jpg,gif', 'max:2048'],
-            'desc' => ['string', 'max:100', 'min:4'],
+            'desc' => ['nullable', 'string', 'max:100', 'min:4'],
         ];
         
     }

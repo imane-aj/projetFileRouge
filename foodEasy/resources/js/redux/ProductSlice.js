@@ -1,10 +1,36 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from './../Utils';
+import axios, { getCookie } from './../Utils';
 
 const apiKey = {api_password: "Eld5TBhHgiIZgJk4c4VEtlnNxY"}
 export const getProducts = createAsyncThunk('product/getProducts', async(rejectWithValue)=>{
     try{
-        const res = axios.get('/products',{headers:apiKey});
+        const res = await axios.get('/products',{headers:apiKey});
+        return res.data;
+    }catch  (er) {
+        return rejectWithValue(er.res.data);
+    }
+})
+
+// add
+export const AddProduct = createAsyncThunk("product/AddProduct",async (item, { rejectWithValue ,dispatch}) => {
+    try {
+      const response = await axios.post('/admin/product',item,{headers:apiKey});
+      dispatch(getProducts());
+      return response.data;
+    } catch  (er) {
+        return rejectWithValue(er.response.data)
+    }
+  }
+);
+
+//add to cart
+const token = getCookie('token');
+export const addToCart = createAsyncThunk('product/addToCart', async(product_id,{rejectWithValue})=>{
+    try{
+        const res = await axios.post('/cart',product_id,{headers:{
+                'api_password':'Eld5TBhHgiIZgJk4c4VEtlnNxY',
+                'Authorization': `Bearer ${token}`,
+        }});
         return res.data;
     }catch  (er) {
         return rejectWithValue(er.response.data);
@@ -13,7 +39,7 @@ export const getProducts = createAsyncThunk('product/getProducts', async(rejectW
 
 const ProductSlice = createSlice({
     name:'product',
-    initialState:{dataProduct:'', isLoading:false, error:''},
+    initialState:{data:[], isLoading:false, error:'', cart:[], count:''},
     extraReducers:(builder)=>{
         //getProduct
         builder.addCase(getProducts.pending, (state) => {
@@ -26,7 +52,37 @@ const ProductSlice = createSlice({
         }),
         builder.addCase(getProducts.fulfilled, (state, action) => {
             state.isLoading = false;
-            state.dataProduct= action.payload
+            state.data= action.payload
+            state.error = ""
+        })
+
+        //AddProduct
+        builder.addCase(AddProduct.pending, (state) => {
+            state.isLoading = true;
+          }),
+          builder.addCase(AddProduct.rejected, (state, action) => {
+          state.isLoading = false;
+          state.error = action.payload;
+          console.log(state.error)
+          }),
+          builder.addCase(AddProduct.fulfilled, (state, action) => {
+          state.isLoading = false,
+          state.data= action.payload
+          state.error = ""
+          }),
+          
+         //addToCart
+         builder.addCase(addToCart.pending, (state) => {
+            state.isLoading = true;
+        }),
+        builder.addCase(addToCart.rejected, (state, action) => {
+            state.isLoading = false;
+            state.error = action.payload;
+            console.log(state.error)
+        }),
+        builder.addCase(addToCart.fulfilled, (state, action) => {
+            state.isLoading = false;
+            state.cart = action.payload.data
             state.error = ""
         })
     }

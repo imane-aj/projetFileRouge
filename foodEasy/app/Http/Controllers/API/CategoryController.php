@@ -93,7 +93,7 @@ class CategoryController extends BaseController
                 unlink($image_path);
             }  
             $category->delete();
-            return $this->sendResponse($category, 'The category was successfuly ');
+            return $this->sendResponse($category, 'The category was successfuly deleted');
         }catch(\Exception $e){
             return $this->sendError($e);
         }; 
