@@ -3,21 +3,15 @@
 namespace App\Http\Controllers\API;
 use App\Http\Controllers\API\BaseController as BaseController;
 
-use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductRequest;
-use App\Models\Cart;
 use App\Models\Product;
 use Illuminate\Support\Facades\File;
-use GuzzleHttp\Psr7\Response;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Tymon\JWTAuth\Facades\JWTAuth;
 
 class ProductController extends BaseController
 {
      //index
      public function index(){
-        $products = Product::with('category')->get();
+        $products = Product::with('category')->orderBy('id','desc')->get();
         try{
             return $this->sendResponse($products, '');
         }catch(\Exception $e){
@@ -49,6 +43,7 @@ class ProductController extends BaseController
         $product = Product::create([
             'name' => $request->name,
             'desc' => $request->desc,
+            'price' => $request->price,
             'category_id' => $request->category_id,
             'img' => $Image
         ]);
