@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductRequest;
 use App\Models\Cart;
 use App\Models\Product;
+use Illuminate\Support\Facades\File;
 use GuzzleHttp\Psr7\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -90,18 +91,18 @@ class ProductController extends BaseController
     // }
 
     // //Delete
-    // public function destroy($id){
-    //     try{
-    //         $category = Category::FindOrFail($id);
-    //         $image_path = public_path('images/categories'.$category->img);
-    //         if(File::exists($image_path)){
-    //             unlink($image_path);
-    //         }  
-    //         $category->delete();
-    //         return $this->sendResponse($category, 'The category was successfuly ');
-    //     }catch(\Exception $e){
-    //         return $this->sendError($e);
-    //     }; 
-    // }
+    public function destroy($id){
+        try{
+            $product = Product::FindOrFail($id);
+            $image_path = public_path('images/products'.$product->img);
+            if(File::exists($image_path)){
+                unlink($image_path);
+            }  
+            $product->delete();
+            return $this->sendResponse($product, 'The category was successfuly deleted');
+        }catch(\Exception $e){
+            return $this->sendError($e);
+        }; 
+    }
 
 }

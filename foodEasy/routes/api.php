@@ -40,6 +40,7 @@ Route::group(['middleware' => ['api', 'checkpassword'], 'namespace' => 'Api'], f
 
         //products
         Route::post('product', [ProductController::class, 'store']);
+        Route::delete('product/{id}', [ProductController::class, 'destroy']);
     });
 
     //user routes

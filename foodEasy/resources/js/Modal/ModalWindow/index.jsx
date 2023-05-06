@@ -1,10 +1,10 @@
 import React, { Fragment, useState } from 'react'
 import { motion } from 'framer-motion'
 import Backdrop from './../BackDrop/index';
-import { AddCat } from '../../redux/CategorySlice';
-import { useDispatch, useSelector } from 'react-redux';
+import {useSelector } from 'react-redux';
 import AddCatForm from '../../Admin/Components/Content/Category/AddCatForm';
 import EditCatForm from '../../Admin/Components/Content/Category/EditCatForm';
+import AddProductForm from '../../Admin/Components/Content/Product/AddProductForm';
 
 const dropIn = {
   hidden: {y: '-100vh',},
@@ -16,10 +16,12 @@ const ModalWindow = ({ handleClose }) => {
   const titleConfig = [
     { text: "Edit Category", condition: pageName === "editCat" },
     { text: "Add New Category", condition: pageName === "addCat" },
+    { text: "Add New Product", condition: pageName === "addProduct" },
   ];
   const componentConfig = [
     { component: <AddCatForm handleClose={handleClose}/>, condition: pageName === "addCat" },
     { component: <EditCatForm handleClose={handleClose}/>, condition: pageName === "editCat" },
+    { component: <AddProductForm handleClose={handleClose}/>, condition: pageName === "addProduct" },
   ];
   return (
     <Backdrop onClick={handleClose}>

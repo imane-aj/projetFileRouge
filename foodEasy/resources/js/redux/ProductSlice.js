@@ -23,6 +23,17 @@ export const AddProduct = createAsyncThunk("product/AddProduct",async (item, { r
   }
 );
 
+//delete
+export const deletProduct = createAsyncThunk('product/deletProduct', async(id,{rejectWithValue, dispatch})=>{
+    try{
+        await axios.delete(`/admin/product/${id}`, {headers:apiKey});
+        dispatch(getProducts())
+        return id;
+    }catch(e){
+        return rejectWithValue(er.res.data);
+    }
+})
+
 //add to cart
 const token = getCookie('token');
 export const addToCart = createAsyncThunk('product/addToCart', async(product_id,{rejectWithValue})=>{
@@ -84,6 +95,22 @@ const ProductSlice = createSlice({
             state.isLoading = false;
             state.cart = action.payload.data
             state.error = ""
+        }),
+
+         //deletCat
+        builder.addCase(deletProduct.pending, (state) => {
+            state.isLoading = true;
+        }),
+        builder.addCase(deletProduct.rejected, (state, action) => {
+            state.isLoading = false;
+            state.error = action.payload;
+        }),
+        builder.addCase(deletProduct.fulfilled, (state, action) => {
+        state.isLoading = false;
+        if (Array.isArray(state.data)) { // check if state.data is an array
+            state.data = state.data.filter((el) => el.id !== action.payload);
+          }
+        state.error = ""
         })
     }
 });
