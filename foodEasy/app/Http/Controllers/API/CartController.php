@@ -51,4 +51,15 @@ class CartController extends BaseController
             return $this->sendError($e);
         }; 
     }
+
+    public function getCart(Request $request){
+        $token = $request->bearerToken();
+        $user = JWTAuth::parseToken()->authenticate();
+        $user = $user->cart;
+        try{
+            return $this->sendResponse($user, '');
+        }catch(\Exception $e){
+            return $this->sendError($e);
+        };
+    }
 }

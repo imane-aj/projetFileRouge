@@ -65,36 +65,38 @@ class ProductController extends BaseController
     }
 
     // //edit
-    // public function edit($id){
-    //     try{
-    //         $category = Category::findOrFail($id);
-    //         return $this->sendResponse($category, '');
-    //     }catch(\Exception $e){
-    //         return $this->sendError($e);
-    //     }; 
-    // }
+    public function edit($id){
+        try{
+            $product = Product::findOrFail($id);
+            return $this->sendResponse($product, '');
+        }catch(\Exception $e){
+            return $this->sendError($e);
+        }; 
+    }
 
     // //update
-    // public function update(CategoryRequest $request, $id){
-    //     $category = Category::findOrFail($id);
-    //         if ($request->hasFile('img')) {
-    //             $file = $request->file('img');
-    //             if ($file != null) {
-    //                 $Image = time() . '_' . $file->getClientOriginalName();
-    //                 $file->move(public_path('images/categories'), $Image);
-    //             }
-    //         }
-    //     try{
-    //         $category->update([
-    //             'name' => $request->name,
-    //             'desc' => $request->desc,
-    //             'img' => $Image
-    //         ]);
-    //         return $this->sendResponse($category, 'The category was updated successfuly');
-    //     }catch(\Exception $e){
-    //         return $this->sendError($e);
-    //     }; 
-    // }
+    public function update(ProductRequest $request, $id){
+        $product = Product::findOrFail($id);
+            if ($request->hasFile('img')) {
+                $file = $request->file('img');
+                if ($file != null) {
+                    $Image = time() . '_' . $file->getClientOriginalName();
+                    $file->move(public_path('images/products'), $Image);
+                }
+            }
+        try{
+            $product->update([
+                'name' => $request->name,
+                'desc' => $request->desc,
+                'price' => $request->price,
+                'category_id' => $request->category_id,
+                'img' => $Image
+            ]);
+            return $this->sendResponse($product, 'The product was updated successfuly');
+        }catch(\Exception $e){
+            return $this->sendError($e);
+        }; 
+    }
 
     // //Delete
     public function destroy($id){

@@ -45,11 +45,13 @@ Route::group(['middleware' => ['api', 'checkpassword'], 'namespace' => 'Api'], f
         //products
         Route::post('product', [ProductController::class, 'store']);
         Route::delete('product/{id}', [ProductController::class, 'destroy']);
+        Route::PUT('product/update/{id}', [ProductController::class, 'update']);
     });
 
     //user routes
     Route::middleware(['auth:api', 'role:user'])->group(function () {
         Route::post('cart', [CartController::class, 'addToCart']);
+        Route::get('cart/product', [CartController::class, 'getCart']);
     });
  
 });

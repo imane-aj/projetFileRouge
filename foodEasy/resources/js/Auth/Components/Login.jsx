@@ -11,7 +11,7 @@ function Login() {
     const isLogin = useSelector((state)=>state.api.isLogin)
     const user = useSelector((state)=>state.api.user)
 
-    const handleLogin = (e) => {
+    const handleLogin = (e, callback) => {
         e.preventDefault();
         const user = { email, password };
         dispatch(loginUser(user))
@@ -23,6 +23,9 @@ function Login() {
                 navigate('/admin');
               } else {
                 navigate('/');
+              }
+              if (typeof callback === 'function') {
+                callback();
               }
             }
           });

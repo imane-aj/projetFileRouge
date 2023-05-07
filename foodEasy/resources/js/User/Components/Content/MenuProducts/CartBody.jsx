@@ -1,7 +1,15 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { getFromCart } from '../../../../redux/ProductSlice'
+import { useSelector } from 'react-redux'
 
-function CartBody({loggedIn}) {
+function CartBody({loggedIn, dispatch}) {
+  const dataCart = useSelector((state)=>state.product.dataCart)
+  console.log(dataCart)
+  
+  useEffect(()=>{
+    dispatch(getFromCart())
+  },[dispatch])
   return (
     <div className="cart-body">
     <div className='items-container overflow-auto h-[25vh]'>

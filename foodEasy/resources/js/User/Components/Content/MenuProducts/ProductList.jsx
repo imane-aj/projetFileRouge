@@ -74,7 +74,7 @@ function ProductList() {
             <h3>New Order</h3>
             <small>0 items in cart</small>
           </div>
-              <CartBody loggedIn={loggedIn} />
+              <CartBody loggedIn={loggedIn} dispatch={dispatch}/>
         </div>
       </div>
     </div>

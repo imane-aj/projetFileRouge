@@ -1,6 +1,7 @@
 import React, { Fragment, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { AddProduct } from '../../../../redux/ProductSlice';
+import Swal from 'sweetalert2';
 
 function AddProductForm({handleClose}) {
     const [name, setName] = useState('');
@@ -11,7 +12,7 @@ function AddProductForm({handleClose}) {
     const dispatch = useDispatch();
     const errors = useSelector((state)=>state.product.error)
     const categories = useSelector((state) => state.category.data);
-    console.log(categories)
+    console.log(name)
     const handleCategoryChange = (event) => {
         setCategory(event.target.value);
       };
@@ -33,6 +34,9 @@ function AddProductForm({handleClose}) {
             setPrice('');
             setCategory('');
             Swal.fire('Success', 'This item was added succefuly', 'success');
+          }
+          if (typeof callback === 'function') {
+            callback();
           }
         });
       };
@@ -73,12 +77,12 @@ function AddProductForm({handleClose}) {
                 onChange={(e)=>setPrice(e.target.value)} value={price}
             />
             {errors && errors?.errors?.price && errors.errors.price[0] && (
-              <span className="text-red-600">{errors.errors.name[0]}</span>
+              <span className="text-red-600">{errors.errors.price[0]}</span>
             )}
         </div>
         <div className="relative z-0 w-full mb-6 group">
-            <select value={category} onChange={handleCategoryChange} className="py-3 px-5 ">
-                <option value="" className="text-orange-600">All</option>
+            <select value={category} onChange={handleCategoryChange} className=" bg-gray-200 border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-orange-600">
+                <option value="" className="text-orange-600">Choose Category</option>
                 {Array.isArray(categories?.data) ? (categories?.data.map((category) => (
                     <option key={category.id} value={category.id} className="text-orange-600">
                     {category.name}
@@ -86,7 +90,7 @@ function AddProductForm({handleClose}) {
                 ))):(<option>No Categories</option>)}
             </select>
             {errors && errors?.errors?.category_id && errors.errors.category_id[0] && (
-              <span className="text-red-600">{errors.errors.img[0]}</span>
+              <span className="text-red-600">{errors.errors.category_id[0]}</span>
             )}
         </div>
     </div>

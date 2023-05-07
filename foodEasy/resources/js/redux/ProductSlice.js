@@ -20,7 +20,7 @@ export const getProducts = createAsyncThunk('product/getProducts', async({curren
 export const AddProduct = createAsyncThunk("product/AddProduct",async (item, { rejectWithValue ,dispatch}) => {
     try {
       const response = await axios.post('/admin/product',item,{headers:apiKey});
-      dispatch(getProducts());
+      await dispatch(getProducts());
       return response.data;
     } catch  (er) {
         return rejectWithValue(er.response.data)
@@ -39,6 +39,24 @@ export const deletProduct = createAsyncThunk('product/deletProduct', async(id,{r
     }
 })
 
+//update
+export const updateProduct = createAsyncThunk("product/updateProduct",async ({id, formData}, { rejectWithValue ,dispatch}) => {
+    try {
+      const response = await axios.post(`/admin/product/update/${id}`, formData,{
+        headers: {
+            'api_password':'Eld5TBhHgiIZgJk4c4VEtlnNxY',
+            'accept': 'application/json',
+            'Accept-Language': 'en-US,en;q=0.8',
+            'Content-Type': 'multipart/form-data',
+        }});
+      dispatch(getProducts());
+      return response.data;
+    } catch  (er) {
+        return rejectWithValue(er.response.data)
+    }
+  }
+);
+
 //add to cart
 const token = getCookie('token');
 export const addToCart = createAsyncThunk('product/addToCart', async(product_id,{rejectWithValue})=>{
@@ -53,9 +71,24 @@ export const addToCart = createAsyncThunk('product/addToCart', async(product_id,
     }
 })
 
+//get from cart
+export const getFromCart = createAsyncThunk('product/getFromCart', async({rejectWithValue})=>{
+    console.log(token, 'from slice')
+    try{
+        const res = await axios.get('/cart/product',{headers:{
+                'api_password':'Eld5TBhHgiIZgJk4c4VEtlnNxY',
+                'Authorization': `Bearer ${token}`,
+        }});
+       
+        return res.data;
+    }catch  (er) {
+        return rejectWithValue(er.response.data);
+    }
+})
+
 const ProductSlice = createSlice({
     name:'product',
-    initialState:{data:[], isLoading:false, error:'', cart:[], count:''},
+    initialState:{data:[], isLoading:false, error:'', cart:[], count:'', editData:[], addedData:[],dataCart:[]},
     extraReducers:(builder)=>{
         //getProduct
         builder.addCase(getProducts.pending, (state) => {
@@ -83,7 +116,7 @@ const ProductSlice = createSlice({
           }),
           builder.addCase(AddProduct.fulfilled, (state, action) => {
           state.isLoading = false,
-          state.data= action.payload
+          state.addedData= action.payload
           state.error = ""
           }),
           
@@ -116,6 +149,34 @@ const ProductSlice = createSlice({
             state.data = state.data.filter((el) => el.id !== action.payload);
           }
         state.error = ""
+        }),
+         //update
+         builder.addCase(updateProduct.pending, (state) => {
+            state.isLoading = true;
+        }),
+        builder.addCase(updateProduct.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+        console.log(state.error)
+        }),
+        builder.addCase(updateProduct.fulfilled, (state, action) => {
+        state.isLoading = false,
+        state.editData = action.payload,
+        state.error = ""
+        }), 
+        //getFromCart
+        builder.addCase(getFromCart.pending, (state) => {
+            state.isLoading = true;
+        }),
+        builder.addCase(getFromCart.rejected, (state, action) => {
+            state.isLoading = false;
+            state.error = action.payload;
+            console.log(state.error)
+        }),
+        builder.addCase(getFromCart.fulfilled, (state, action) => {
+            state.isLoading = false;
+            state.dataCart = action.payload
+            state.error = ""
         })
     }
 });
