@@ -2,10 +2,15 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios, { getCookie } from './../Utils';
 
 const apiKey = {api_password: "Eld5TBhHgiIZgJk4c4VEtlnNxY"}
-export const getProducts = createAsyncThunk('product/getProducts', async(rejectWithValue)=>{
+export const getProducts = createAsyncThunk('product/getProducts', async({currentPage,selectedCategory},{rejectWithValue})=>{
     try{
-        const res = await axios.get('/products',{headers:apiKey});
-        return res.data;
+        const res = await axios.get(`/products/${selectedCategory}`, {
+            headers: apiKey,
+            params: {
+              page: currentPage,
+            },
+          });
+         return res.data;
     }catch  (er) {
         return rejectWithValue(er.res.data);
     }

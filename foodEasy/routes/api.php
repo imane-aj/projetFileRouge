@@ -29,7 +29,11 @@ Route::group(['middleware' => ['api', 'checkpassword'], 'namespace' => 'Api'], f
     Route::post('login', [AuthController::class, 'login']);
     Route::post('logout', [AuthController::class, 'logout'])->middleware('auth:api');
 
-    Route::get('products', [ProductController::class, 'index']);
+   // Route for getting all products
+    Route::get('/products', [ProductController::class, 'index']);
+    // Route for getting products by category
+    Route::get('/products/{category}', [ProductController::class, 'index']);
+
     
     //admin routes
     Route::middleware(['auth:api', 'role:admin'])->prefix('admin')->group(function () {

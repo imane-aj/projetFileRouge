@@ -5,13 +5,24 @@ use App\Http\Controllers\API\BaseController as BaseController;
 
 use App\Http\Requests\ProductRequest;
 use App\Models\Product;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
 class ProductController extends BaseController
 {
      //index
-     public function index(){
-        $products = Product::with('category')->orderBy('id','desc')->get();
+     public function index(Request $request, $category = 'all'){
+        $query = Product::with('category');
+
+        if ($category !== null) {
+            if ($category === 'all') {
+                $query->inRandomOrder();
+            } else {
+                $query->where('category_id', $category)->orderBy('id', 'desc');
+            }
+        }
+
+        $products = $query->paginate(8);
         try{
             return $this->sendResponse($products, '');
         }catch(\Exception $e){

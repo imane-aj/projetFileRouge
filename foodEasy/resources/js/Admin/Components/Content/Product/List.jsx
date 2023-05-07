@@ -4,25 +4,23 @@ import { motion } from 'framer-motion';
 import { DefItem, DefPage } from '../../../../redux/ToggleSlice';
 import { deletProduct, getProducts } from './../../../../redux/ProductSlice';
 import Swal from 'sweetalert2';
+import IsLoading from './../../../../IsLoading';
 
-function List({modalOpen, handleClose, handleOpen,selectedCategory}) {
+function List({modalOpen, handleClose, handleOpen,selectedCategory, currentPage}) {
     const data = useSelector((state)=>state.product.data)
 
+    console.log(data)
     const dispatch = useDispatch()
     useEffect(()=>{
-      dispatch(getProducts())
-    },[dispatch])
+      dispatch(getProducts({currentPage,selectedCategory}))
+    },[dispatch, currentPage, selectedCategory])
+    console.log(selectedCategory)
 
-    let filteredData = data?.data;
-
+    let filteredData = data?.data?.data;
     if (selectedCategory && Array.isArray(filteredData)) {
-      console.log('hello')
       filteredData = filteredData.filter(
         (item) => item.category_id == selectedCategory
       );
-      if (filteredData.length > 0) {
-        console.log("jjj");
-      }
     }
     const imgUrl =  import.meta.env.BASE_URL
     const handelDelet = (id)=>{
@@ -82,7 +80,7 @@ function List({modalOpen, handleClose, handleOpen,selectedCategory}) {
           </div>
         </td>
       </tr>
-      ))) : (<tr><td>isLoding</td></tr>)}
+      ))) : (<tr><td><IsLoading/></td></tr>)}
       </Fragment>
   )
 }

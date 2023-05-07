@@ -10,6 +10,11 @@ function Product() {
     const dispatch = useDispatch()
     const handleClose = () => dispatch(ModalOpen(false));
     const handleOpen = () => dispatch(ModalOpen(true));
+    const [currentPage, setCurrentPage] = useState(1);
+
+    const handlePageChange = (pageNumber) => {
+        setCurrentPage(pageNumber);
+      };
  
     useEffect(()=>{
         dispatch(getCat())
@@ -28,7 +33,6 @@ function Product() {
                 + Add Product
                 </motion.button>
                 <div className="mb-4">
-                    {/* <label className="mr-2">Filter by category:</label> */}
                     <select value={selectedCategory} onChange={handleCategoryChange} className="py-3 px-5 btn btn-main-gradient active:border-x-white">
                     <option value="" className="text-orange-600">All</option>
                     {Array.isArray(categories?.data) ? (categories?.data.map((category) => (
@@ -52,10 +56,21 @@ function Product() {
             </tr>
             </thead>
             <tbody className="divide-y divide-gray-100 border-t border-gray-100">
-                <List modalOpen={modalOpen} handleClose={handleClose} handleOpen={handleOpen} selectedCategory={selectedCategory}/>
+                <List modalOpen={modalOpen} handleClose={handleClose} handleOpen={handleOpen} selectedCategory={selectedCategory} currentPage={currentPage}/>
     
             </tbody>
             </table>
+            </div>
+            <div className="flex flex-row justify-between">
+                <button className="py-2 px-7 bg-slate-500 text-white rounded-md mt-5 sm:mb-3"
+                onClick={() => handlePageChange(currentPage - 1)}
+                disabled={currentPage === 1}
+                >
+                 Previous
+                </button>
+                <button className="py-2 px-7 bg-slate-500 text-white rounded-md mt-5 sm:mb-3" onClick={() => handlePageChange(currentPage + 1)}>
+                Next 
+                </button>
             </div>
         </div>
     );
