@@ -79,7 +79,7 @@ function Register() {
                         placeholder="Confirme Password"
                         onChange={(e)=>setCpassword(e.target.value)} value={c_password}
                     />
-                    {errors.c_password && <span className="text-red-600">{errors.c_password}</span>}
+                    {errors && errors.c_password && <span className="text-red-600">{errors.c_password}</span>}
                 </div>
             </div>
             <div className="relative z-0 w-full mb-6">

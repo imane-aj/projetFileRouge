@@ -62,12 +62,12 @@ function CartBody({loggedIn, dispatch}) {
           </div>
           <div className="price-flex">
             <small>Delivery</small>
-            <small>10</small>
+            <small>{subtotal > 0 ? 10: 0}</small>
           </div>
 
           <div className="price-flex">
             <small>Total</small>
-            <h4>{subtotal + 10}</h4>
+            <h4>{subtotal > 0 ? subtotal + 10 : 0}</h4>
           </div>
         </div>
 
