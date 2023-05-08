@@ -85,7 +85,7 @@ function EditCatForm({ handleClose }) {
                             )}
                         </div>
                     </div>
-                    <img src={imgUrl + `images/categories/${item?.img}`} width='200px'/>
+                    <img src={imgUrl + `images/categories/${item?.img}`} width='100px' height="100"/>
                     <label
                         htmlFor="message"
                         className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"

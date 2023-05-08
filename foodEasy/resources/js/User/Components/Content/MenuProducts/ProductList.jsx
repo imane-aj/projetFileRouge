@@ -3,16 +3,16 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { getCatWithProduct } from '../../../../redux/CategorySlice';
-import { addToCart } from '../../../../redux/ProductSlice';
 import IsLoading from '../../../../IsLoading';
 import Swal from 'sweetalert2';
 import CartBody from './CartBody';
+import { addToCart, getFromCart } from '../../../../redux/CartSlice';
 
 function ProductList() {
   const loggedIn = localStorage.getItem("role") === "user";
     const { id } = useParams();
     const CategoryP = useSelector((state)=>state.category.CatWithProduct.data)
-    const error = useSelector((state)=>state.product.error)
+    const error = useSelector((state)=>state.cart.error)
     const navigate = useNavigate()
     const dispatch = useDispatch()
     useEffect(()=>{
@@ -22,8 +22,9 @@ function ProductList() {
       if(loggedIn){
         const product_id = {product_id:id}
         dispatch(addToCart(product_id)).then((res) => {
-          if(res.type === 'product/addToCart/fulfilled'){
+          if(res.type === 'cart/addToCart/fulfilled'){
             Swal.fire('Success', res.payload.message, 'success')
+            dispatch(getFromCart());
           }else{
             Swal.fire('Warning', res.payload.error, 'warning')
           }

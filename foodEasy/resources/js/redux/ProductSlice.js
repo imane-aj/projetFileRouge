@@ -57,38 +57,9 @@ export const updateProduct = createAsyncThunk("product/updateProduct",async ({id
   }
 );
 
-//add to cart
-const token = getCookie('token');
-export const addToCart = createAsyncThunk('product/addToCart', async(product_id,{rejectWithValue})=>{
-    try{
-        const res = await axios.post('/cart',product_id,{headers:{
-                'api_password':'Eld5TBhHgiIZgJk4c4VEtlnNxY',
-                'Authorization': `Bearer ${token}`,
-        }});
-        return res.data;
-    }catch  (er) {
-        return rejectWithValue(er.response.data);
-    }
-})
-
-//get from cart
-export const getFromCart = createAsyncThunk('product/getFromCart', async({rejectWithValue})=>{
-    console.log(token, 'from slice')
-    try{
-        const res = await axios.get('/cart/product',{headers:{
-                'api_password':'Eld5TBhHgiIZgJk4c4VEtlnNxY',
-                'Authorization': `Bearer ${token}`,
-        }});
-       
-        return res.data;
-    }catch  (er) {
-        return rejectWithValue(er.response.data);
-    }
-})
-
 const ProductSlice = createSlice({
     name:'product',
-    initialState:{data:[], isLoading:false, error:'', cart:[], count:'', editData:[], addedData:[],dataCart:[]},
+    initialState:{data:[], isLoading:false, error:'', editData:[], addedData:[]},
     extraReducers:(builder)=>{
         //getProduct
         builder.addCase(getProducts.pending, (state) => {
@@ -119,21 +90,6 @@ const ProductSlice = createSlice({
           state.addedData= action.payload
           state.error = ""
           }),
-          
-         //addToCart
-         builder.addCase(addToCart.pending, (state) => {
-            state.isLoading = true;
-        }),
-        builder.addCase(addToCart.rejected, (state, action) => {
-            state.isLoading = false;
-            state.error = action.payload;
-            console.log(state.error)
-        }),
-        builder.addCase(addToCart.fulfilled, (state, action) => {
-            state.isLoading = false;
-            state.cart = action.payload.data
-            state.error = ""
-        }),
 
          //deletCat
         builder.addCase(deletProduct.pending, (state) => {
@@ -163,20 +119,6 @@ const ProductSlice = createSlice({
         state.isLoading = false,
         state.editData = action.payload,
         state.error = ""
-        }), 
-        //getFromCart
-        builder.addCase(getFromCart.pending, (state) => {
-            state.isLoading = true;
-        }),
-        builder.addCase(getFromCart.rejected, (state, action) => {
-            state.isLoading = false;
-            state.error = action.payload;
-            console.log(state.error)
-        }),
-        builder.addCase(getFromCart.fulfilled, (state, action) => {
-            state.isLoading = false;
-            state.dataCart = action.payload
-            state.error = ""
         })
     }
 });

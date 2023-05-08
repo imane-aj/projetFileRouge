@@ -34,7 +34,7 @@ function Register() {
                         placeholder="Name"
                         onChange={(e)=>setName(e.target.value)} value={name}
                     />
-                    {errors.name && <span className="text-red-600">{errors.name}</span>}
+                    {errors && errors.name && <span className="text-red-600">{errors.name}</span>}
                 </div>
                 <div className="relative z-0 w-full mb-6 group">
                     <input
@@ -52,7 +52,7 @@ function Register() {
                         placeholder="Email"
                         onChange={(e)=>setEmail(e.target.value)} value={email}
                     />
-                    {errors.email && <span className="text-red-600">{errors.email}</span>}
+                    {errors && errors.email && <span className="text-red-600">{errors.email}</span>}
                 </div>
                 <div className="relative z-0 w-full mb-6 group">
                     <input
@@ -70,7 +70,7 @@ function Register() {
                         placeholder="Password"
                         onChange={(e)=>setPassword(e.target.value)} value={password}
                     />
-                    {errors.password && <span className="text-red-600">{errors.password}</span>}
+                    {errors && errors.password && <span className="text-red-600">{errors.password}</span>}
                 </div>
                 <div className="relative z-0 w-full mb-6 group">
                     <input
@@ -104,7 +104,7 @@ function Register() {
             <div className="flex items-center justify-between pb-6">
                 <p className="mb-0 mr-2">Have an account?</p>
                 <Link
-                    to='auth/login'
+                    to='/auth/login'
                     type="button"
                     className="inline-block rounded border-2 border-danger px-6 pb-[6px] pt-2 text-xs font-medium uppercase leading-normal text-danger transition duration-150 ease-in-out hover:border-orange-600 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-orange-600"
                 >

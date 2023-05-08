@@ -55,7 +55,7 @@ class CartController extends BaseController
     public function getCart(Request $request){
         $token = $request->bearerToken();
         $user = JWTAuth::parseToken()->authenticate();
-        $user = $user->cart;
+        $user = $user->cart()->orderBy('id', 'desc')->get();
         try{
             return $this->sendResponse($user, '');
         }catch(\Exception $e){

@@ -1,38 +1,49 @@
-import React, { useEffect } from 'react'
+import React, { Fragment, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { getFromCart } from '../../../../redux/ProductSlice'
 import { useSelector } from 'react-redux'
+import { getFromCart } from '../../../../redux/CartSlice'
 
 function CartBody({loggedIn, dispatch}) {
-  const dataCart = useSelector((state)=>state.product.dataCart)
-  console.log(dataCart)
+  const dataCart = useSelector((state)=>state.cart.dataCart)
   
   useEffect(()=>{
     dispatch(getFromCart())
   },[dispatch])
+
+  // Calculate subtotal
+  const subtotal = dataCart.reduce((acc, item) => {
+    return acc + (item.product.price * item.qtity)
+  }, 0)
+  console.log(subtotal)
   return (
     <div className="cart-body">
-    <div className='items-container overflow-auto h-[25vh]'>
-      <div className="cart-items">
-        <div className="cart-item">
-          <div className="cart-info">
-            <span className="ti-trash"></span>
-            <div>
-              <h5>Spagheti with bread</h5>
-              <small>@ 200</small>
+      <div className='items-container overflow-auto h-[25vh]'>
+        <div className="cart-items">
+        {dataCart.map((item,idx)=>{
+        return (
+          <div key={idx} className="cart-item">
+            <div className="cart-info">
+              <span className="ti-trash"></span>
+              <div>
+                <h5>{item.product.name}</h5>
+                <small>{item.product.price} DH</small>
+              </div>
+            </div>
+            <div className="cart-controls">
+              <input type="text" readOnly value={item.qtity} />
+              <div>
+                <span className="ti-angle-up"></span>
+                <span className="ti-angle-down"></span>
+              </div>
             </div>
           </div>
-          <div className="cart-controls">
-            <input type="text" readOnly defaultValue="item.qty" />
-            <div>
-              <span className="ti-angle-up"></span>
-              <span className="ti-angle-down"></span>
-            </div>
-          </div>
+        )
+      })}
+         
         </div>
       </div>
-      </div>
       <div className="cart-sum">
+        
         <div className="cart-address">
           <div className="price-flex">
             <div>
@@ -47,12 +58,16 @@ function CartBody({loggedIn, dispatch}) {
         <div>
           <div className="price-flex">
             <small>Subtotal</small>
-            <small>23</small>
+            <small>{subtotal}</small>
+          </div>
+          <div className="price-flex">
+            <small>Delivery</small>
+            <small>10</small>
           </div>
 
           <div className="price-flex">
             <small>Total</small>
-            <h4>345</h4>
+            <h4>{subtotal + 10}</h4>
           </div>
         </div>
 
