@@ -1,25 +1,46 @@
-import React, { Fragment, useEffect } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import { getFromCart } from '../../../../redux/CartSlice'
+import { HandleDataCart, getFromCart, updateCartQtity } from '../../../../redux/CartSlice'
 
 function CartBody({loggedIn, dispatch}) {
   const dataCart = useSelector((state)=>state.cart.dataCart)
+  const [updateData, setUpdateData] = useState([])
   
   useEffect(()=>{
     dispatch(getFromCart())
   },[dispatch])
 
   // Calculate subtotal
-  const subtotal = dataCart.reduce((acc, item) => {
-    return acc + (item.product.price * item.qtity)
-  }, 0)
-  console.log(subtotal)
+  const subtotal = 10
+
+  const handelIncrement = (cart_id )=>{
+    setUpdateData(dataCart.map((item)=>
+      cart_id === item.id ? {...item, qtity : item.qtity + (item.qtity > 1 ? 1 : 0)} : item)
+      )
+      dispatch(updateCartQtity({ cart_id, scope: 'inc' }))
+      dispatch(HandleDataCart(updateData))
+      console.log(dataCart)
+      // updatq(cart_id, 'inc')
+  }
+  const handelDecrement = (cart_id)=>{
+    // dataCart(cart_id => dataCart.map((item)=>
+    // cart_id.id === item.id ? {...item, qtity : item.qtity - (item.qtity > 1 ? 1: 0)} : item)
+    // )
+    // updateQtity(cart_id, 'dec')
+  }
+  const updatq = (cart_id, scope)=>{
+    dispatch(updateCartQtity(cart_id, scope))
+    dispatch(HandleDataCart(updateData))
+  }
+ 
+  
+
   return (
     <div className="cart-body">
       <div className='items-container overflow-auto h-[25vh]'>
         <div className="cart-items">
-        {dataCart.map((item,idx)=>{
+        {dataCart && dataCart.map((item,idx)=>{
         return (
           <div key={idx} className="cart-item">
             <div className="cart-info">
@@ -32,8 +53,8 @@ function CartBody({loggedIn, dispatch}) {
             <div className="cart-controls">
               <input type="text" readOnly value={item.qtity} />
               <div>
-                <span className="ti-angle-up"></span>
-                <span className="ti-angle-down"></span>
+                <span className="ti-angle-up" onClick={()=>handelIncrement(item.id)}></span>
+                <span className="ti-angle-down" onClick={()=>handelDecrement(item.id)}></span>
               </div>
             </div>
           </div>

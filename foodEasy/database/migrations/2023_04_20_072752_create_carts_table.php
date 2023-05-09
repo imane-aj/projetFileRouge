@@ -15,8 +15,6 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->integer('qtity')->default(0);
-            $table->decimal('subtotal')->default(0);
-            $table->decimal('total')->default(0);
             $table->bigInteger('user_id')->nullable()->unsigned();
             $table->bigInteger('product_id')->nullable()->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

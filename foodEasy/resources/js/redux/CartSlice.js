@@ -30,9 +30,28 @@ export const getFromCart = createAsyncThunk('cart/getFromCart', async(rejectWith
     }
 })
 
+//update qtity
+export const updateCartQtity = createAsyncThunk('cart/updateCartQtity', async(cart_id,scope,rejectWithValue)=>{
+    try{
+        const res = await axios.put(`/cart/updateQtity/${cart_id}/${scope}`,{headers:{
+                'api_password':'Eld5TBhHgiIZgJk4c4VEtlnNxY',
+                'Authorization': `Bearer ${token}`,
+                'accept': 'application/json',
+        }});
+        return res.data;
+    }catch  (er) {
+        return rejectWithValue(er.response.data);
+    }
+})
+
 const CartSlice = createSlice({
     name:'cart',
     initialState:{isLoading:false, error:'', cart:[],dataCart:[]},
+    reducers: {
+        HandleDataCart : (state, action) => {
+            state.dataCart = action.payload
+        }
+    },  
     extraReducers:(builder)=>{
        
         //addToCart
@@ -61,8 +80,15 @@ const CartSlice = createSlice({
             state.isLoading = false;
             state.dataCart = action.payload.data
             state.error = ""
+        }),
+
+        builder.addCase(updateCartQtity.fulfilled, (state, action) => {
+            state.isLoading = false;
+            state.dataCart = action.payload.data
+            state.error = ""
         })
     }
 });
+export const {HandleDataCart} = CartSlice.actions;
 
 export default CartSlice.reducer;

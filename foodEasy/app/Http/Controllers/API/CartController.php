@@ -29,16 +29,10 @@ class CartController extends BaseController
                             return $this->sendError($e);
                         };
                     }else{
-                         // Calculate subtotal
-                        $subtotal = $qtity * $productCheck->price;
-                        // Calculate total (assuming no additional charges)
-                        $total = $subtotal + 10;
                         $cartItem = new Cart;
                         $cartItem->qtity = $qtity;
                         $cartItem->product_id = $product_id;
                         $cartItem->user_id = $user_id;
-                        $cartItem->subtotal = $subtotal;
-                        $cartItem->total = $total;
                         $cartItem->save();
                         try{
                             return $this->sendResponse($cartItem, 'The product in the cart');
@@ -58,6 +52,25 @@ class CartController extends BaseController
         $user = $user->cart()->orderBy('id', 'desc')->get();
         try{
             return $this->sendResponse($user, '');
+        }catch(\Exception $e){
+            return $this->sendError($e);
+        };
+    }
+
+    public function updateQtity(Request $request,$cart_id, $scope ){
+        $token = $request->bearerToken();
+        $user = JWTAuth::parseToken()->authenticate();
+        dd($token, $user);
+        $cart = Cart::where('id',$cart_id)->where('user_id',$user)->first();
+        if($scope === 'inc'){
+            $cart->qtity += 1;
+        }else if($scope === 'dec'){
+            $cart->qtity -= 1;
+        }
+        
+        $cart->update();
+        try{
+            return $this->sendResponse($cart, '');
         }catch(\Exception $e){
             return $this->sendError($e);
         };
