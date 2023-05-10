@@ -58,10 +58,9 @@ class CartController extends BaseController
     }
 
     public function updateQtity(Request $request,$cart_id, $scope ){
-        $token = $request->bearerToken();
         $user = JWTAuth::parseToken()->authenticate();
-        dd($token, $user);
-        $cart = Cart::where('id',$cart_id)->where('user_id',$user)->first();
+        $cart = Cart::where('id',$cart_id)->where('user_id',$user->id)->first();
+
         if($scope === 'inc'){
             $cart->qtity += 1;
         }else if($scope === 'dec'){

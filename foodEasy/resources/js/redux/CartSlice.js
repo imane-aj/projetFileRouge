@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios, { getCookie } from './../Utils';
 
-const apiKey = {api_password: "Eld5TBhHgiIZgJk4c4VEtlnNxY"}
+const apiKey = "Eld5TBhHgiIZgJk4c4VEtlnNxY"
 
 //add to cart
 const token = getCookie('token');
@@ -31,13 +31,14 @@ export const getFromCart = createAsyncThunk('cart/getFromCart', async(rejectWith
 })
 
 //update qtity
-export const updateCartQtity = createAsyncThunk('cart/updateCartQtity', async(cart_id,scope,rejectWithValue)=>{
+export const updateCartQtity = createAsyncThunk('cart/updateCartQtity', async({cart_id,scope},{rejectWithValue,dispatch})=>{
     try{
-        const res = await axios.put(`/cart/updateQtity/${cart_id}/${scope}`,{headers:{
+        const res = await axios.put(`/cart/updateQtity/${cart_id}/${scope}`, null,{headers:{
                 'api_password':'Eld5TBhHgiIZgJk4c4VEtlnNxY',
                 'Authorization': `Bearer ${token}`,
                 'accept': 'application/json',
         }});
+        dispatch(getFromCart())
         return res.data;
     }catch  (er) {
         return rejectWithValue(er.response.data);

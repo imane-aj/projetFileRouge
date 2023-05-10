@@ -5,33 +5,32 @@ import { HandleDataCart, getFromCart, updateCartQtity } from '../../../../redux/
 
 function CartBody({loggedIn, dispatch}) {
   const dataCart = useSelector((state)=>state.cart.dataCart)
-  const [updateData, setUpdateData] = useState([])
-  
+
   useEffect(()=>{
     dispatch(getFromCart())
   },[dispatch])
 
   // Calculate subtotal
-  const subtotal = 10
+  const subtotal = dataCart.map((item)=> item.product.price * item.qtity)
 
   const handelIncrement = (cart_id )=>{
-    setUpdateData(dataCart.map((item)=>
-      cart_id === item.id ? {...item, qtity : item.qtity + (item.qtity > 1 ? 1 : 0)} : item)
-      )
-      dispatch(updateCartQtity({ cart_id, scope: 'inc' }))
-      dispatch(HandleDataCart(updateData))
-      console.log(dataCart)
-      // updatq(cart_id, 'inc')
+    console.log(cart_id)
+    if(loggedIn){
+      const updatedData = dataCart.map((item)=>
+        cart_id === item.id ? {...item, qtity : item.qtity + (item.qtity > 1 ? 1 : 0)} : item)
+      updatq(cart_id, "inc", updatedData)
+    }
   }
   const handelDecrement = (cart_id)=>{
-    // dataCart(cart_id => dataCart.map((item)=>
-    // cart_id.id === item.id ? {...item, qtity : item.qtity - (item.qtity > 1 ? 1: 0)} : item)
-    // )
-    // updateQtity(cart_id, 'dec')
+    if(loggedIn){
+      const updatedData = dataCart.map((item)=>
+        cart_id === item.id ? {...item, qtity : item.qtity - (item.qtity < 1 ? 1 : 0)} : item)
+      updatq(cart_id, "dec", updatedData)
+    }
   }
-  const updatq = (cart_id, scope)=>{
-    dispatch(updateCartQtity(cart_id, scope))
-    dispatch(HandleDataCart(updateData))
+  const updatq = (cart_id, scope, updatedData)=>{
+    dispatch(updateCartQtity({cart_id, scope}))
+    dispatch(HandleDataCart(updatedData));
   }
  
   
@@ -40,7 +39,7 @@ function CartBody({loggedIn, dispatch}) {
     <div className="cart-body">
       <div className='items-container overflow-auto h-[25vh]'>
         <div className="cart-items">
-        {dataCart && dataCart.map((item,idx)=>{
+        {Array.isArray(dataCart)  && dataCart.map((item,idx)=>{
         return (
           <div key={idx} className="cart-item">
             <div className="cart-info">

@@ -51,8 +51,8 @@ Route::group(['middleware' => ['api', 'checkpassword'], 'namespace' => 'Api'], f
     //user routes
     Route::middleware(['auth:api', 'role:user'])->group(function () {
     Route::post('cart', [CartController::class, 'addToCart']);
-    Route::get('cart/product', [CartController::class, 'getCart']);
     Route::PUT('cart/updateQtity/{cart_id}/{scope}', [CartController::class, 'updateQtity']);
+    Route::get('cart/product', [CartController::class, 'getCart']);
     });
  
 });

@@ -1,8 +1,4 @@
 import axios from "axios";
-import { useLocation } from "react-router-dom";
-import Register from "./Auth/Components/Register";
-import Login from "./Auth/Components/Login";
-
 export default axios.create({
     baseURL: "http://localhost:8000/api",
     // withCredentials: true,
