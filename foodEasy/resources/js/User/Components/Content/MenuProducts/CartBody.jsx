@@ -4,35 +4,49 @@ import { useSelector } from 'react-redux'
 import { HandleDataCart, getFromCart, updateCartQtity } from '../../../../redux/CartSlice'
 
 function CartBody({loggedIn, dispatch}) {
+  const [udatedQtity, setUdatedQtity] = useState([])
   const dataCart = useSelector((state)=>state.cart.dataCart)
+  const [subtotal, setSubtotal] = useState('')
+
 
   useEffect(()=>{
     dispatch(getFromCart())
   },[dispatch])
 
-  // Calculate subtotal
-  const subtotal = dataCart.map((item)=> item.product.price * item.qtity)
-
-  const handelIncrement = (cart_id )=>{
+  const handelIncrement = (cart_id)=>{
     console.log(cart_id)
     if(loggedIn){
       const updatedData = dataCart.map((item)=>
         cart_id === item.id ? {...item, qtity : item.qtity + (item.qtity > 1 ? 1 : 0)} : item)
-      updatq(cart_id, "inc", updatedData)
+        setUdatedQtity(updatedData.find((item) => item.id === cart_id).qtity)
+        setSubtotal(updatedData.reduce((accumulator, item) => accumulator + item.product.price * item.qtity, 0))
+      updatq(cart_id, "inc")
     }
   }
   const handelDecrement = (cart_id)=>{
     if(loggedIn){
       const updatedData = dataCart.map((item)=>
         cart_id === item.id ? {...item, qtity : item.qtity - (item.qtity < 1 ? 1 : 0)} : item)
-      updatq(cart_id, "dec", updatedData)
+        setUdatedQtity(updatedData.find((item) => item.id === cart_id).qtity)
+        setSubtotal(updatedData.reduce((accumulator, item) => accumulator + item.product.price * item.qtity, 0))
+      updatq(cart_id, "dec")
     }
   }
-  const updatq = (cart_id, scope, updatedData)=>{
+  const updatq = (cart_id, scope)=>{
     dispatch(updateCartQtity({cart_id, scope}))
-    dispatch(HandleDataCart(updatedData));
   }
  
+  const handleInputChange = (e, cart_id) => {
+    const updatedQtity = parseInt(e.target.value);
+    if (!isNaN(updatedQtity)) {
+      const updatedData = dataCart.map((item) =>
+        cart_id === item.id ? { ...item, qtity: updatedQtity } : item
+      );
+      setUdatedQtity(updatedData.find((item) => item.id === cart_id)?.qtity || '');
+      updatedQtity(cart_id, 'update', updatedQtity);
+    }
+  };
+  
   
 
   return (
@@ -50,7 +64,7 @@ function CartBody({loggedIn, dispatch}) {
               </div>
             </div>
             <div className="cart-controls">
-              <input type="text" readOnly value={item.qtity} />
+              <input type="text" readOnly value={item.qtity} onChange={(e) => handleInputChange(e, item.id)} />
               <div>
                 <span className="ti-angle-up" onClick={()=>handelIncrement(item.id)}></span>
                 <span className="ti-angle-down" onClick={()=>handelDecrement(item.id)}></span>
@@ -82,7 +96,7 @@ function CartBody({loggedIn, dispatch}) {
           </div>
           <div className="price-flex">
             <small>Delivery</small>
-            <small>{subtotal > 0 ? 10: 0}</small>
+            <small onChange={()=>setSubtotal(e.target.Value)}>{subtotal > 0 ? 10: 0}</small>
           </div>
 
           <div className="price-flex">
