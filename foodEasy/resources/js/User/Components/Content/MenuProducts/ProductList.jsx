@@ -9,6 +9,7 @@ import CartBody from './CartBody';
 import { addToCart, getFromCart } from '../../../../redux/CartSlice';
 
 function ProductList() {
+  const imgUrl =  import.meta.env.BASE_URL
   const loggedIn = localStorage.getItem("role") === "user";
     const { id } = useParams();
     const CategoryP = useSelector((state)=>state.category.CatWithProduct.data)
@@ -51,7 +52,7 @@ function ProductList() {
       {CategoryP ? (<h3>{CategoryP.name && CategoryP.name}</h3>): <IsLoading/>}
         <div className="menu-grid">
             {CategoryP?.products?.map((item,idx)=>
-                <div key={idx} className="menu-card" style={{backgroundImage: 'url("assets/img/front/maxresdefault.jpg")'}}>
+                <div key={idx} className="menu-card" style={{backgroundImage: `url(${imgUrl}images/products/${item?.img})`}}>
                     <div>
                     <span className="bg-main-gradient item-price">
                         <span>DH</span> {item?.price}
