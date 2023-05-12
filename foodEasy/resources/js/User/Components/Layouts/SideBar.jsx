@@ -15,10 +15,10 @@ function SideBar() {
         <div className="front-sidebar w-24 h-screen fixed left-0 top-0 bg-white z-50">
             <div className="brand text-center mt-1">
                 <img className="mx-auto w-48" src="https://tecdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp" alt="logo"/>
-                <span className="text-orange-600 pb-1">EasyFood</span>
+                {/* <span className="text-orange-600 pb-1">EasyFood</span> */}
             </div>
 
-            <div className="front-sidemenu mt-14">
+            <div className="front-sidemenu mt-20">
                 <ul>
                 {Array.isArray(data?.data) ? (
                     data.data.map((item, idx )=>

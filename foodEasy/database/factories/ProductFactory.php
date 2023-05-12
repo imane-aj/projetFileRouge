@@ -57,12 +57,12 @@ class ProductFactory extends Factory
             //'Food':
             ['name' => 'Spaghetti', 'price' => 10.00, 'img' => 'spaghetti.jpg', 'category_id' => $foodId, 'desc' => ''],
             ['name' => 'Lasagna', 'price' => 12.00, 'img' => 'lasagna.jpg', 'category_id' => $foodId, 'desc' => ''],
-            ['name' => 'Pizza', 'price' => 15.00, 'img' => 'pizza.jpg', 'category_id' => $foodId, 'desc' => ''],
+            ['name' => 'Biriani', 'price' => 15.00, 'img' => 'birianu.jpg', 'category_id' => $foodId, 'desc' => ''],
             ['name' => 'Burger', 'price' => 8.00, 'img' => 'burger.jpg', 'category_id' => $foodId, 'desc' => ''],
             ['name' => 'Hot Dog', 'price' => 5.00, 'img' => 'hot_dog.jpg', 'category_id' => $foodId, 'desc' => ''],
             ['name' => 'Taco', 'price' => 4.00, 'img' => 'taco.jpg', 'category_id' => $foodId, 'desc' => ''],
             ['name' => 'Fried Chicken', 'price' => 10.00, 'img' => 'fried_chicken.jpg', 'category_id' => $foodId, 'desc' => ''],
-            ['name' => 'Salad', 'price' => 7.50, 'img' => 'salad.jpg', 'category_id' => $foodId, 'desc' => ''],
+            ['name' => 'Tajin Meat', 'price' => 7.50, 'img' => 'tajin.jpg', 'category_id' => $foodId, 'desc' => ''],
             ['name' => 'Sushi', 'price' => 12.00, 'img' => 'sushi.jpg', 'category_id' => $foodId, 'desc' => ''],
             ['name' => 'Ramen', 'price' => 9.00, 'img' => 'ramen.jpg', 'category_id' => $foodId, 'desc' => ''],
             ['name' => 'Stir Fry', 'price' => 11.00, 'img' => 'stir_fry.jpg', 'category_id' => $foodId, 'desc' => ''],
@@ -70,7 +70,7 @@ class ProductFactory extends Factory
 
             //'Breakfast':
             ['name' => 'Eggs Benedict', 'price' => 9.00, 'img' => 'eggs_benedict.jpg', 'category_id' => $breakfastId, 'desc' => ''],
-            ['name' => 'Pancakes', 'price' => 6.50, 'img' => 'pancakes.jpg', 'category_id' => $breakfastId, 'desc' => ''],
+            ['name' => 'Banane Pancake', 'price' => 6.50, 'img' => 'pancakes.jpg', 'category_id' => $breakfastId, 'desc' => ''],
             ['name' => 'Waffles', 'price' => 7.50, 'img' => 'waffles.jpg', 'category_id' => $breakfastId, 'desc' => ''],
             ['name' => 'Bacon and Eggs', 'price' => 8.50, 'img' => 'bacon_and_eggs.jpg', 'category_id' => $breakfastId, 'desc' => ''],
             ['name' => 'Omelette', 'price' => 9.00, 'img' => 'omelette.jpg', 'category_id' => $breakfastId, 'desc' => ''],

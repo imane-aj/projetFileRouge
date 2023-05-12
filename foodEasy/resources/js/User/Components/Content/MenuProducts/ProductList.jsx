@@ -5,7 +5,6 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import { getCatWithProduct } from '../../../../redux/CategorySlice';
 import IsLoading from '../../../../IsLoading';
 import Swal from 'sweetalert2';
-import CartBody from './CartBody';
 import { addToCart, getFromCart } from '../../../../redux/CartSlice';
 
 function ProductList() {
@@ -49,8 +48,8 @@ function ProductList() {
     <div className="front-main">
     <div className="main-grid">
       <div className="menu-section">
-      {CategoryP ? (<h3>{CategoryP.name && CategoryP.name}</h3>): <IsLoading/>}
-        <div className="menu-grid">
+      {/* {CategoryP ? (<h3>{CategoryP.name && CategoryP.name}</h3>): <IsLoading/>} */}
+        <div className="menu-grid mt-10">
             {CategoryP?.products?.map((item,idx)=>
                 <div key={idx} className="menu-card" style={{backgroundImage: `url(${imgUrl}images/products/${item?.img})`}}>
                     <div>
@@ -70,15 +69,14 @@ function ProductList() {
             )}
         </div>
       </div>
-      <div className="cart-section hidden md:block">
+      {/* <div className="cart-section hidden md:block">
         <div className="cart-card">
           <div className="cart-header">
             <h3>New Order</h3>
             <small>0 items in cart</small>
           </div>
-              <CartBody loggedIn={loggedIn} dispatch={dispatch}/>
         </div>
-      </div>
+      </div> */}
     </div>
   </div>
   )
