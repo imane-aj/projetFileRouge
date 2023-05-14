@@ -58,20 +58,38 @@ class CartController extends BaseController
     }
 
     public function updateQtity(Request $request,$cart_id, $scope ){
+        // dd($cart_id, $scope);
         $user = JWTAuth::parseToken()->authenticate();
         $cart = Cart::where('id',$cart_id)->where('user_id',$user->id)->first();
-
-        if($scope === 'inc'){
-            $cart->qtity += 1;
-        }else if($scope === 'dec'){
-            $cart->qtity -= 1;
+        if($cart !== null){
+            if($scope === 'inc'){
+                $cart->qtity += 1;
+            }else if($scope === 'dec'){
+                $cart->qtity -= 1;
+            }
+            
+            $cart->update();
+            try{
+                return $this->sendResponse($cart, '');
+            }catch(\Exception $e){
+                return $this->sendError($e);
+            };
+        }else{
+            return 'not found';
         }
-        
-        $cart->update();
+       
+    }
+
+    public function deleteCart(Request $request, $id){
+        $token = $request->bearerToken();
+        $user = JWTAuth::parseToken()->authenticate();
+        $cart = Cart::where('id',$id)->where('user_id',$user->id)->first();
+        $cart = $cart->delete();
         try{
             return $this->sendResponse($cart, '');
         }catch(\Exception $e){
             return $this->sendError($e);
         };
     }
+
 }

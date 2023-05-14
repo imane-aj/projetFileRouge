@@ -7,7 +7,8 @@ import IsLoading from '../../../../IsLoading';
 import Swal from 'sweetalert2';
 import { addToCart, getFromCart } from '../../../../redux/CartSlice';
 
-function ProductList() {
+function ProductList({name}) {
+  console.log(name)
   const imgUrl =  import.meta.env.BASE_URL
   const loggedIn = localStorage.getItem("role") === "user";
     const { id } = useParams();
@@ -69,14 +70,6 @@ function ProductList() {
             )}
         </div>
       </div>
-      {/* <div className="cart-section hidden md:block">
-        <div className="cart-card">
-          <div className="cart-header">
-            <h3>New Order</h3>
-            <small>0 items in cart</small>
-          </div>
-        </div>
-      </div> */}
     </div>
   </div>
   )

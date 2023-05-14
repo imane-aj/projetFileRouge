@@ -212,30 +212,30 @@ body{
   .front-main .main-grid .cart-section .cart-card .cart-header small {
     color: #efefef;
   }
-  .front-main .main-grid .cart-section .cart-card .cart-body .cart-items {
+  .cart-items {
     padding: 0rem 0.5rem;
   }
-  .front-main .main-grid .cart-section .cart-card .cart-body .cart-item {
+  .cart-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
     border-bottom: 1px solid #ccc;
   }
-  .front-main .main-grid .cart-section .cart-card .cart-body .cart-item:last-child {
+  .cart-item:last-child {
     border-bottom: none;
   }
-  .front-main .main-grid .cart-section .cart-card .cart-body .cart-item .cart-info {
+  .cart-item .cart-info {
     display: flex;
     align-items: center;
   }
-  .front-main .main-grid .cart-section .cart-card .cart-body .cart-item .cart-info span {
+  .cart-item .cart-info span {
     padding-right: 1rem;
     color: #f7506d;
     font-size: 1.03rem;
     cursor: pointer;
   }
-  .front-main .main-grid .cart-section .cart-card .cart-body .cart-item .cart-controls {
+  .cart-controls {
     display: flex;
     align-items: center;
     border: 1px solid var(--front-color);
@@ -243,7 +243,7 @@ body{
     overflow-y: hidden;
     height: 33px;
   }
-  .front-main .main-grid .cart-section .cart-card .cart-body .cart-item .cart-controls input {
+  .cart-controls input {
     border: none;
     outline: none;
     height: 33px;
@@ -251,56 +251,56 @@ body{
     text-align: center;
     background: transparent;
   }
-  .front-main .main-grid .cart-section .cart-card .cart-body .cart-item .cart-controls input + div {
+  .cart-controls input + div {
     display: flex;
     flex-direction: column;
     background: var(--main-gradient);
   }
-  .front-main .main-grid .cart-section .cart-card .cart-body .cart-item .cart-controls input + div span {
+  .cart-controls input + div span {
     height: 49.5%;
     background: var(--main-gradient);
     color: #fff;
     padding: 0rem 0.23rem;
     cursor: pointer;
   }
-  .front-main .main-grid .cart-section .cart-card .cart-body .cart-item .cart-controls input + div span:first-child {
+  .cart-controls input + div span:first-child {
     border-bottom: 1px solid #fff;
   }
-  .front-main .main-grid .cart-section .cart-card .cart-body .cart-item .cart-controls input + div span:last-child {
+  .cart-controls input + div span:last-child {
     border-top: 1px solid #fff;
   }
-  .front-main .main-grid .cart-section .cart-card .cart-body .cart-sum {
+  .cart-sum {
     padding: 1.5rem;
     background: #fff;
   }
-  .front-main .main-grid .cart-section .cart-card .cart-body .cart-sum .cart-address .price-flex p {
+  .cart-sum .cart-address .price-flex p {
     font-size: 0.82rem;
     color: #333;
     font-weight: 500;
   }
-  .front-main .main-grid .cart-section .cart-card .cart-body .cart-sum .cart-address .price-flex button {
+  .cart-sum .cart-address .price-flex button {
     font-size: 0.8rem;
     font-weight: 600;
     padding: 0.5rem;
     margin-left: 1rem;
   }
-  .front-main .main-grid .cart-section .cart-card .cart-body .cart-sum .price-flex {
+  .cart-sum .price-flex {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 1rem;
   }
-  .front-main .main-grid .cart-section .cart-card .cart-body .cart-sum .price-flex small {
+  .cart-sum .price-flex small {
     color: var(--text-grey);
     font-weight: 600;
   }
-  .front-main .main-grid .cart-section .cart-card .cart-body .cart-sum .price-flex:last-child h4 {
+  .cart-sum .price-flex:last-child h4 {
     color: var(--front-color);
   }
-  .front-main .main-grid .cart-section .cart-card .cart-body .cart-sum .cart-pay-btn {
+  .cart-sum .cart-pay-btn {
     margin-top: 1.2rem;
   }
-  .front-main .main-grid .cart-section .cart-card .cart-body .cart-sum .cart-pay-btn .button {
+  .cart-sum .cart-pay-btn .button {
     background: #24b056;
     color: #fff;
     font-size: 1rem;
@@ -308,7 +308,7 @@ body{
     display: block;
     width: 100%;
   }
-  .front-main .main-grid .cart-section .cart-card .cart-body .cart-sum .cart-pay-btn button span {
+  .cart-sum .cart-pay-btn button span {
     padding-right: 1rem;
   }
   

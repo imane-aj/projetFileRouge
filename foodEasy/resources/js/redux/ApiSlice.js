@@ -36,6 +36,8 @@ export const logoutUser = createAsyncThunk('api/logoutUser',async (_, thunkAPI) 
     try {
       const response = await axios.post('/logout',{headers:apiKey});
       removeCookie('token');
+      removeCookie('XSRF-TOKEN');
+      removeCookie('laravel_session');
       localStorage.removeItem('role');
       localStorage.clear();
       return response.data;

@@ -8,6 +8,8 @@ use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 use Tymon\JWTAuth\Contracts\Providers\Auth;
 use Tymon\JWTAuth\Facades\JWTAuth;
+use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\Log;
 
 class AuthController extends BaseController
 {
@@ -45,6 +47,11 @@ class AuthController extends BaseController
             return $this->sendError('Invalid email or password.', 401);
         }
 
+        // Regenerate the session and CSRF tokens
+        // $request->session()->regenerate();
+        // $token = csrf_token();
+        // Cookie::queue(Cookie::make('XSRF-TOKEN', $token));
+
         return $this->respondWithToken($token);
     }
  
@@ -52,6 +59,8 @@ class AuthController extends BaseController
     public function logout()
     {
         Auth::guard('api')->logout();
+        session()->flush();
+        Log::info('Session cleared');
 
         return $this->sendResponse('message' ,'Successfully logged out');
     }

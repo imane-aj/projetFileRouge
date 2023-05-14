@@ -11,7 +11,7 @@ function User() {
             </div>
             <div className="w-contentW">
                 <NavBar />
-                <Outlet />
+                <Outlet id='9'/>
             </div>
         </div>
     );

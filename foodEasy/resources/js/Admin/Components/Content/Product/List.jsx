@@ -9,19 +9,13 @@ import IsLoading from './../../../../IsLoading';
 function List({modalOpen, handleClose, handleOpen,selectedCategory, currentPage}) {
     const data = useSelector((state)=>state.product.data)
 
-    console.log(data)
+    console.log(data.data)
     const dispatch = useDispatch()
     useEffect(()=>{
       dispatch(getProducts({currentPage,selectedCategory}))
     },[dispatch, currentPage, selectedCategory])
     console.log(selectedCategory)
 
-    let filteredData = data?.data?.data;
-    if (selectedCategory && Array.isArray(filteredData)) {
-      filteredData = filteredData.filter(
-        (item) => item.category_id == selectedCategory
-      );
-    }
     const imgUrl =  import.meta.env.BASE_URL
     const handelDelet = (id)=>{
           Swal.fire({
@@ -46,8 +40,8 @@ function List({modalOpen, handleClose, handleOpen,selectedCategory, currentPage}
       }
   return (
     <Fragment>
-    {Array.isArray(filteredData)  ? (
-      filteredData.map((item, idx )=>(
+    {data && data.data ? (
+      data.data.map((item, idx )=>(
         <tr key={idx} className="hover:bg-gray-50">
         <td className="flex gap-3 px-6 py-4 font-normal text-gray-900">
           <div className="relative h-10 w-10">

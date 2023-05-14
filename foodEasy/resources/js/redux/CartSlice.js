@@ -20,9 +20,10 @@ export const addToCart = createAsyncThunk('cart/addToCart', async(product_id,{re
 //get from cart
 export const getFromCart = createAsyncThunk('cart/getFromCart', async(rejectWithValue)=>{
     try{
+        const tkn = getCookie('token');
         const res = await axios.get('/cart/product',{headers:{
                 'api_password':'Eld5TBhHgiIZgJk4c4VEtlnNxY',
-                'Authorization': `Bearer ${token}`,
+                'Authorization': `Bearer ${tkn}`,
         }});
         return res.data;
     }catch  (er) {
@@ -45,9 +46,24 @@ export const updateCartQtity = createAsyncThunk('cart/updateCartQtity', async({c
     }
 })
 
+//delete cart
+export const deletCart = createAsyncThunk('cart/deletCart', async(id,{rejectWithValue,dispatch})=>{
+    try{
+        const res = await axios.delete(`/cart/${id}`,{headers:{
+                'api_password':'Eld5TBhHgiIZgJk4c4VEtlnNxY',
+                'Authorization': `Bearer ${token}`,
+                'accept': 'application/json',
+        }});
+        dispatch(getFromCart())
+        return res.data;
+    }catch  (er) {
+        return rejectWithValue(er.response.data);
+    }
+})
+
 const CartSlice = createSlice({
     name:'cart',
-    initialState:{isLoading:false, error:'', cart:[],dataCart:[]},
+    initialState:{isLoading:false, error:'', cart:[],dataCart:[], total:0},
     reducers: {
         HandleDataCart : (state, action) => {
             state.dataCart = action.payload
@@ -84,6 +100,12 @@ const CartSlice = createSlice({
         }),
 
         builder.addCase(updateCartQtity.fulfilled, (state, action) => {
+            state.isLoading = false;
+            state.dataCart = action.payload.data
+            state.error = ""
+        })
+
+        builder.addCase(deletCart.fulfilled, (state, action) => {
             state.isLoading = false;
             state.dataCart = action.payload.data
             state.error = ""

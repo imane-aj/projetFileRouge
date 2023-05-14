@@ -17,7 +17,7 @@ function Register() {
         dispatch(NewUser(user)).then((res)=>{
             if(res.type === 'api/NewUser/fulfilled'){
                 setName('');setEmail('');setPassword('');setCpassword('');
-                navigate('/login')
+                navigate('/auth/login')
             }
         })
     }

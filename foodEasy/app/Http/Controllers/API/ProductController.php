@@ -16,29 +16,19 @@ class ProductController extends BaseController
 
         if ($category !== null) {
             if ($category === 'all') {
-                $query->inRandomOrder();
+                $query->inRandomOrder()->paginate(8);
             } else {
-                $query->where('category_id', $category)->orderBy('id', 'desc');
+                $query->where('category_id', $category)->orderBy('id', 'desc')->paginate(8);
             }
         }
 
-        $products = $query->paginate(8);
+        $products = $query->get();
         try{
             return $this->sendResponse($products, '');
         }catch(\Exception $e){
             return $this->sendError($e);
         }; 
     }
-
-    // //show
-    // public function show($id){
-    //     $category = Category::findOrFail($id);
-    //     try{
-    //         return $this->sendResponse(['products'=>$category->products,'category'=>$category->name], '');
-    //     }catch(\Exception $e){
-    //         return $this->sendError($e);
-    //     }; 
-    // }
 
     //store 
     public function store(ProductRequest $request){

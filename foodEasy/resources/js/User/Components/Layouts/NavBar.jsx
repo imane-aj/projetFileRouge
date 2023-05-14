@@ -1,12 +1,17 @@
 import React, { useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { logoutUser } from "../../../redux/ApiSlice";
+import { getFromCart } from "../../../redux/CartSlice";
 
 function NavBar() {
         const loggedIn = localStorage.getItem("role") === "user";
         const dispatch =  useDispatch()
         const navigate = useNavigate()
+        const dataCart = useSelector((state)=>state.cart.dataCart)
+        useEffect(() => {
+            dispatch(getFromCart());
+          }, [dispatch]);
         const handleLogout = () => {
             try{
                 dispatch(logoutUser()).unwrap().then(
@@ -38,7 +43,7 @@ function NavBar() {
                     <div className="front-nav-links flex items-center">
                         <div>
                         {loggedIn ?
-                            <Link className="btn-link" to='/auth/register'><small><span className="ti-user"></span> Profile</small></Link>
+                            <Link className="btn-link" ><small><span className="ti-user"></span> Profile</small></Link>
                             :<Link className="btn-link" to='/auth/register'><small><span className="ti-user"></span> Register</small></Link>
                         }
                             |
@@ -48,11 +53,16 @@ function NavBar() {
                         }
                         </div>
 
-                        {loggedIn && <div>
-                            <button className="btn btn-main-gradient">
-                                <span className="ti-shopping-cart"></span>
+                        {loggedIn  && dataCart && Array.isArray(dataCart) && <div>
+                            <Link className="btn btn-main-gradient py-4" to='/cart'>
+                                <span className="ti-shopping-cart">{dataCart.length} | Tot: {" "} 
+                                    {dataCart.reduce(
+                                        (sum, item) => sum + item.product.price * item.qtity,
+                                        0 + 4
+                                    )}
+                                </span>
                                 <span></span>
-                            </button>
+                            </Link>
                         </div>}
                         
                     </div>

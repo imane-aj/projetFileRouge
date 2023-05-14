@@ -53,6 +53,7 @@ Route::group(['middleware' => ['api', 'checkpassword'], 'namespace' => 'Api'], f
     Route::post('cart', [CartController::class, 'addToCart']);
     Route::PUT('cart/updateQtity/{cart_id}/{scope}', [CartController::class, 'updateQtity']);
     Route::get('cart/product', [CartController::class, 'getCart']);
+    Route::delete('cart/{id}', [CartController::class, 'deleteCart']);
     });
  
 });
