@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class CheckoutRequest extends FormRequest
 {
@@ -11,7 +12,7 @@ class CheckoutRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return Auth::check();;
     }
 
     /**
@@ -24,10 +25,10 @@ class CheckoutRequest extends FormRequest
         return [
             //
             'first_name' => ['required','string', 'max:50', 'min:4'],
-            'last_name' => ['required','mimes:jpeg,png,jpg,gif', 'max:2048'],
+            'last_name' => ['required','string', 'max:50', 'min:4'],
             'email' => ['required', 'email', 'min:0'],
             'address' => ['required', 'string', 'max:255'],
-            'phone' => ['required', 'numeric', 'min:9', 'max:9']
+            'phone' => ['required', 'numeric', 'min:9']
         ];
     }
 }

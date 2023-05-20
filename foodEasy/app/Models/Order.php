@@ -20,10 +20,9 @@ class Order extends Model
         'payment_mode',
         'tracking_no',
         'status',
-        'remark',
     ];
-    public function product(){
-        return $this->hasMany(Order::class);
+    public function orderIttem(){
+        return $this->hasMany(OrderItem::class);
     }
     
 }

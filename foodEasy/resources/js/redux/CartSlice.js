@@ -1,12 +1,10 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios, { getCookie } from './../Utils';
 
-const apiKey = "Eld5TBhHgiIZgJk4c4VEtlnNxY"
-
 //add to cart
-const token = getCookie('token');
 export const addToCart = createAsyncThunk('cart/addToCart', async(product_id,{rejectWithValue, dispatch})=>{
     try{
+        const token = getCookie('token');
         const res = await axios.post('/cart',product_id,{headers:{
                 'api_password':'Eld5TBhHgiIZgJk4c4VEtlnNxY',
                 'Authorization': `Bearer ${token}`,
@@ -34,6 +32,7 @@ export const getFromCart = createAsyncThunk('cart/getFromCart', async(rejectWith
 //update qtity
 export const updateCartQtity = createAsyncThunk('cart/updateCartQtity', async({cart_id,scope},{rejectWithValue,dispatch})=>{
     try{
+        const token = getCookie('token');
         const res = await axios.put(`/cart/updateQtity/${cart_id}/${scope}`, null,{headers:{
                 'api_password':'Eld5TBhHgiIZgJk4c4VEtlnNxY',
                 'Authorization': `Bearer ${token}`,
@@ -49,6 +48,7 @@ export const updateCartQtity = createAsyncThunk('cart/updateCartQtity', async({c
 //delete cart
 export const deletCart = createAsyncThunk('cart/deletCart', async(id,{rejectWithValue,dispatch})=>{
     try{
+        const token = getCookie('token');
         const res = await axios.delete(`/cart/${id}`,{headers:{
                 'api_password':'Eld5TBhHgiIZgJk4c4VEtlnNxY',
                 'Authorization': `Bearer ${token}`,

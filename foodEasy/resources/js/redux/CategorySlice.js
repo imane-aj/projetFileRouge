@@ -1,10 +1,10 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from './../Utils';
 
-const apiKey = {api_password: "Eld5TBhHgiIZgJk4c4VEtlnNxY"}
 // add
 export const AddCat = createAsyncThunk("category/AddCat",async (item, { rejectWithValue ,dispatch}) => {
     try {
+      const apiKey = {api_password: "Eld5TBhHgiIZgJk4c4VEtlnNxY"}
       const response = await axios.post('/admin/category',item,{headers:apiKey});
       dispatch(getCat());
       return response.data;
@@ -17,6 +17,7 @@ export const AddCat = createAsyncThunk("category/AddCat",async (item, { rejectWi
 //get
 export const getCat = createAsyncThunk('category/getCat', async(rejectWithValue)=>{
     try{
+      const apiKey = {api_password: "Eld5TBhHgiIZgJk4c4VEtlnNxY"}
         const res = await axios.get('/categories', {headers:apiKey});
         return res.data;
     }catch(e){
@@ -45,6 +46,7 @@ export const updateCat = createAsyncThunk("category/updateCat",async ({id, formD
 //delete
 export const deletCat = createAsyncThunk('category/deletCat', async(id,{rejectWithValue, dispatch})=>{
     try{
+      const apiKey = {api_password: "Eld5TBhHgiIZgJk4c4VEtlnNxY"}
         await axios.delete(`/admin/category/${id}`, {headers:apiKey});
         dispatch(getCat())
         return id;
@@ -56,6 +58,7 @@ export const deletCat = createAsyncThunk('category/deletCat', async(id,{rejectWi
 //show category with product
 export const getCatWithProduct = createAsyncThunk('category/getCatWithProduct', async(id,rejectWithValue)=>{
   try{
+    const apiKey = {api_password: "Eld5TBhHgiIZgJk4c4VEtlnNxY"}
       const res = await axios.get(`category/${id}`, {headers:apiKey});
       return res.data;
   }catch(e){

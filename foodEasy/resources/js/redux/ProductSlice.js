@@ -1,9 +1,9 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios, { getCookie } from './../Utils';
 
-const apiKey = {api_password: "Eld5TBhHgiIZgJk4c4VEtlnNxY"}
 export const getProducts = createAsyncThunk('product/getProducts', async({currentPage,selectedCategory},{rejectWithValue})=>{
     try{
+        const apiKey = {api_password: "Eld5TBhHgiIZgJk4c4VEtlnNxY"}
         const res = await axios.get(`/products/${selectedCategory}`, {
             headers: apiKey,
             params: {
@@ -19,6 +19,7 @@ export const getProducts = createAsyncThunk('product/getProducts', async({curren
 // add
 export const AddProduct = createAsyncThunk("product/AddProduct",async (item, { rejectWithValue ,dispatch}) => {
     try {
+        const apiKey = {api_password: "Eld5TBhHgiIZgJk4c4VEtlnNxY"}
       const response = await axios.post('/admin/product',item,{headers:apiKey});
       await dispatch(getProducts());
       return response.data;
@@ -31,6 +32,7 @@ export const AddProduct = createAsyncThunk("product/AddProduct",async (item, { r
 //delete
 export const deletProduct = createAsyncThunk('product/deletProduct', async(id,{rejectWithValue, dispatch})=>{
     try{
+        const apiKey = {api_password: "Eld5TBhHgiIZgJk4c4VEtlnNxY"}
         await axios.delete(`/admin/product/${id}`, {headers:apiKey});
         dispatch(getProducts())
         return id;

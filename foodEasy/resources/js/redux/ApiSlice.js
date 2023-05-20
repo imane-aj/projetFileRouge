@@ -2,9 +2,10 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { setCookie, removeCookie  } from '../Utils';
 import axios from './../Utils';
 
-const apiKey = {api_password: "Eld5TBhHgiIZgJk4c4VEtlnNxY"}
+
 export const NewUser = createAsyncThunk("api/NewUser",async (user, { rejectWithValue }) => {
     try {
+      const apiKey = {api_password: "Eld5TBhHgiIZgJk4c4VEtlnNxY"}
       const response = await axios.post("/register",user,{headers:apiKey});
       const token = response.data.access_token;
       setCookie("token", token, 1);
@@ -19,6 +20,7 @@ export const NewUser = createAsyncThunk("api/NewUser",async (user, { rejectWithV
 
 export const loginUser = createAsyncThunk('api/loginUser',async (user, { rejectWithValue }) => {
     try {
+      const apiKey = {api_password: "Eld5TBhHgiIZgJk4c4VEtlnNxY"}
       const response = await axios.post('/login',user,{ headers: apiKey });
       const token = response.data.access_token;
       setCookie('token', token, 1);
@@ -34,10 +36,9 @@ export const loginUser = createAsyncThunk('api/loginUser',async (user, { rejectW
 
 export const logoutUser = createAsyncThunk('api/logoutUser',async (_, thunkAPI) => {
     try {
+      const apiKey = {api_password: "Eld5TBhHgiIZgJk4c4VEtlnNxY"}
       const response = await axios.post('/logout',{headers:apiKey});
       removeCookie('token');
-      removeCookie('XSRF-TOKEN');
-      removeCookie('laravel_session');
       localStorage.removeItem('role');
       localStorage.clear();
       return response.data;

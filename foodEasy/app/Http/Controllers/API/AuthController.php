@@ -47,11 +47,6 @@ class AuthController extends BaseController
             return $this->sendError('Invalid email or password.', 401);
         }
 
-        // Regenerate the session and CSRF tokens
-        // $request->session()->regenerate();
-        // $token = csrf_token();
-        // Cookie::queue(Cookie::make('XSRF-TOKEN', $token));
-
         return $this->respondWithToken($token);
     }
  
@@ -59,8 +54,6 @@ class AuthController extends BaseController
     public function logout()
     {
         Auth::guard('api')->logout();
-        session()->flush();
-        Log::info('Session cleared');
 
         return $this->sendResponse('message' ,'Successfully logged out');
     }

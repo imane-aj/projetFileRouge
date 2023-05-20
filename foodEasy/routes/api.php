@@ -3,6 +3,7 @@
 use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\CartController;
 use App\Http\Controllers\API\CategoryController;
+use App\Http\Controllers\API\CheckoutController;
 use App\Http\Controllers\API\ProductController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -54,6 +55,8 @@ Route::group(['middleware' => ['api', 'checkpassword'], 'namespace' => 'Api'], f
     Route::PUT('cart/updateQtity/{cart_id}/{scope}', [CartController::class, 'updateQtity']);
     Route::get('cart/product', [CartController::class, 'getCart']);
     Route::delete('cart/{id}', [CartController::class, 'deleteCart']);
+    Route::post('addOrder', [CheckoutController::class, 'placeOrder']);
+    Route::post('validateOrder', [CheckoutController::class, 'validateOrder']);
     });
  
 });

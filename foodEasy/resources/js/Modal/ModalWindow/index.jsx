@@ -6,6 +6,7 @@ import AddCatForm from '../../Admin/Components/Content/Category/AddCatForm';
 import EditCatForm from '../../Admin/Components/Content/Category/EditCatForm';
 import AddProductForm from '../../Admin/Components/Content/Product/AddProductForm';
 import EditProductForm from '../../Admin/Components/Content/Product/EditProductForm';
+import Paypal from '../../User/Components/Content/Components/Paypal';
 
 const dropIn = {
   hidden: {y: '-100vh',},
@@ -14,17 +15,20 @@ const dropIn = {
 }
 const ModalWindow = ({ handleClose }) => {
   const pageName = useSelector((state)=>state.toggle.page)
+  console.log(pageName)
   const titleConfig = [
     { text: "Edit Category", condition: pageName === "editCat" },
     { text: "Add New Category", condition: pageName === "addCat" },
     { text: "Add New Product", condition: pageName === "addProduct" },
     { text: "Edit Product", condition: pageName === "editProduct" },
+    { text: "Paypal payment", condition: pageName === "paypal" },
   ];
   const componentConfig = [
     { component: <AddCatForm handleClose={handleClose}/>, condition: pageName === "addCat" },
     { component: <EditCatForm handleClose={handleClose}/>, condition: pageName === "editCat" },
     { component: <AddProductForm handleClose={handleClose}/>, condition: pageName === "addProduct" },
     { component: <EditProductForm handleClose={handleClose}/>, condition: pageName === "editProduct" },
+    { component: <Paypal handleClose={handleClose}/>, condition: pageName === "paypal" },
   ];
   return (
     <Backdrop onClick={handleClose}>
