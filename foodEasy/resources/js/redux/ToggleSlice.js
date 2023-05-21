@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const ToggleSlice = createSlice({
     name : 'toggle',
-    initialState : {modalOpen:false, page:'', item:''},
+    initialState : {modalOpen:false, page:'', item:'', data:{}},
     reducers : {
         ModalOpen : (state,action)=>{
             state.modalOpen = action.payload
@@ -13,8 +13,11 @@ const ToggleSlice = createSlice({
         },
         DefItem : (state, action)=>{
             state.item = action.payload
+        },
+        PaypalData : (state, action)=>{
+            state.data = action.payload
         }
     }
 })
-export const {ModalOpen, DefPage, DefItem} = ToggleSlice.actions
+export const {ModalOpen, DefPage, DefItem, PaypalData} = ToggleSlice.actions
 export default ToggleSlice.reducer

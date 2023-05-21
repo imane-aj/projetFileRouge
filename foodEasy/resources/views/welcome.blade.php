@@ -11,6 +11,7 @@
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
         <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+        <script src="https://www.paypal.com/sdk/js?client-id=AfK6auIv5udL-41MKJddjIsdnVrKtAO-PoMznHMm9owzoX4f4VGH7p2PimXh1LmputOyqhgrzS5gV9wU"></script>
         @viteReactRefresh
         @vite('resources/js/app.jsx')
     </head>

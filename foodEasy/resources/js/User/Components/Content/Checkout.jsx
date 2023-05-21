@@ -5,7 +5,8 @@ import Swal from 'sweetalert2';
 import { placeOrder, validateOrder } from '../../../redux/CheckoutSlice';
 import { useNavigate } from 'react-router-dom';
 import { getFromCart } from '../../../redux/CartSlice';
-import { DefPage, ModalOpen } from '../../../redux/ToggleSlice';
+import { DefPage, ModalOpen, PaypalData } from '../../../redux/ToggleSlice';
+import Paypal from './Components/Paypal';
 
 function Checkout() {
     const modalOpen = useSelector((state)=>state.toggle.modalOpen)
@@ -78,8 +79,8 @@ function Checkout() {
                     dispatch(validateOrder(data)).then((res) => {
                         if(res.type === 'checkout/validateOrder/fulfilled'){
                             dispatch(DefPage('paypal'));
+                            dispatch(PaypalData(data))
                             handleOpen();
-                            console.log('gdf')
                           
                     }});
                     break;
