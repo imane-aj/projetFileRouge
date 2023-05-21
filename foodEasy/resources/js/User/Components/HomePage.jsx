@@ -1,23 +1,23 @@
 import React from 'react'
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useNavigate, useParams } from 'react-router-dom';
-import { getCatWithProduct } from '../../../../redux/CategorySlice';
-import IsLoading from '../../../../IsLoading';
+import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
-import { addToCart, getFromCart } from '../../../../redux/CartSlice';
+import { randomProducts } from '../../redux/ProductSlice';
+import { addToCart } from '../../redux/CartSlice';
+import IsLoading from '../../IsLoading';
 
-function ProductList({name}) {
-  const imgUrl =  import.meta.env.BASE_URL
-  const loggedIn = localStorage.getItem("role") === "user";
-    const { id } = useParams();
-    const CategoryP = useSelector((state)=>state.category.CatWithProduct.data)
+function ProductList() {
+    const imgUrl =  import.meta.env.BASE_URL
+    const loggedIn = localStorage.getItem("role") === "user";
     const error = useSelector((state)=>state.cart.error)
+    const randomData = useSelector((state)=>state.product.randomData)
+   // console.log(randomData)
     const navigate = useNavigate()
     const dispatch = useDispatch()
     useEffect(()=>{
-        dispatch(getCatWithProduct(id))
-    },[id, dispatch])
+        dispatch(randomProducts())
+    },[dispatch])
     const handleAddToCart = (id) => {
       if(loggedIn){
         const product_id = {product_id:id}
@@ -48,9 +48,8 @@ function ProductList({name}) {
     <div className="front-main">
     <div className="main-grid">
       <div className="menu-section">
-      {/* {CategoryP ? (<h3>{CategoryP.name && CategoryP.name}</h3>): <IsLoading/>} */}
         <div className="menu-grid mt-10">
-            {CategoryP?.products?.map((item,idx)=>
+            {randomData && randomData.data && Array.isArray(randomData.data.data) && randomData.data.data.length > 0 ? ( randomData.data.data.map((item,idx)=>
                 <div key={idx} className="menu-card" style={{backgroundImage: `url(${imgUrl}images/products/${item?.img})`}}>
                     <div>
                     <span className="bg-main-gradient item-price">
@@ -66,7 +65,9 @@ function ProductList({name}) {
                     Add to cart
                     </button>
                 </div>
-            )}
+                )) : (<tr><td><IsLoading/></td></tr>)
+                }
+           
         </div>
       </div>
     </div>

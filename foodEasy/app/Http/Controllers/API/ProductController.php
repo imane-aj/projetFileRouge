@@ -10,6 +10,17 @@ use Illuminate\Support\Facades\File;
 
 class ProductController extends BaseController
 {
+    //random 
+    public function randomProduct(){
+
+        $products = Product::inRandomOrder()->paginate(24);
+        try{
+            return $this->sendResponse($products, '');
+        }catch(\Exception $e){
+            return $this->sendError($e);
+        }; 
+    }
+
      //index
      public function index(Request $request, $category = 'all'){
         $query = Product::with('category');

@@ -16,6 +16,19 @@ export const getProducts = createAsyncThunk('product/getProducts', async({curren
     }
 })
 
+//get randomProducts
+export const randomProducts = createAsyncThunk('product/randomProducts', async()=>{
+    try{
+        const apiKey = {api_password: "Eld5TBhHgiIZgJk4c4VEtlnNxY"}
+        const res = await axios.get('/randomProduct', {
+            headers: apiKey,
+          });
+         return res.data;
+    }catch  (er) {
+        return rejectWithValue(er.res.data);
+    }
+})
+
 // add
 export const AddProduct = createAsyncThunk("product/AddProduct",async (item, { rejectWithValue ,dispatch}) => {
     try {
@@ -61,7 +74,7 @@ export const updateProduct = createAsyncThunk("product/updateProduct",async ({id
 
 const ProductSlice = createSlice({
     name:'product',
-    initialState:{data:[], isLoading:false, error:'', editData:[], addedData:[]},
+    initialState:{data:[], isLoading:false, error:'', editData:[], addedData:[], randomData:[]},
     extraReducers:(builder)=>{
         //getProduct
         builder.addCase(getProducts.pending, (state) => {
@@ -76,7 +89,20 @@ const ProductSlice = createSlice({
             state.isLoading = false;
             state.data= action.payload
             state.error = ""
-        })
+        }),
+         //randomProducts
+         builder.addCase(randomProducts.pending, (state) => {
+            state.isLoading = true;
+        }),
+        builder.addCase(randomProducts.rejected, (state, action) => {
+            state.isLoading = false;
+            state.error = action.payload;
+            console.log(state.error)
+        }),
+        builder.addCase(randomProducts.fulfilled, (state, action) => {
+            state.isLoading = false;
+            state.randomData= action.payload
+        }),
 
         //AddProduct
         builder.addCase(AddProduct.pending, (state) => {

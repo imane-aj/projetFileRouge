@@ -20,12 +20,13 @@ import Admin from './Admin/index';
 import ProductList from "./User/Components/Content/MenuProducts/ProductList";
 import Cart from "./User/Components/Content/MenuProducts/Cart";
 import Checkout from "./User/Components/Content/Checkout";
+import HomePage from "./User/Components/HomePage";
 
 const router = createBrowserRouter([
     {
       path: "/*",element: <User />,
       children: [
-        {index: true, element:<ProductList id='3' />},
+        {index: true, element:<HomePage />},
         {path: "category/:id", element:<ProductList />},
         {path: "cart", element: <ProtectedRoute element={Cart} roles={['user']} />},
         {path: "checkout", element: <ProtectedRoute element={Checkout} roles={['user']} />}
