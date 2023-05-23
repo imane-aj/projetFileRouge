@@ -3,10 +3,11 @@ import ReactDOM from 'react-dom'
 import { useDispatch, useSelector } from 'react-redux';
 import { placeOrder } from '../../../../redux/CheckoutSlice';
 import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 
 function Paypal() {
   const data_paypal = useSelector((state)=>state.toggle.data)
-  console.log( data_paypal.payment_id)
+  const navigate = useNavigate()
   const dispatch = useDispatch()
   const PayPalButton = window.paypal.Buttons.driver("react", { React, ReactDOM });
   const createOrder = (data, actions) => {

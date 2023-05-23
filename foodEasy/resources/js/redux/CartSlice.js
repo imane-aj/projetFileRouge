@@ -9,6 +9,7 @@ export const addToCart = createAsyncThunk('cart/addToCart', async(product_id,{re
                 'api_password':'Eld5TBhHgiIZgJk4c4VEtlnNxY',
                 'Authorization': `Bearer ${token}`,
         }});
+        dispatch(getFromCart())
         return res.data;
     }catch  (er) {
         return rejectWithValue(er.response.data);
