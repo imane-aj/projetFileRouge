@@ -4,6 +4,7 @@ use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\CartController;
 use App\Http\Controllers\API\CategoryController;
 use App\Http\Controllers\API\CheckoutController;
+use App\Http\Controllers\API\EmployeController;
 use App\Http\Controllers\API\ProductController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -43,12 +44,13 @@ Route::group(['middleware' => ['api', 'checkpassword'], 'namespace' => 'Api'], f
         Route::get('category/update/{id}', [CategoryController::class, 'edit']);
         Route::PUT('category/update/{id}', [CategoryController::class, 'update']);
         Route::delete('category/{id}', [CategoryController::class, 'destroy']);
+        Route::get('getDelivery', [EmployeController::class, 'getDelivery']);
 
-    //products
-    Route::post('product', [ProductController::class, 'store']);
-    Route::delete('product/{id}', [ProductController::class, 'destroy']);
-    Route::PUT('product/update/{id}', [ProductController::class, 'update']);
-    });
+        //products
+        Route::post('product', [ProductController::class, 'store']);
+        Route::delete('product/{id}', [ProductController::class, 'destroy']);
+        Route::PUT('product/update/{id}', [ProductController::class, 'update']);
+        });
 
     //user routes
     Route::middleware(['auth:api', 'role:user'])->group(function () {
@@ -58,6 +60,7 @@ Route::group(['middleware' => ['api', 'checkpassword'], 'namespace' => 'Api'], f
     Route::delete('cart/{id}', [CartController::class, 'deleteCart']);
     Route::post('addOrder', [CheckoutController::class, 'placeOrder']);
     Route::post('validateOrder', [CheckoutController::class, 'validateOrder']);
+    Route::get('getOrders', [CheckoutController::class, 'getOrders']);
     });
  
 });

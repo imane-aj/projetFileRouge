@@ -53,4 +53,14 @@ class CheckoutController extends BaseController
             return $this->sendError($e);
         };
     }
+
+    public function getOrders(){
+        try{
+            $orders = Order::get();
+            return $this->sendResponse($orders, 'All orders');
+        }catch(\Exception $e){
+            return $this->sendError($e);
+        };
+    }
+
 }

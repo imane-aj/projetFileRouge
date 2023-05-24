@@ -5,6 +5,7 @@ import CategoryReducer from './CategorySlice';
 import ProductReducer from './ProductSlice';
 import CartReducer from './CartSlice';
 import CheckoutReducer from './CheckoutSlice';
+import TrackingReducer from './TrackingSlice';
 
 const store = configureStore({reducer:
     {
@@ -14,6 +15,7 @@ const store = configureStore({reducer:
      product : ProductReducer,
      cart : CartReducer,
      checkout : CheckoutReducer,
+     tracking : TrackingReducer
     }
 })
 export default store

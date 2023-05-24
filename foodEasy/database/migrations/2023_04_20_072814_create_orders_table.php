@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('payment_id')->nullable();
             $table->string('payment_mode');
             $table->string('tracking_no');
-            $table->tinyInteger('status')->default(0);
+            $table->string('status')->default('pending');
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
