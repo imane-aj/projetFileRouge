@@ -13,7 +13,9 @@ module.exports = {
     extend: {
       colors: {
               clifford: '#da373d',
-              pink : '#f7506d',
+              pink : '#f94d00',
+              blueClear: '#6bd4fd',
+              pinky : '#e95757'
             },
       width:{
         contentW: 'calc(100% - 190px)',

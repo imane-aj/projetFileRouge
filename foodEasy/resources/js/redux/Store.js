@@ -6,6 +6,7 @@ import ProductReducer from './ProductSlice';
 import CartReducer from './CartSlice';
 import CheckoutReducer from './CheckoutSlice';
 import TrackingReducer from './TrackingSlice';
+import SearchReducer from './SearchSlice';
 
 const store = configureStore({reducer:
     {
@@ -15,7 +16,8 @@ const store = configureStore({reducer:
      product : ProductReducer,
      cart : CartReducer,
      checkout : CheckoutReducer,
-     tracking : TrackingReducer
+     tracking : TrackingReducer,
+     search : SearchReducer
     }
 })
 export default store

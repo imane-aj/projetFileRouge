@@ -74,7 +74,7 @@ export const updateProduct = createAsyncThunk("product/updateProduct",async ({id
 
 const ProductSlice = createSlice({
     name:'product',
-    initialState:{data:[], isLoading:false, error:'', editData:[], addedData:[], randomData:[]},
+    initialState:{data:[], isLoading:false, error:'', editData:[], addedData:[], randomData:[], productSearched:[]},
     extraReducers:(builder)=>{
         //getProduct
         builder.addCase(getProducts.pending, (state) => {

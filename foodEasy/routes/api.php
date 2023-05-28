@@ -36,6 +36,8 @@ Route::group(['middleware' => ['api', 'checkpassword'], 'namespace' => 'Api'], f
     Route::get('/randomProduct', [ProductController::class, 'randomProduct']);
     // Route for getting products by category
     Route::get('/products/{category}', [ProductController::class, 'index']);
+    //search product
+    Route::get('/searchProducts', [ProductController::class, 'search']);
 
     
     //admin routes

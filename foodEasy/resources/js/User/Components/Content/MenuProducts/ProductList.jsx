@@ -44,16 +44,19 @@ function ProductList({name}) {
           });
       }
     };
+  const productSearched = useSelector((state)=>state.search.searchData)
   return (
     <div className="front-main">
     <div className="main-grid">
       <div className="menu-section">
-      {/* {CategoryP ? (<h3>{CategoryP.name && CategoryP.name}</h3>): <IsLoading/>} */}
         <div className="menu-grid mt-10">
-            {CategoryP?.products?.map((item,idx)=>
-                <div key={idx} className="menu-card" style={{backgroundImage: `url(${imgUrl}images/products/${item?.img})`}}>
-                    <div>
-                    <span className="bg-main-gradient item-price">
+        {productSearched && productSearched.data ? (productSearched.data.map((item,idx)=>
+          <div key={idx} className="menu-card">
+                <div className='divImg'>
+                    <img src={imgUrl + `images/products/${item?.img}`} alt={item?.name} />
+                  </div>
+                    <div className='price'>
+                    <span className="item-price">
                         <span>DH</span> {item?.price}
                     </span>
                     </div>
@@ -62,11 +65,31 @@ function ProductList({name}) {
                     </div>
 
                     <button onClick={() => handleAddToCart(item?.id)}
-                    className="btn btn-main-gradient">
+                    >
                     Add to cart
                     </button>
                 </div>
-            )}
+        )) : ( CategoryP?.products?.map((item,idx)=>
+                <div key={idx} className="menu-card">
+                <div className='divImg'>
+                    <img src={imgUrl + `images/products/${item?.img}`} alt={item?.name} />
+                  </div>
+                    <div className='price'>
+                    <span className="item-price">
+                        <span>DH</span> {item?.price}
+                    </span>
+                    </div>
+                    <div>
+                    <span className="item-name">{item?.name}</span>
+                    </div>
+
+                    <button onClick={() => handleAddToCart(item?.id)}
+                    >
+                    Add to cart
+                    </button>
+                </div>
+            ))}
+           
         </div>
       </div>
     </div>

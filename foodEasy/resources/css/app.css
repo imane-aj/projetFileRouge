@@ -13,13 +13,26 @@
 }
 
 * {
-    font-family: "Poppins", sans-serif;
+    font-family: cursive;
     margin: 0;
     padding: 0;
     text-decoration: none;
     list-style-type: none;
     box-sizing: border-box;
     font-size: small;
+}
+
+.shoose img{
+  filter: grayscale(1);
+  height: 50px;
+  width: 50px;
+  border: 1px solid #f8570f;
+  border-radius: 50%;
+  /* background: #f8570f; */
+  padding: 5px;
+}
+.display-content {
+  display: contents;
 }
 
 /* main css */
@@ -150,40 +163,76 @@ body{
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 2rem;
   }
-  .front-main .main-grid .menu-section .menu-grid .menu-card {
-    height: 182px;
-    border-radius: 7px;
-    background-size: cover;
-    background-repeat: no-repeat;
-    padding: 1.1rem;
+  .front-main .main-grid .menu-section .menu-grid .menu-card, .menu-card {
+    height: 220px;
+    border-radius: 2px;
+    /* background-size: cover; */
+    /* background-repeat: no-repeat; */
+    padding: 0.4rem;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2), -2px -2px 10px rgba(255, 255, 255, 0.8);
     cursor: pointer;
     position: relative;
-    overflow-y: hidden;
+    overflow: hidden;
   }
-  .front-main .main-grid .menu-section .menu-grid .menu-card .item-name,
-  .front-main .main-grid .menu-section .menu-grid .menu-card .item-price {
+  .front-main .main-grid .menu-section .menu-grid .menu-card .divImg, .menu-card .divImg{
+    background-color: #fcfbea;
+    height: 170px;
+  }
+  .front-main .main-grid .menu-section .menu-grid .menu-card .divImg img, .menu-card .divImg img{
+    width: 100%;
+    margin: auto;
+    height: inherit;
+    border-radius: 2px;
+  }
+  .front-main .main-grid .menu-section .menu-grid .menu-card .price, .menu-card .price{
+    position: absolute;
+    top: 0;
+    right: -10px;
+    font-size: x-small;
+  }
+  .front-main .main-grid .menu-section .menu-grid .menu-card .price span, .menu-card .price span{
+    font-size: x-small;
+  }
+  .front-main .main-grid .menu-section .menu-grid .menu-card .item-name, .menu-card .item-name,
+  .front-main .main-grid .menu-section .menu-grid .menu-card .item-price, .menu-card .tem-price {
     padding: 0.3rem 1rem;
     border-radius: 3px;
     display: inline-block !important;
     font-size: 0.85rem;
     font-weight: 700;
   }
-  .front-main .main-grid .menu-section .menu-grid .menu-card .item-price {
+  .front-main .main-grid .menu-section .menu-grid .menu-card .item-price, .menu-card .item-price {
     margin-bottom: 0.5rem;
+    background-color: #f2f1f5 !important;
+    font-weight: bolder;
+    /* text-shadow: 1px 0px #080808; */
+    color: #101010;
   }
-  .front-main .main-grid .menu-section .menu-grid .menu-card .item-name {
-    background: #fff;
+  .front-main .main-grid .menu-section .menu-grid .menu-card .item-name, .menu-card .item-name {
+    /* background: #fff; */
+    color: #101010;
+    padding: 0.9rem 0rem 0.3rem;
+    width: 62%;
+    text-align: justify;
   }
-  .front-main .main-grid .menu-section .menu-grid .menu-card button {
+  .front-main .main-grid .menu-section .menu-grid .menu-card button, .menu-card button {
+    padding: 3px 12px 3px 12px;
     position: absolute;
+    border-radius: 2px;
+    right: 5px;
+    bottom: 11px;
+    border: 1px solid #f94d00;
+    color: #f94d00;
+    font-size: xx-small;
+    /* position: absolute;
     bottom: -50%;
     left: 50%;
     transform: translateX(-50%);
-    transition: bottom 300ms;
+    transition: bottom 300ms; */
   }
-  .front-main .main-grid .menu-section .menu-grid .menu-card:hover button {
-    bottom: 15px;
+  .front-main .main-grid .menu-section .menu-grid .menu-card:hover button, .menu-card:hover button {
+    /* bottom: 15px; */
+    padding: 3px 18px 3px 18px;
   }
   .front-main .main-grid .cart-section {
     padding-left: 1rem;

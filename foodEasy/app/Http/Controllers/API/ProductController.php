@@ -114,4 +114,14 @@ class ProductController extends BaseController
         }; 
     }
 
+    //search 
+    public function search(Request $request){
+        $query = $request->get('query');
+        $product = Product::where('name', 'like', '%'.$query.'%')->get();
+        try{
+            return $this->sendResponse($product, 200);
+        }catch(\Exception $e){
+            return $this->sendError($e);
+        }
+    }
 }
