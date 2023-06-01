@@ -163,6 +163,13 @@ function NavBar() {
                          </h3>
                      </div>
                  </Link>
+                 <a href='#about' className="my-4 lg:my-0 lg:pr-2 mx-4">
+                     <div>
+                        <h3 className="text-xl font-normal mt-2 text-white active:text-white active:mt-0">
+                            About
+                         </h3>
+                     </div>
+                 </a>
                  {Array.isArray(data?.data) ? (
                     data.data.map((item, idx )=>
                         <Link key={idx} to={`category/${item.id}`} className="my-4 lg:my-0 lg:pr-2 mx-4">

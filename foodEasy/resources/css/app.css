@@ -11,6 +11,7 @@
     --text-grey: #8390a2;
     --front-bg: #f2f1f5;
     --front-color: #f7506d;
+    --chosen: #FFA500;
 }
 
 * {
@@ -20,12 +21,12 @@
     text-decoration: none;
     list-style-type: none;
     box-sizing: border-box;
-    font-size: small;
+    /* font-size: small; */
 }
 .hero{
   width: 100%;
   height: 100vh;
-  background-image: url("../assets/img/front/hero-bg.jpg");
+  background-image: url("../assets/img/front/se-nourrir-au-maroc.jpg");
   background-position: top center;
   background-size: cover;
   position: relative;
@@ -52,17 +53,6 @@
   padding: 15px 0;
   top: 40px;
 }
-.frontNavLinks .reg{
-  border: 2px solid #f5cdb2;
-    color: #fff;
-    border-radius: 50px;
-    padding: 8px 25px;
-    text-transform: uppercase;
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 1px;
-    transition: 0.3s;
-}
 .containerHero h1, .containerHero span {
   font-size: 48px;
   font-weight: 700;
@@ -71,7 +61,7 @@
   font-family: "Poppins", sans-serif;
 }
 .containerHero span{
-  color: #f5cdb2;
+  color: var(--chosen);
 }
 .containerHero h2{
   color: #eee;
@@ -90,13 +80,13 @@
   transition: 0.3s;
   line-height: 1;
   color: white;
-  border: 2px solid #f5cdb2;
+  border: 2px solid var(--chosen);
 }
 
 .containerHero .play-btn {
   width: 94px;
   height: 94px;
-  background: radial-gradient(#cda45e 50%, rgba(205, 164, 94, 0.4) 52%);
+  background: radial-gradient(var(--chosen) 50%, rgba(205, 164, 94, 0.4) 52%);
   border-radius: 50%;
   display: block;
   position: relative;
@@ -114,7 +104,7 @@
   animation-timing-function: steps;
   opacity: 1;
   border-radius: 50%;
-  border: 5px solid rgba(205, 164, 94, 0.7);
+  border: 5px solid var(--chosen);
   top: -15%;
   left: -15%;
   background: rgba(198, 16, 0, 0);
@@ -133,7 +123,114 @@
   z-index: 100;
   transition: all 400ms cubic-bezier(0.55, 0.055, 0.675, 0.19);
 }
-
+.about-main .block-title {
+  font-size: 52px;
+  font-family: 'nautilus_pompiliusregular';
+  font-weight: bold;
+}
+.about-main h3 {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+}
+.about-main p{
+  line-height: 2em;
+  /* text-align: justify; */
+}
+#why-us .section-title h2, .events .section-title h2 {
+  font-size: 14px;
+  font-weight: 500;
+  padding: 0;
+  line-height: 1px;
+  margin: 0 0 5px 0;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color:#aaaaaa;
+  font-family: "Poppins", sans-serif;
+}
+#why-us .section-title h2::after, .events .section-title h2::after {
+  content: "";
+  width: 120px;
+  height: 1px;
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 4px 10px;
+}
+#why-us .section-title p, .events .section-title p {
+  margin: 0;
+  margin: 0;
+  font-size: 36px;
+  font-weight: 700;
+  font-family: "Playfair Display", serif;
+  color:  var(--chosen);
+}
+.why-us .box {
+  padding: 50px 30px;
+  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+  transition: all ease-in-out 0.3s;
+  background: #1a1814;
+}
+.why-us .box:hover {
+  background: #cda45e;
+  padding: 30px 30px 70px 30px;
+  box-shadow: 10px 15px 30px rgba(0, 0, 0, 0.18);
+}
+.why-us .box:hover span, .why-us .box:hover h4, .why-us .box:hover p{
+  color:var(--front-bg);
+}
+.why-us .box span {
+  display: block;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--chosen);
+}
+.why-us .box h4 {
+  font-size: 24px;
+  font-weight: 600;
+  padding: 0;
+  margin: 20px 0;
+  color: rgba(255, 255, 255, 0.8);
+}
+.why-us .box p {
+  color: #aaaaaa;
+  font-size: 15px;
+  margin: 0;
+  padding: 0;
+}
+.events {
+  background: url(https://bootstrapmade.com/demo/templates/Restaurantly/assets/img/events-bg.jpg) center center no-repeat;
+  background-size: cover;
+  position: relative;
+}
+.events::before {
+  content: "";
+  background-color: rgba(0, 0, 0, 0.8);
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+}
+.events .section-title h2 {
+  color: #fff;
+}
+.events .event-item p:last-child {
+  margin-bottom: 0;
+}
+.events .event-item h3 {
+  font-weight: 600;
+  font-size: 26px;
+  color: var(--chosen);
+}
+.events .event-item {
+  color: #fff;
+}
+.events .event-item .price {
+  font-size: 26px;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
 .shoose img{
   filter: grayscale(1);
   height: 50px;

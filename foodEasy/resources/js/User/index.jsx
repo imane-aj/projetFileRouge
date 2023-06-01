@@ -14,7 +14,7 @@ function User() {
     const handleClose = () => dispatch(ModalOpen(false));
     return (
         <Fragment>
-                <div className="container mx-auto">
+                <div>
                     <NavBar />
                     <Outlet/>
                 </div>
