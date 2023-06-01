@@ -123,12 +123,12 @@
   z-index: 100;
   transition: all 400ms cubic-bezier(0.55, 0.055, 0.675, 0.19);
 }
-.about-main .block-title {
+.about-main .block-title, #meals h2 {
   font-size: 52px;
   font-family: 'nautilus_pompiliusregular';
   font-weight: bold;
 }
-.about-main h3 {
+.about-main h3, #meals h3 {
   font-family: 'Roboto', sans-serif;
   font-weight: 600;
   font-size: 20px;
@@ -230,6 +230,84 @@
   font-family: "Open Sans", sans-serif;
   font-weight: 700;
   margin-bottom: 15px;
+}
+#footer {
+  background: black;
+  padding: 0 0 30px 0;
+  color: #fff;
+  font-size: 14px;
+}
+#footer .footer-top {
+  background: #0c0b09;
+  border-top: 1px solid #37332a;
+  border-bottom: 1px solid #28251f;
+  padding: 60px 0 30px 0;
+}
+#footer .footer-top .footer-info {
+  margin-bottom: 30px;
+}
+#footer .footer-top .footer-info h3 {
+  font-size: 24px;
+  margin: 0 0 20px 0;
+  padding: 2px 0 2px 0;
+  line-height: 1;
+  font-weight: 300;
+  text-transform: uppercase;
+  font-family: "Poppins", sans-serif;
+}
+#footer .footer-top h4 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  position: relative;
+  padding-bottom: 12px;
+}
+#footer .footer-top .footer-info p {
+  font-size: 14px;
+  line-height: 24px;
+  margin-bottom: 0;
+  font-family: "Playfair Display", serif;
+  color: #fff;
+}
+#footer .footer-top .footer-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+#footer .footer-top .footer-links ul li:first-child {
+  padding-top: 0;
+}
+#footer .footer-top .footer-links ul li {
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+}
+#footer .footer-top .footer-links ul i {
+  padding-right: 2px;
+  color: var(--chosen);
+  font-size: 18px;
+  line-height: 1;
+}
+.bx-chevron-right:before {
+  content: "\ea50";
+}
+.bx {
+  font-family: boxicons!important;
+  font-weight: 400;
+  font-style: normal;
+  font-variant: normal;
+  line-height: 1;
+  text-rendering: auto;
+  display: inline-block;
+  text-transform: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+#footer .footer-top .footer-links ul i {
+  padding-right: 2px;
+  color: var(--chosen);
+  font-size: 18px;
+  line-height: 1;
 }
 .shoose img{
   filter: grayscale(1);
@@ -375,11 +453,11 @@ body{
     grid-gap: 2rem;
   }
   .front-main .main-grid .menu-section .menu-grid .menu-card, .menu-card {
-    height: 300px;
+    height: 385px;
     border-radius: 2px;
     /* background-size: cover; */
     /* background-repeat: no-repeat; */
-    padding: 0.4rem;
+    margin: 0.4rem;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2), -2px -2px 10px rgba(255, 255, 255, 0.8);
     cursor: pointer;
     position: relative;
@@ -404,8 +482,7 @@ body{
   .front-main .main-grid .menu-section .menu-grid .menu-card .price span, .menu-card .price span{
     font-size: x-small;
   }
-  .front-main .main-grid .menu-section .menu-grid .menu-card .item-name, .menu-card .item-name,
-  .front-main .main-grid .menu-section .menu-grid .menu-card .item-price, .menu-card .tem-price {
+  .front-main .main-grid .menu-section .menu-grid .menu-card .item-name, .menu-card .item-name{
     padding: 0.3rem 1rem;
     border-radius: 3px;
     display: inline-block !important;
@@ -414,32 +491,24 @@ body{
   }
   .front-main .main-grid .menu-section .menu-grid .menu-card .item-price, .menu-card .item-price {
     margin-bottom: 0.5rem;
-    background-color: #f2f1f5 !important;
     font-weight: bolder;
-    /* text-shadow: 1px 0px #080808; */
-    color: #101010;
   }
   .front-main .main-grid .menu-section .menu-grid .menu-card .item-name, .menu-card .item-name {
     /* background: #fff; */
     color: #101010;
     padding: 0.9rem 0rem 0.3rem;
-    width: 62%;
-    text-align: justify;
   }
   .front-main .main-grid .menu-section .menu-grid .menu-card button, .menu-card button {
     padding: 3px 12px 3px 12px;
     position: absolute;
     border-radius: 2px;
-    right: 5px;
-    bottom: 11px;
-    border: 1px solid #f94d00;
-    color: #f94d00;
-    font-size: xx-small;
-    /* position: absolute;
-    bottom: -50%;
-    left: 50%;
-    transform: translateX(-50%);
-    transition: bottom 300ms; */
+    /* right: 38px; */
+    left: 23px;
+    bottom: 20px;
+    background-color: var(--chosen);
+    border: 1px solid var(--chosen);
+    color: var(--front-bg);
+    width: 84%;
   }
   .front-main .main-grid .menu-section .menu-grid .menu-card:hover button, .menu-card:hover button {
     /* bottom: 15px; */

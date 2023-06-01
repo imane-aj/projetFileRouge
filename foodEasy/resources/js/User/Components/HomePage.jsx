@@ -71,37 +71,28 @@ function ProductList() {
         items: 1
       }
     };
+    const mealsRes = {
+      superLargeDesktop: {
+        // the naming can be any, depends on you.
+        breakpoint: { max: 4000, min: 3000 },
+        items: 4
+      },
+      desktop: {
+        breakpoint: { max: 3000, min: 1024 },
+        items: 4
+      },
+      tablet: {
+        breakpoint: { max: 1024, min: 464 },
+        items: 2
+      },
+      mobile: {
+        breakpoint: { max: 464, min: 0 },
+        items: 1
+      }
+    };
   return (
     <div className="">
     <div className="hero">
-        {/* <div>
-          <h1 className='text-3xl w-full text-center my-16'>Our Meals</h1>
-          <Carousel responsive={responsive}>
-            {randomData && randomData.data && Array.isArray(randomData.data.data) && randomData.data.data.length > 0 ? ( randomData.data.data.map((item,idx)=>
-              <div key={idx} className="menu-card">
-              <div className='divImg'>
-                  <img src={imgUrl + `images/products/${item?.img}`} alt={item?.name} />
-                </div>
-                  <div className='price' style={{right: '4px'}}>
-                  <span className="item-price" style={{padding: "2px 7px"}}>
-                      <span>DH</span> {item?.price}
-                  </span>
-                  </div>
-                  <div>
-                  <span className="item-name">{item?.name}</span>
-                  </div>
-
-                  <button onClick={() => handleAddToCart(item?.id)}
-                  >
-                  Add to cart
-                  </button>
-              </div>
-              )) : (<tr><td><IsLoading/></td></tr>)
-            }
-          </Carousel>
-        </div> */}
-
-
     </div>
     <div className='px-20'>
       <div className='containerHero absolute top-80 aos-init aos-animate flex flex-row justify-between'>
@@ -115,6 +106,7 @@ function ProductList() {
       </div>
       
     </div>
+
     <div id="about" class="px-20 about-main pt-24 pb-24 flex flex-col md:flex-row justify-between bg-[#fffaf3]">
                 <div class="md:w-[60%]">
                     <div class="wow fadeIn" data-wow-duration="1s" data-wow-delay="0.1s">
@@ -136,6 +128,7 @@ function ProductList() {
                     </div>
                 </div>
     </div>
+
     <section id="why-us" class="why-us px-20 pt-32 pb-32 bg-[#0c0b09]">
       <div class="container aos-init aos-animate" data-aos="fade-up">
 
@@ -181,6 +174,39 @@ function ProductList() {
 
       </div>
     </section>
+
+    <div id="meals" class="px-20 pt-20 pb-24 bg-[#fffaf3]">
+          <div>
+          <h2 className='w-full text-pink'>Our Meals</h2>
+          <h3>Enjoy delicious food with us and explore a variety of flavors.</h3>
+          <Carousel responsive={mealsRes}>
+            {randomData && randomData.data && Array.isArray(randomData.data.data) && randomData.data.data.length > 0 ? ( randomData.data.data.map((item,idx)=>
+              <div key={idx} className="menu-card">
+              <div className='divImg'>
+                  <img src={imgUrl + `images/products/${item?.img}`} alt={item?.name} />
+                </div>
+                <div className='px-5'>
+                  <div className='price' style={{right: '13px', top:'48px'}}>
+                  <span className="item-price text-lg bg-pink text-white" style={{padding: "5px 18px"}}>
+                       {item?.price} <span>DH</span>
+                  </span>
+                  </div>
+                  <div>
+                  <span className="item-name w-full text-center">{item?.name}</span>
+                  </div>
+                  <p className='text-sm pt-4 text-center'>{item?.desc}</p>
+
+                  <button onClick={() => handleAddToCart(item?.id)}
+                  >
+                  Add to cart
+                  </button>
+                  </div>
+              </div>
+              )) : (<tr><td><IsLoading/></td></tr>)
+            }
+          </Carousel>
+        </div>
+    </div>
 
     <section id="events" class="events px-20 pt-24 pb-24">
       <div class="container aos-init aos-animate relative" data-aos="fade-up">
@@ -273,6 +299,57 @@ function ProductList() {
       </div>
       </div>
     </section>
+
+    <footer id="footer" className=''>
+    <div class="footer-top  pt-24 pb-24">
+        <div class="flex flex-col md:flex-row md:justify-between px-20">
+
+            <div class="footer-info">
+              <h3>Foodify</h3>
+              <p>
+                Drissia Street <br />
+                NY 535022, Tanger<br/><br/>
+                <strong>Phone:</strong> +212 535 733940<br />
+                <strong>Email:</strong> foodify@contact.info<br />
+              </p>
+              <div class="social-links mt-3">
+                <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+                <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+                <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+                <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+                <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+              </div>
+            </div>
+
+          <div class="footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#home">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#about">About us</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-links">
+            <h4>Our Services</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Meals</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Delivery</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Event commandes</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-newsletter">
+            <h4>Our Newsletter</h4>
+            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
+
+          </div>
+
+        </div>
+    </div>
+  </footer>
   </div>
   )
 }
