@@ -23,6 +23,7 @@ function Paypal() {
   };
   const onApprove = (data, actions) => {
     return actions.order.capture().then(function (details) {
+      console.log(details)
       const updatedData = {
         ...data_paypal,
         payment_id: details.id,

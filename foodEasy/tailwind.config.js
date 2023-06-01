@@ -13,7 +13,7 @@ module.exports = {
     extend: {
       colors: {
               clifford: '#da373d',
-              pink : '#f94d00',
+              pink : '#f5cdb2',
               blueClear: '#6bd4fd',
               pinky : '#e95757'
             },

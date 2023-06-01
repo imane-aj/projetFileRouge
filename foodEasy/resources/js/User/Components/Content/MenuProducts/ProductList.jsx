@@ -61,15 +61,19 @@ function ProductList({name}) {
                     </span>
                     </div>
                     <div>
-                    <span className="item-name">{item?.name}</span>
+                      <span className="item-name">{item?.name}</span>
                     </div>
+                    <p className='desc'>
+                      {item?.desc}
+                    </p>
 
                     <button onClick={() => handleAddToCart(item?.id)}
                     >
                     Add to cart
                     </button>
                 </div>
-        )) : ( CategoryP?.products?.map((item,idx)=>
+        )) : ( 
+          CategoryP?.products?.map((item,idx)=>
                 <div key={idx} className="menu-card">
                 <div className='divImg'>
                     <img src={imgUrl + `images/products/${item?.img}`} alt={item?.name} />
@@ -82,7 +86,9 @@ function ProductList({name}) {
                     <div>
                     <span className="item-name">{item?.name}</span>
                     </div>
-
+                    <p className='desc'>
+                      {item?.desc}
+                    </p>
                     <button onClick={() => handleAddToCart(item?.id)}
                     >
                     Add to cart

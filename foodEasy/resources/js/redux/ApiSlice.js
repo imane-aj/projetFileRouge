@@ -37,7 +37,8 @@ export const loginUser = createAsyncThunk('api/loginUser',async (user, { rejectW
 export const logoutUser = createAsyncThunk('api/logoutUser',async (_, thunkAPI) => {
     try {
       const apiKey = {api_password: "Eld5TBhHgiIZgJk4c4VEtlnNxY"}
-      const response = await axios.post('/logout',{headers:apiKey});
+      const response = await axios.post('/logout',{headers:{
+        'api_password':'Eld5TBhHgiIZgJk4c4VEtlnNxY'}});
       removeCookie('token');
       localStorage.removeItem('role');
       localStorage.clear();

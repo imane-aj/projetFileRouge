@@ -12,18 +12,18 @@ function SideBar() {
       dispatch(getCat())
     },[dispatch])
     return (
-        <div className="front-sidebar w-24 h-screen fixed left-0 top-0 bg-white z-50">
+        <div className="front-sidebar w-24 h-screen fixed left-0 top-0 bg-[rgba(12, 11, 9, 0.6)] z-50">
            
 
             <div className="front-sidemenu mt-10">
                 <ul>
                 <Link to='/' className="text-center flex justify-center flex-col mb-5 cursor-pointer active:p-2 rounded-lg">
                     <div>
-                        <img
+                        {/* <img
                             src={imgUrl + 'images/categories/home.png'} alt='home page'
                             className="m-auto w-10 active:w-8"
-                        />
-                        <h3 className="text-base font-normal mt-2 text-gray-600 active:text-white active:mt-0">
+                        /> */}
+                        <h3 className="text-base font-normal mt-2 text-white active:text-white active:mt-0">
                             Home
                         </h3>
                     </div>
@@ -36,7 +36,7 @@ function SideBar() {
                                     src={imgUrl + `images/categories/${item?.img}`} alt={item?.name}
                                     className="m-auto w-10 active:w-8"
                                 />
-                                <h3 className="text-base font-normal mt-2 text-gray-600 active:text-white active:mt-0">
+                                <h3 className="text-base font-normal mt-2 text-white active:text-white active:mt-0">
                                     {item.name}
                                 </h3>
                             </div>

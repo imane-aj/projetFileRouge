@@ -21,7 +21,6 @@ function Cart() {
       setUpdateData(dataCart);
       const subT = dataCart.reduce((sum, item) => sum + item.product.price * item.qtity, 0);
       setSubtotal(subT);
-      setDelivery(4)
     }
   }, [dataCart, subtotal, updateData]);
   
@@ -134,13 +133,13 @@ function Cart() {
           </div>
           <div className="price-flex">
             <small>Delivery</small>
-            <small onChange={()=>setSubtotal(e.target.Value)}>{delivery}</small>
+            <small>Free</small>
           </div>
 
           <div className="price-flex">
             <small>Total</small>
             <h4> {dataCart && Array.isArray(dataCart) && dataCart.reduce((sum, item) => sum + item.product.price * item.qtity,
-                0 + 4)}
+                0 )}
             </h4>
           </div>
         </div>

@@ -8,12 +8,18 @@ import { addToCart } from '../../redux/CartSlice';
 import IsLoading from '../../IsLoading';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 function ProductList() {
     const imgUrl =  import.meta.env.BASE_URL
     const loggedIn = localStorage.getItem("role") === "user";
     const error = useSelector((state)=>state.cart.error)
     const randomData = useSelector((state)=>state.product.randomData)
+    useEffect(() => {
+      AOS.init();
+      AOS.refresh();
+    }, []);
    // console.log(randomData)
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -66,16 +72,11 @@ function ProductList() {
       }
     };
   return (
-    <div className="front-main">
-    <div className="main-grid">
-      <div className="menu-section">
-        <div className='relative'>
-            <h1 className='absolute text-xl mt-8 w-full text-center'>Healthy Food Comes From <span className='text-6xl block text-pink mt-8'>Healthy Ingredients</span></h1>
-          <img src={imgUrl + 'images/front/home-banner3.jpg'} alt='banner' />
-        </div>
+    <div className="">
+    <div className="hero">
+       
 
-        <div className='text-center shoose'>
-            {/* <p className='w-full text-center mt-10 text-pink'>Our Benifits</p> */}
+        {/* <div className='text-center shoose'>
             <h1 className='text-3xl w-full text-center my-16'>Why customers choose us</h1>
             <div className='flex flex-col md:flex-row justify-between border py-5 px-5'>
               <div>
@@ -99,9 +100,9 @@ function ProductList() {
                 <p className='w-[80%] m-auto text-sm'>Savor the goodness of our dishes with our no frying policy, providing you with flavorful and nutritious options that are free from unhealthy oils.</p>
               </div>
             </div>
-        </div>
+        </div> */}
 
-        <div>
+        {/* <div>
           <h1 className='text-3xl w-full text-center my-16'>Our Meals</h1>
           <Carousel responsive={responsive}>
             {randomData && randomData.data && Array.isArray(randomData.data.data) && randomData.data.data.length > 0 ? ( randomData.data.data.map((item,idx)=>
@@ -126,34 +127,22 @@ function ProductList() {
               )) : (<tr><td><IsLoading/></td></tr>)
             }
           </Carousel>
-          {/* <div className="menu-grid mt-10">
-              {randomData && randomData.data && Array.isArray(randomData.data.data) && randomData.data.data.length > 0 ? ( randomData.data.data.map((item,idx)=>
-                  <div key={idx} className="menu-card">
-                  <div className='divImg'>
-                      <img src={imgUrl + `images/products/${item?.img}`} alt={item?.name} />
-                    </div>
-                      <div className='price'>
-                      <span className="item-price">
-                          <span>DH</span> {item?.price}
-                      </span>
-                      </div>
-                      <div>
-                      <span className="item-name">{item?.name}</span>
-                      </div>
+        </div> */}
 
-                      <button onClick={() => handleAddToCart(item?.id)}
-                      >
-                      Add to cart
-                      </button>
-                  </div>
-                  )) : (<tr><td><IsLoading/></td></tr>)
-              }
-            
-          </div> */}
+
+    </div>
+    <div className='md:px-20'>
+      <div className='containerHero absolute top-80 aos-init aos-animate flex flex-row justify-between'>
+        <div>
+          <h1>Welcome To <span className='text-pink'>Foodify</span></h1>
+          <h2>Healthy food for healthy life!</h2>
+          <div className="btns mt-8">
+            <a href="#menu" class="btn-menu animated fadeInUp scrollto">Our Menu</a>
+          </div>
         </div>
-
-        {/* <img src={imgUrl + 'images/front/delived.png'} className='my-16' alt='deliver' /> */}
-
+        <div class="video col-lg-4 d-flex align-items-center justify-content-center position-relative aos-init aos-animate" data-aos="zoom-in" data-aos-delay="200">
+          <a href="https://www.youtube.com/watch?v=u6BOC7CDUTQ" class="glightbox play-btn"></a>
+        </div>
       </div>
     </div>
   </div>

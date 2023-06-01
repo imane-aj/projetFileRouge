@@ -14,15 +14,10 @@ function User() {
     const handleClose = () => dispatch(ModalOpen(false));
     return (
         <Fragment>
-            <div className="front-wrapper flex">
-                <div>
-                    <SideBar />
-                </div>
-                <div className="w-contentW">
+                <div className="container mx-auto">
                     <NavBar />
                     <Outlet/>
                 </div>
-            </div>
             <AnimatePresence>
                 {modalOpen && (
                     <ModalWindow
