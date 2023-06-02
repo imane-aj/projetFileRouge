@@ -6,7 +6,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
 :root {
     --main-color: #027581;
-    --main-gradient: linear-gradient(to right, #f7506d, #f98046);
+    --main-gradient: linear-gradient(to right, #ffa500, #f98046);
     --color-dark: #1d2231;
     --text-grey: #8390a2;
     --front-bg: #f2f1f5;
@@ -45,13 +45,26 @@
   padding-top: 110px;
 }
 .navFront{
-  position: absolute;
   background: rgba(12, 11, 9, 0.6);
   border-bottom: 1px solid rgba(12, 11, 9, 0.6);
   transition: all 0.5s;
   z-index: 997;
   padding: 15px 0;
-  top: 40px;
+}
+.cartIcon {
+  margin: 0 0 0 15px;
+  border: 2px solid var(--chosen);
+  color: #fff;
+  border-radius: 50px;
+  padding: 8px 25px;
+  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  transition: 0.3s;
+}
+.cartIcon:hover{
+  background-color: var(--chosen);
 }
 .containerHero h1, .containerHero span {
   font-size: 48px;
@@ -567,7 +580,7 @@ body{
   .cart-controls {
     display: flex;
     align-items: center;
-    border: 1px solid var(--front-color);
+    /* border: 1px solid var(--color-dark); */
     border-radius: 6px;
     overflow-y: hidden;
     height: 33px;
@@ -583,12 +596,10 @@ body{
   .cart-controls input + div {
     display: flex;
     flex-direction: column;
-    background: var(--main-gradient);
   }
   .cart-controls input + div span {
     height: 49.5%;
-    background: var(--main-gradient);
-    color: #fff;
+    color: #0c0b09;
     padding: 0rem 0.23rem;
     cursor: pointer;
   }
@@ -624,14 +635,15 @@ body{
     font-weight: 600;
   }
   .cart-sum .price-flex:last-child h4 {
-    color: var(--front-color);
+    color: var(--chosen);
   }
   .cart-sum .cart-pay-btn {
     margin-top: 1.2rem;
   }
   .cart-sum .cart-pay-btn .button {
-    background: #24b056;
-    color: #fff;
+    /* background: #24b056; */
+    /* color: #fff; */
+    border: 1px solid var(--chosen);
     font-size: 1rem;
     height: auto;
     display: block;

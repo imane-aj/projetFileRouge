@@ -14,7 +14,7 @@ function User() {
     const handleClose = () => dispatch(ModalOpen(false));
     return (
         <Fragment>
-                <div>
+                <div className="scroll-smooth">
                     <NavBar />
                     <Outlet/>
                 </div>

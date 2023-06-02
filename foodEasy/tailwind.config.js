@@ -9,6 +9,9 @@ module.exports = {
     './resources/**/*.php',
     './resources/**/*.vue',
   ],
+  variants: {
+    display: ['responsive', 'group-hover', 'group-focus'],
+   },
   theme: {
     extend: {
       colors: {

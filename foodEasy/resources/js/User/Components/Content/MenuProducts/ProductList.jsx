@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate, useParams } from 'react-router-dom';
@@ -6,6 +6,7 @@ import { getCatWithProduct } from '../../../../redux/CategorySlice';
 import IsLoading from '../../../../IsLoading';
 import Swal from 'sweetalert2';
 import { addToCart, getFromCart } from '../../../../redux/CartSlice';
+import Footer from '../../Layouts/Footer';
 
 function ProductList({name}) {
   const imgUrl =  import.meta.env.BASE_URL
@@ -46,60 +47,60 @@ function ProductList({name}) {
     };
   const productSearched = useSelector((state)=>state.search.searchData)
   return (
-    <div className="front-main">
-    <div className="main-grid">
-      <div className="menu-section">
-        <div className="menu-grid mt-10">
+    <Fragment>
+    <section class="px-20 pt-56 pb-32 bg-[#fffaf3]">
+        <div className="grid grid-cols-4 gap-2">
         {productSearched && productSearched.data ? (productSearched.data.map((item,idx)=>
           <div key={idx} className="menu-card">
-                <div className='divImg'>
-                    <img src={imgUrl + `images/products/${item?.img}`} alt={item?.name} />
-                  </div>
-                    <div className='price'>
-                    <span className="item-price">
-                        <span>DH</span> {item?.price}
-                    </span>
-                    </div>
-                    <div>
-                      <span className="item-name">{item?.name}</span>
-                    </div>
-                    <p className='desc'>
-                      {item?.desc}
-                    </p>
+          <div className='divImg'>
+              <img src={imgUrl + `images/products/${item?.img}`} alt={item?.name} />
+            </div>
+            <div className='px-5'>
+              <div className='price' style={{right: '13px', top:'48px'}}>
+              <span className="item-price text-lg bg-pink text-white" style={{padding: "5px 18px"}}>
+                   {item?.price} <span>DH</span>
+              </span>
+              </div>
+              <div>
+              <span className="item-name w-full">{item?.name}</span>
+              </div>
+              <p className='text-sm pt-4'>{item?.desc}</p>
 
-                    <button onClick={() => handleAddToCart(item?.id)}
-                    >
-                    Add to cart
-                    </button>
-                </div>
+              <button onClick={() => handleAddToCart(item?.id)}
+              >
+              Add to cart
+              </button>
+              </div>
+          </div>
         )) : ( 
           CategoryP?.products?.map((item,idx)=>
-                <div key={idx} className="menu-card">
-                <div className='divImg'>
-                    <img src={imgUrl + `images/products/${item?.img}`} alt={item?.name} />
-                  </div>
-                    <div className='price'>
-                    <span className="item-price">
-                        <span>DH</span> {item?.price}
-                    </span>
-                    </div>
-                    <div>
-                    <span className="item-name">{item?.name}</span>
-                    </div>
-                    <p className='desc'>
-                      {item?.desc}
-                    </p>
-                    <button onClick={() => handleAddToCart(item?.id)}
-                    >
-                    Add to cart
-                    </button>
-                </div>
+          <div key={idx} className="menu-card">
+          <div className='divImg'>
+              <img src={imgUrl + `images/products/${item?.img}`} alt={item?.name} />
+            </div>
+            <div className='px-5'>
+              <div className='price' style={{right: '13px', top:'48px'}}>
+              <span className="item-price text-lg bg-pink text-white" style={{padding: "5px 18px"}}>
+                   {item?.price} <span>DH</span>
+              </span>
+              </div>
+              <div>
+              <span className="item-name w-full">{item?.name}</span>
+              </div>
+              <p className='text-sm pt-4'>{item?.desc}</p>
+
+              <button onClick={() => handleAddToCart(item?.id)} className='hover:bg-[unset] hover:text-pink'
+              > 
+              Add to cart
+              </button>
+              </div>
+          </div>
             ))}
            
         </div>
-      </div>
-    </div>
-  </div>
+  </section>
+  <Footer />
+  </Fragment>
   )
 }
 
