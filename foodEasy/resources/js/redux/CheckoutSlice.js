@@ -29,22 +29,22 @@ export const validateOrder = createAsyncThunk('checkout/validateOrder', async(da
 })
 
 //getOrders
-export const getOrders = createAsyncThunk('checkout/getOrders', async({rejectWithValue})=>{
+export const Orders = createAsyncThunk('checkout/Orders', async(rejectWithValue)=>{
   try{
     const token = getCookie('token');
-    const res = await axios.get('/getOrders',{headers:{
+    const res = await axios.get('/admin/getOrders',{headers:{
             'api_password':'Eld5TBhHgiIZgJk4c4VEtlnNxY',
             'Authorization': `Bearer ${token}`,
     }});
     return res.data;
-  }catch  (er) {
-      return rejectWithValue(er.response.data);
+  }catch(er) {
+      return rejectWithValue(er.res);
   }
 })
 
 const CheckoutSlice = createSlice({
     name : 'checkout',
-    initialState : {data : [], isLoading: false, error: '', getOrder:[]},
+    initialState : {data : [], isLoading: false, error: '', getOrders:[]},
     extraReducers: (builder) => {
       //placeOrder
         builder.addCase(placeOrder.pending, (state) => {
@@ -70,17 +70,17 @@ const CheckoutSlice = createSlice({
         console.log(state.error)
         }),
         //getOrders
-        builder.addCase(getOrders.pending, (state) => {
+        builder.addCase(Orders.pending, (state) => {
           state.isLoading = true;
         }),
-        builder.addCase(getOrders.rejected, (state, action) => {
+        builder.addCase(Orders.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
-        console.log(state.error)
+        console.log(error)
         }),
-        builder.addCase(getOrders.fulfilled, (state, action) => {
+        builder.addCase(Orders.fulfilled, (state, action) => {
         state.isLoading = false,
-        state.getOrder= action.payload
+        state.getOrders= action.payload
         state.error = ""
         })
       }

@@ -1,4 +1,4 @@
-import React, { useEffect, useState }from "react";
+import React, { Fragment, useEffect, useState }from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../../redux/ApiSlice";
 import { Link, useNavigate  } from "react-router-dom";
@@ -31,54 +31,37 @@ function Login() {
           });
       };
     const errors = useSelector((state)=>state.api.error)
+    console.log(errors)
     return (
-        <form onSubmit={handleLogin}>
-            <p className="mb-4">Please create your account</p>
+        <Fragment>
+            <p className="text-3xl font-bold leading-tight tracking-tight md:text-2xl text-white">
+                Sign in to your account
+            </p>
             {errors && <span className="text-red-600">{errors}</span>}
-            <div className="grid md:grid-cols-2 md:gap-6">
-                <div className="relative z-0 w-full mb-6 group">
-                    <input
-                        className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-orange-600"
-                        type="text"
-                        placeholder="Email"
-                        onChange={(e)=>setEmail(e.target.value)} value={email}
+            <form className="space-y-4 md:space-y-6" onSubmit={handleLogin}>
+                <div>
+                    <label htmlFor="email" className="block mb-2 text-sm font-medium text-white">Your email</label>
+                    <input type="email" name="email" id="email" 
+                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" 
+                    placeholder="name@company.com" required=""
+                    onChange={(e)=>setEmail(e.target.value)} value={email}
                     />
                 </div>
-                <div className="relative z-0 w-full mb-6 group">
-                    <input
-                        className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-orange-600"
-                        type="password"
-                        placeholder="Password"
-                        onChange={(e)=>setPassword(e.target.value)} value={password}
-                    />
+                <div>
+                    <label htmlFor="password" className="block mb-2 text-sm font-medium text-white">Password</label>
+                    <input type="password" name="password" 
+                    placeholder="••••••••" 
+                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                     required="" 
+                     onChange={(e)=>setPassword(e.target.value)} value={password}
+                     />
                 </div>
-            </div>
-
-            {/* <!--Submit button--> */}
-            <div className="mb-12 pb-1 pt-1 text-center">
-                <button
-                    className=" mb-3 btn btn-main-gradient inline-block w-full rounded px-6 pb-2 pt-2.5 text-xs font-medium uppercase text-white active:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)] hover:bg-neutral-500 hover:bg-opacity-10 hover:text-orange-600"
-                    type="submit"
-                >
-                    LOGIN
-                </button>
-
-                {/* <!--Forgot password link--> */}
-                <a href="#!">Forgot password?</a>
-            </div>
-
-            {/* <!--Register button--> */}
-            <div className="flex items-center justify-between pb-6">
-                <p className="mb-0 mr-2">Don't have an account?</p>
-                <Link
-                    to='/auth/register'
-                    type="button"
-                    className="inline-block rounded border-2 border-danger px-6 pb-[6px] pt-2 text-xs font-medium uppercase leading-normal text-danger transition duration-150 ease-in-out hover:border-orange-600 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-orange-600"
-                >
-                    SIGN UP
-                </Link>
-            </div>
-        </form>
+                <button type="submit" className="w-full m-auto text-white border border-spacing-1 border-pink  bg-pink rounded-lg p-2.5 hover:text-lg hover:bg-[unset]">Sign in</button>
+                <p className="text-sm font-light text-gray-500 dark:text-gray-400">
+                    Don’t have an account yet? <Link to='/auth/register' className="font-medium text-primary-600 hover:underline dark:text-primary-500">Sign up</Link>
+                </p>
+            </form>
+        </Fragment>
     );
 }
 

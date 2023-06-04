@@ -36,8 +36,6 @@ function EditCatForm({ handleClose }) {
         formData.append('desc', desc);
         if (imageFile) {
             formData.append('img', imageFile);
-        } else {
-            formData.append('img', item.img);
         }
         dispatch(updateCat({id:item.id, formData} )).then((res) => {
           if (res.type === 'category/updateCat/fulfilled') {

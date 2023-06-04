@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('desc')->default(null);
             $table->decimal('price',8,2)->default(0);
+            $table->integer('qtity')->default(0);
             $table->string('img');
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');

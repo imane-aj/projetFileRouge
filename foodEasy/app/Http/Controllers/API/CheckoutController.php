@@ -6,6 +6,7 @@ use App\Http\Controllers\API\BaseController as BaseController;
 use App\Http\Requests\CheckoutRequest;
 use App\Models\Cart;
 use App\Models\Order;
+use Carbon\Carbon;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
 class CheckoutController extends BaseController
@@ -23,9 +24,10 @@ class CheckoutController extends BaseController
             $order->phone = $request->phone ;
             $order->address = $request->address ;
             $order->user_id = $user->id ;
-            $order->payment_mode = $request->payment_mode ;
-            $order->payment_id = $request->payment_id ;
-            $order->tracking_no = 'foudify'.rand(1111,9999) ;
+            $order->payment_mode = $request->payment_mode;
+            $order->payment_id = $request->payment_id;
+            $order->tracking_no = 'foudify'.rand(1111,9999);
+            $order->status = $request->status;
             $order->save();
 
             $cart = Cart::where('user_id', $user->id)->get();
@@ -62,5 +64,22 @@ class CheckoutController extends BaseController
             return $this->sendError($e);
         };
     }
+
+    public function OrderVolume(){
+        $startDate = Carbon::now()->startOfMonth();
+        $endDate = Carbon::now()->endOfMonth();
+        
+        $orderVolumes = Order::whereBetween('created_at', [$startDate, $endDate])
+            ->groupBy('date')
+            ->orderBy('date')
+            ->selectRaw('DATE(created_at) AS date, COUNT(*) AS order_count')
+            ->pluck('order_count', 'date');
+        try{
+            return $this->sendResponse($orderVolumes, 'orderVolumes');
+        }catch(\Exception $e){
+            return $this->sendError($e);
+        };
+    }
+   
 
 }

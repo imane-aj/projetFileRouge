@@ -101,17 +101,17 @@ function ProductList() {
           <h1>Best <span className='text-pink'>Quality</span> Ingredients</h1>
           <h2>A healthy outside Start from healthy inside!</h2>
           <div className="btns mt-8">
-            <a href="#menu" class="btn-menu animated fadeInUp scrollto">Our Menu</a>
+            <a href="#menu" className="btn-menu animated fadeInUp scrollto">Our Menu</a>
           </div>
         </div>
       </div>
       
     </div>
 
-    <div id="about" class="px-20 about-main pt-24 pb-24 flex flex-col md:flex-row justify-between bg-[#fffaf3]">
-                <div class="md:w-[60%] aos-init aos-animate relative"  data-aos="fade-right">
-                    <div class="wow fadeIn" data-wow-duration="1s" data-wow-delay="0.1s">
-                        <h2 class="block-title text-pink"> About Us </h2>
+    <section id="about" className="px-20 about-main pt-24 pb-24 flex flex-col md:flex-row justify-between bg-[#fffaf3]">
+                <div className="md:w-[60%] aos-init aos-animate relative"  data-aos="fade-right">
+                    <div className="wow fadeIn" data-wow-duration="1s" data-wow-delay="0.1s">
+                        <h2 className="block-title text-pink"> About Us </h2>
                         <h3>IT STARTED, QUITE SIMPLY, LIKE THIS...</h3>
                         <p className='mb-3 text-lightBroun'>Immersed in the world of cooking through our grandmother's teachings, we have mastered the art of good taste. She passed down her treasured knowledge, enabling us to create healthy and flavorful dishes. Guided by a secret combination of spices and the richness of olive oil, we meticulously craft meals that nourish and delight. Our passion lies in sharing the harmonious blend of health and taste, proving that wholesome food can be an exquisite culinary experience.</p>
 
@@ -120,28 +120,27 @@ function ProductList() {
                         <p className='text-lightBroun'> Today, our passion continues to evolve as we explore the vast world of culinary possibilities. From vibrant salads bursting </p>
                     </div>
                 </div>
-                <div class="m-auto hidden md:block aos-init aos-animate relative" data-aos="fade-down">
-                    <div class="wow fadeIn" data-wow-duration="1s" data-wow-delay="0.1s">
-                        <div class="about-images">
-                            <img class="about-main" src={imgUrl + 'images/front/health-bottle-cut.png'} alt="About Main Image" />
-                            {/* <img class="about-inset" src="images/about-inset.jpg" alt="About Inset Image" /> */}
+                <div className="m-auto hidden md:block aos-init aos-animate relative" data-aos="fade-down">
+                    <div className="wow fadeIn" data-wow-duration="1s" data-wow-delay="0.1s">
+                        <div className="about-images">
+                            <img className="about-main" src={imgUrl + 'images/front/health-bottle-cut.png'} alt="About Main Image" />
                         </div>
                     </div>
                 </div>
-    </div>
+    </section>
 
-    <section id="why-us" class="why-us px-20 pt-32 pb-32 bg-[#0c0b09]">
-      <div class="container aos-init aos-animate" data-aos="fade-up">
+    <section id="why-us" className="why-us px-20 pt-32 pb-32 bg-[#0c0b09]">
+      <div className="container aos-init aos-animate" data-aos="fade-up">
 
-        <div class="section-title pb-[40px]">
+        <div className="section-title pb-[40px]">
           <h2>Why Us</h2>
           <p>Why Choose Our Meals</p>
         </div>
 
-        <div class="flex flex-col md:flex-row md:justify-between">
+        <div className="flex flex-col md:flex-row md:justify-between">
 
           
-            <div class="box aos-init aos-animate mt-4 md:w-[24%]" data-aos="zoom-in" data-aos-delay="100">
+            <div className="box aos-init aos-animate mt-4 md:w-[24%]" data-aos="zoom-in" data-aos-delay="100">
             <span>01</span>
               <h4>Only healthy food</h4>
               <p>Indulge in the pure flavors of nature with our range of exclusively natural food options.</p>
@@ -149,7 +148,7 @@ function ProductList() {
         
 
           
-            <div class="box aos-init aos-animate mt-4 md:w-[24%]" data-aos="zoom-in" data-aos-delay="200">
+            <div className="box aos-init aos-animate mt-4 md:w-[24%]" data-aos="zoom-in" data-aos-delay="200">
             <span>02</span>
               <h4>Various dishes</h4>
               <p>Embark on a culinary journey with our extensive selection of diverse and flavorful dishes.</p>
@@ -157,7 +156,7 @@ function ProductList() {
          
 
           
-            <div class="box aos-init aos-animate mt-4 md:w-[24%]" data-aos="zoom-in" data-aos-delay="300">
+            <div className="box aos-init aos-animate mt-4 md:w-[24%]" data-aos="zoom-in" data-aos-delay="300">
             <span>03</span>
               <h4>Handy packaging</h4>
               <p>Savor the convenience of our fresh and portable meal packaging, designed for your busy lifestyle.</p>
@@ -165,7 +164,7 @@ function ProductList() {
       
 
           
-            <div class="box aos-init aos-animate mt-4 md:w-[24%]" data-aos="zoom-in" data-aos-delay="300">
+            <div className="box aos-init aos-animate mt-4 md:w-[24%]" data-aos="zoom-in" data-aos-delay="300">
             <span>04</span>
               <h4>No frying</h4>
               <p>Delight in our oil-free, flavorful dishes. Enjoy nutritious options without guilt.</p>
@@ -176,121 +175,113 @@ function ProductList() {
       </div>
     </section>
 
-    <div id="meals" class="px-20 pt-30 pb-24 bg-[#fffaf3] aos-init aos-animate relative" data-aos="fade-left">
+    <div id="meals" className="px-20 pt-24 pb-24 bg-[#fffaf3] aos-init aos-animate relative" data-aos="fade-left">
           <div>
           <h2 className='w-full text-pink'>Our Meals</h2>
-          <h3>Enjoy delicious food with us and explore a variety of flavors.</h3>
+          <h3 className='mb-14'>Enjoy delicious food with us and explore a variety of flavors.</h3>
           <Carousel responsive={mealsRes}>
             {randomData && randomData.data && Array.isArray(randomData.data.data) && randomData.data.data.length > 0 ? ( randomData.data.data.map((item,idx)=>
               <div key={idx} className="menu-card">
-              <div className='divImg'>
-                  <img src={imgUrl + `images/products/${item?.img}`} alt={item?.name} />
-                </div>
-                <div className='px-5'>
-                  <div className='price' style={{right: '13px', top:'48px'}}>
-                  <span className="item-price text-lg bg-pink text-white" style={{padding: "5px 18px"}}>
-                       {item?.price} <span>DH</span>
-                  </span>
+                <div className='divImg'>
+                    <img src={imgUrl + `images/products/${item?.img}`} alt={item?.name} />
                   </div>
-                  <div>
-                  <span className="item-name w-full">{item?.name}</span>
-                  </div>
-                  <p className='text-sm pt-4'>{item?.desc}</p>
+                  <div className='px-5'>
+                    <div className='price' style={{right: '13px', top:'48px'}}>
+                    <span className="item-price text-lg bg-pink text-white" style={{padding: "5px 18px"}}>
+                        {item?.price} <span>DH</span>
+                    </span>
+                    </div>
+                    <div>
+                    <span className="item-name w-full">{item?.name}</span>
+                    </div>
+                    <p className='text-sm pt-4'>{item?.desc}</p>
 
-                  <button onClick={() => handleAddToCart(item?.id)}
-                  >
-                  Add to cart
-                  </button>
-                  </div>
-              </div>
+                    <button onClick={() => handleAddToCart(item?.id)} className='hover:bg-[unset] hover:text-pink'
+                    > 
+                    Add to cart
+                    </button>
+                    </div>
+                </div>
               )) : (<tr><td><IsLoading/></td></tr>)
             }
           </Carousel>
         </div>
     </div>
 
-    <section id="events" class="events px-20 pt-24 pb-24">
-      <div class="container aos-init aos-animate relative" data-aos="fade-left">
+    <section id="events" className="events px-20 pt-24 pb-24">
+      <div className="container aos-init aos-animate relative" data-aos="fade-left">
 
-        <div class="section-title mb-[40px]">
+        <div className="section-title mb-[40px]">
           <h2>Events</h2>
-          <p>Organize Your Events in our Restaurant</p>
+          <p>Organize Your Healthy Events</p>
         </div>
 
-        <div class="events-slider swiper swiper-initialized swiper-horizontal swiper-pointer-events swiper-backface-hidden aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
-          <div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="0" role="group" aria-label="1 / 3">
+        <div className="events-slider swiper swiper-initialized swiper-horizontal swiper-pointer-events swiper-backface-hidden aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
+          <div className="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="0" role="group" aria-label="1 / 3">
           <Carousel responsive={responsive}>
-              <div class="flex flex-col md:flex-row justify-between event-item">
-                <div>
+              <div className="flex flex-col md:flex-row justify-between event-item">
+                <div className='md:w-[50%]'>
                   <img src={imgUrl + 'images/front/event-birthday.jpg'} alt="" className='w-full h-auto' />
                 </div>
-                <div class="pt-4 content pl-6 leading-8">
+                <div className="md:w-[50%] pt-4 content pl-6 leading-8">
                   <h3>Birthday Parties</h3>
-                  <div class="price">
+                  <div className="price">
                     <p><span>$189</span></p>
                   </div>
                   <p className='mb-3'>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                    magna aliqua.
+                  We specialize in baking healthy birthday cakes and cookies that are not only incredibly tasty but also promote a balanced and wholesome lifestyle.
                   </p>
                   <ul className='mb-3'>
-                    <li><i class="bi bi-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                    <li><i class="bi bi-check-circled"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-                    <li><i class="bi bi-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+                    <li><i className="bi bi-check-circled"></i> high-quality ingredients and innovative baking techniques.</li>
+                    <li><i className="bi bi-check-circled"></i> Prepared with whole grains, natural sweeteners, and fresh fruits.</li>
+                    <li><i className="bi bi-check-circled"></i> Delightful burst of flavors made with nutrient-rich ingredients like oats, nuts, and seeds.</li>
                   </ul>
                   <p className='mb-3'>
-                    Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                    velit esse cillum dolore eu fugiat nulla pariatur
+                  We believe that celebrating life's special moments should go hand in hand with maintaining a healthy lifestyle, and our bakery is dedicated to delivering guilt-free delights that make birthdays even more memorable.
                   </p>
                 </div>
               </div>
 
-              <div class="flex flex-col md:flex-row justify-between event-item">
-                <div>
-                  <img src={imgUrl + 'images/front/event-birthday.jpg'} alt="" className='w-full h-auto' />
+              <div className="flex flex-col md:flex-row justify-between event-item">
+                <div className='md:w-[50%]'>
+                  <img src={imgUrl + 'images/front/meat.jpg'} alt="" className='w-full h-auto' />
                 </div>
-                <div class="pt-4 content pl-6 leading-8">
-                  <h3>Birthday Parties</h3>
-                  <div class="price">
-                    <p><span>$189</span></p>
+                <div className="md:w-[50%] pt-4 content pl-6 leading-8">
+                  <h3>Special Business lunch</h3>
+                  <div className="price">
+                    <p><span>$100</span></p>
                   </div>
                   <p className='mb-3'>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                    magna aliqua.
+                  We take pride in offering a range of healthy meat options that are carefully cooked to perfection..
                   </p>
-                  <ul className='mb-3'>
-                    <li><i class="bi bi-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                    <li><i class="bi bi-check-circled"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-                    <li><i class="bi bi-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                  </ul>
                   <p className='mb-3'>
-                    Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                    velit esse cillum dolore eu fugiat nulla pariatur
+                  the meat we serve is lean, tender, and packed with flavor. We source our meats from trusted suppliers who prioritize animal welfare and sustainable practices. We offer a variety of lean protein choices, such as grilled chicken, lean cuts of beef, and succulent seafood options. These protein-rich dishes are complemented with a selection of wholesome sides, including fresh vegetables, whole grains, and vibrant salads. We strive to strike the perfect balance between deliciousness and healthiness, ensuring that your work date event is not only productive but also leaves participants feeling energized and satisfied.
+                  </p>
+                  <p className='mb-3'>
+                  Our dedication to providing healthy meat options allows you to enjoy a flavorful and guilt-free dining experience that promotes overall well-being.
                   </p>
                 </div>
               </div>
 
-              <div class="flex flex-col md:flex-row justify-between event-item">
-                <div>
-                  <img src={imgUrl + 'images/front/event-birthday.jpg'} alt="" className='w-full h-auto' />
+              <div className="flex flex-col md:flex-row justify-between event-item">
+                <div className='md:w-[50%]'>
+                  <img src={imgUrl + 'images/front/mariage.jpg'} alt="" className='w-full h-auto' />
                 </div>
-                <div class="pt-4 content pl-6 leading-8">
-                  <h3>Birthday Parties</h3>
-                  <div class="price">
+                <div className="md:w-[50%] pt-4 content pl-6 leading-8">
+                  <h3>Wedding Parties</h3>
+                  <div className="price">
                     <p><span>$189</span></p>
                   </div>
                   <p className='mb-3'>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                    magna aliqua.
+                  Our Moroccan-inspired menu features a delightful array of dishes that showcase the rich flavors and vibrant spices of Moroccan cuisine.
                   </p>
                   <ul className='mb-3'>
-                    <li><i class="bi bi-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                    <li><i class="bi bi-check-circled"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-                    <li><i class="bi bi-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+                    <li><i className="bi bi-check-circled"></i> Prepared using traditional cooking techniques and the finest ingredients.</li>
+                    <li><i className="bi bi-check-circled"></i> High-quality meats, fresh vegetables, and fragrant herbs and spices.</li>
+                    {/* <li><i className="bi bi-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li> */}
                   </ul>
                   <p className='mb-3'>
-                    Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                    velit esse cillum dolore eu fugiat nulla pariatur
+                  With our authentic Moroccan cuisine, your wedding celebration will be a true reflection of your heritage and a feast for the senses.
                   </p>
                 </div>
               </div>

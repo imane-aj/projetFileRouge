@@ -22,12 +22,22 @@ class CategoryRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
+        $rules = [
             //
             'name' => ['required','string', 'max:50', 'min:4'],
             'img' => ['required','mimes:jpeg,png,jpg,gif', 'max:2048'],
             'desc' => ['nullable', 'string', 'max:100', 'min:4'],
         ];
+        // Check if the request is for an update
+        if ($this->isMethod('PUT') || $this->isMethod('PATCH')) {
+            // Exclude the 'img' field from required validation
+            $rules['img'] = ['nullable', 'mimes:jpeg,png,jpg,gif', 'max:2048'];
+        } else {
+            // Include the 'img' field in required validation for other methods
+            $rules['img'] = ['required', 'mimes:jpeg,png,jpg,gif', 'max:2048'];
+        }
+
+        return $rules;
         
     }
 }

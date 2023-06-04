@@ -6,12 +6,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
 :root {
     --main-color: #027581;
-    --main-gradient: linear-gradient(to right, #ffa500, #f98046);
+    --main-gradient: linear-gradient(to right, #637d36, #164310);
     --color-dark: #1d2231;
     --text-grey: #8390a2;
     --front-bg: #f2f1f5;
     --front-color: #f7506d;
-    --chosen: #FFA500;
+    --chosen: #637d36;
+    /* --chosen: #FFA500; */
 }
 
 * {
@@ -23,7 +24,7 @@
     box-sizing: border-box;
     /* font-size: small; */
 }
-.hero{
+.hero, .heroLogin{
   width: 100%;
   height: 100vh;
   background-image: url("../assets/img/front/se-nourrir-au-maroc.jpg");
@@ -32,14 +33,20 @@
   position: relative;
   padding: 0;
 }
-.hero::before {
+.heroLogin{
+  background-image: url("../assets/img/front/hero-bg.jpg");
+}
+.hero::before, .heroLogin::before {
   content: "";
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.639);
   position: absolute;
   bottom: 0;
   top: 0;
   left: 0;
   right: 0;
+}
+.heroLogin::before {
+  background: rgba(0, 0, 0, 0.639);
 }
 .hero .container {
   padding-top: 110px;
@@ -296,30 +303,9 @@
   align-items: center;
 }
 #footer .footer-top .footer-links ul i {
-  padding-right: 2px;
+  padding-right: 7px;
   color: var(--chosen);
-  font-size: 18px;
-  line-height: 1;
-}
-.bx-chevron-right:before {
-  content: "\ea50";
-}
-.bx {
-  font-family: boxicons!important;
-  font-weight: 400;
-  font-style: normal;
-  font-variant: normal;
-  line-height: 1;
-  text-rendering: auto;
-  display: inline-block;
-  text-transform: none;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-#footer .footer-top .footer-links ul i {
-  padding-right: 2px;
-  color: var(--chosen);
-  font-size: 18px;
+  font-size: 12px;
   line-height: 1;
 }
 .shoose img{

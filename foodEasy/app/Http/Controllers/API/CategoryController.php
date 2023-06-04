@@ -65,13 +65,15 @@ class CategoryController extends BaseController
     //update
     public function update(CategoryRequest $request, $id){
         $category = Category::findOrFail($id);
-            if ($request->hasFile('img')) {
-                $file = $request->file('img');
-                if ($file != null) {
-                    $Image = time() . '_' . $file->getClientOriginalName();
-                    $file->move(public_path('images/categories'), $Image);
-                }
+        $Image = $category->img; // Keep the existing image by default
+
+        if ($request->hasFile('img')) {
+            $file = $request->file('img');
+            if ($file != null) {
+                $Image = time() . '_' . $file->getClientOriginalName();
+                $file->move(public_path('images/categories'), $Image);
             }
+        }
         try{
             $category->update([
                 'name' => $request->name,

@@ -1,6 +1,5 @@
 import React, { Fragment } from "react";
 import NavBar from "./Components/Layouts/NavBar";
-import SideBar from "./Components/Layouts/SideBar";
 import { Outlet } from "react-router-dom";
 import { AnimatePresence } from 'framer-motion';
 import ModalWindow from "../Modal/ModalWindow";

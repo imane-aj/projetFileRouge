@@ -124,9 +124,9 @@ function Cart() {
           </div>
         </div>
 
-        <div className="cart-pay-btn bg-pink border rounded-2xl text-white">
+        <div className="cart-pay-btn bg-pink border rounded-2xl text-white text-center hover:bg-transparent hover:text-pink">
         <Link to={'/checkout'}>
-          <button className="btn button text-center">
+          <button className="btn text-center">
             <span className="ti-credit-card "></span> Chekout
           </button>
           </Link>

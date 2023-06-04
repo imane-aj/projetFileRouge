@@ -9,11 +9,10 @@ function Order() {
         <table className="w-full border-collapse overflow-auto bg-white text-left text-sm text-gray-500">
           <thead className="bg-gray-50">
             <tr>
-            <th scope="col" className="px-6 py-4 font-medium text-gray-900">Firt Name</th>
-            <th scope="col" className="px-6 py-4 font-medium text-gray-900">Last Name</th>
-            <th scope="col" className="px-6 py-4 font-medium text-gray-900">Email</th>
+            <th scope="col" className="px-6 py-4 font-medium text-gray-900">Full Name</th>
             <th scope="col" className="px-6 py-4 font-medium text-gray-900">Phone</th>
             <th scope="col" className="px-6 py-4 font-medium text-gray-900">Address</th>
+            <th scope="col" className="px-6 py-4 font-medium text-gray-900">Payment method</th>
             <th scope="col" className="px-6 py-4 font-medium text-gray-900">Status</th>
             <th scope="col" className="px-6 py-4 font-medium text-gray-900">Delivey Man</th>
             </tr>

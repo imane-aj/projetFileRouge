@@ -52,7 +52,14 @@ Route::group(['middleware' => ['api', 'checkpassword'], 'namespace' => 'Api'], f
         Route::post('product', [ProductController::class, 'store']);
         Route::delete('product/{id}', [ProductController::class, 'destroy']);
         Route::PUT('product/update/{id}', [ProductController::class, 'update']);
-        });
+
+        //orders
+        Route::get('getOrders', [CheckoutController::class, 'getOrders']);
+
+        //Statistics
+        //OrderVolume 
+        Route::get('OrderVolume', [CheckoutController::class, 'OrderVolume']);
+    });
 
     //user routes
     Route::middleware(['auth:api', 'role:user'])->group(function () {
@@ -62,7 +69,6 @@ Route::group(['middleware' => ['api', 'checkpassword'], 'namespace' => 'Api'], f
     Route::delete('cart/{id}', [CartController::class, 'deleteCart']);
     Route::post('addOrder', [CheckoutController::class, 'placeOrder']);
     Route::post('validateOrder', [CheckoutController::class, 'validateOrder']);
-    Route::get('getOrders', [CheckoutController::class, 'getOrders']);
     });
  
 });

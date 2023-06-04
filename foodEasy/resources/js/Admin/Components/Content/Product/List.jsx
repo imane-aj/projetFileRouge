@@ -45,13 +45,11 @@ function List({modalOpen, handleClose, handleOpen,selectedCategory, currentPage}
         <tr key={idx} className="hover:bg-gray-50">
         <td className="flex gap-3 px-6 py-4 font-normal text-gray-900">
           <div className="relative h-10 w-10">
-            <img className="h-full w-full rounded-full object-cover object-center" src={imgUrl + `images/categories/${item?.img}`} alt={item?.name}/>
-            <span className="absolute right-0 bottom-0 h-2 w-2 rounded-full bg-green-400 ring ring-white"></span>
+            <img className="h-full w-full rounded-full object-cover object-center" src={imgUrl + `images/products/${item?.img}`} alt={item?.name}/>
           </div>
         </td>
         <td className="px-6 py-4">
-          <span className="inline-flex items-center gap-1 rounded-full bg-green-50 px-2 py-1 text-xs font-semibold text-green-600">
-            <span className="h-1.5 w-1.5 rounded-full bg-green-600"></span>
+          <span className="inline-flex items-center gap-1 rounded-full bg-green-50 px-2 py-1 text-xs font-semibold ">
             {item.name}
           </span>
         </td>

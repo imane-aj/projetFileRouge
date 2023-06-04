@@ -24,8 +24,7 @@ class BaseController extends Controller
     {
     	$response = [
             'success' => false,
-            'error' => $error->getMessage(),
-            'stackTrace' => $error->getTraceAsString(),
+            'error' => $error,
         ];
 
         if(!empty($errorMessages)){

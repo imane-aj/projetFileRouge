@@ -16,7 +16,7 @@ module.exports = {
     extend: {
       colors: {
               clifford: '#da373d',
-              pink : '#FFA500',
+              pink : '#637d36',
               blueClear: '#6bd4fd',
               pinky : '#e95757',
               lightBroun : '#848484'

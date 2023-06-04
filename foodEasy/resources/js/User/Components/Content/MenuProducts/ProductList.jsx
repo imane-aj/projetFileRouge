@@ -48,7 +48,7 @@ function ProductList({name}) {
   const productSearched = useSelector((state)=>state.search.searchData)
   return (
     <Fragment>
-    <section class="px-20 pt-56 pb-32 bg-[#fffaf3]">
+    <section className="px-20 pt-56 pb-32 bg-[#fffaf3]">
         <div className="grid grid-cols-4 gap-2">
         {productSearched && productSearched.data ? (productSearched.data.map((item,idx)=>
           <div key={idx} className="menu-card">
