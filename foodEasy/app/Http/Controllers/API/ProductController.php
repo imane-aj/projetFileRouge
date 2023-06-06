@@ -117,7 +117,13 @@ class ProductController extends BaseController
     //search 
     public function search(Request $request){
         $query = $request->get('query');
-        $product = Product::where('name', 'like', '%'.$query.'%')->get();
+        if (empty($query)) {
+            // If the search query is empty, return an empty result
+            $product = [];
+        } else {
+            // Perform the search based on the query
+            $product = Product::where('name', 'like', '%' . $query . '%')->get();
+        }
         try{
             return $this->sendResponse($product, 200);
         }catch(\Exception $e){

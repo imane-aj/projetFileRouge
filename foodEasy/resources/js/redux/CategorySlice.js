@@ -66,9 +66,28 @@ export const getCatWithProduct = createAsyncThunk('category/getCatWithProduct', 
   }
 })
 
+//search
+export const handleSearch = createAsyncThunk('category/handleSearch', async(query,  { rejectWithValue, dispatch })=>{
+  try {
+      const response = await axios.get('/searchProducts', {
+        headers: {
+          api_password: 'Eld5TBhHgiIZgJk4c4VEtlnNxY',
+          Accept: 'application/json',
+        },
+        params: {
+          query: query,
+        },
+      });
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
+})
+
+
 const CategorySlice = createSlice({
     name : 'category',
-    initialState : {data : [], isLoading: false, error: '', editData:'', CatWithProduct:[]},
+    initialState : {data : [], isLoading: false, error: '', editData:'', CatWithProduct:[], search:[]},
     extraReducers: (builder) => {
       //AddCat
         builder.addCase(AddCat.pending, (state) => {
@@ -141,6 +160,11 @@ const CategorySlice = createSlice({
         state.isLoading = false,
         state.CatWithProduct = action.payload,
         state.error = ""
+        }),
+        //search
+        builder.addCase(handleSearch.fulfilled, (state, action) => {
+            state.isLoading = false;
+            state.search = action.payload
         })
       }
 })

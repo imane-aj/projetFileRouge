@@ -3,18 +3,13 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { logoutUser } from "../../../redux/ApiSlice";
 import { getFromCart } from "../../../redux/CartSlice";
-import { searchProduct } from "../../../redux/SearchSlice";
 import IsLoading from "../../../IsLoading";
-import { getCat } from "../../../redux/CategorySlice";
+import { getCat, handleSearch } from "../../../redux/CategorySlice";
 
 function NavBar() {
     const imgUrl =  import.meta.env.BASE_URL
     const data = useSelector((state)=>state.category.data)
     const dispatch = useDispatch()
-    const handleInput = (setState) => (e) => {
-        setState(e.target.value)
-        dispatch(searchProduct(query))
-    }
     const [isOpen, setIsOpen] = useState(false);
 
     const toggleMenu = () => {
@@ -85,7 +80,12 @@ function NavBar() {
               window.removeEventListener('scroll', handleScroll);
             };
           }, []);
-        
+
+          //search
+          const onChange =(e)=>{
+            const query = e.target.value
+            dispatch(handleSearch(query))
+          }
  
     return (
         // <nav className=></nav>
@@ -180,6 +180,15 @@ function NavBar() {
 
                 <div className="relative flex items-center">
                     <div className="frontNavLinks flex items-center">
+                        <div className="front-search flex items-center">
+                            <span className="ti-search px-4 py-2 text-2xl text-pink"></span>
+                            <input
+                                onChange={onChange}
+                                type="search"
+                                placeholder="Search..."
+                                className="flex-1 h-10 bg-transparent focus:px-5 focus:border-pink focus:mr-3 active:border-none"
+                            />
+                        </div>
                         <div>
                         {loggedIn ?
                             <Link className="btn-link text-base mr-5 hover:text-pink" ><span className="ti-user text-pink"></span> Profile</Link>

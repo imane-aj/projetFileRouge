@@ -45,12 +45,13 @@ function ProductList({name}) {
           });
       }
     };
-  const productSearched = useSelector((state)=>state.search.searchData)
+
+    const productSearched = useSelector((state)=>state.category.search) 
   return (
     <Fragment>
     <section className="px-20 pt-56 pb-32 bg-[#fffaf3]">
         <div className="grid grid-cols-4 gap-2">
-        {productSearched && productSearched.data ? (productSearched.data.map((item,idx)=>
+        {productSearched && productSearched.data?.length > 0 ? (productSearched.data.map((item,idx)=>
           <div key={idx} className="menu-card">
           <div className='divImg'>
               <img src={imgUrl + `images/products/${item?.img}`} alt={item?.name} />

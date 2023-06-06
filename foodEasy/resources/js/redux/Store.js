@@ -6,7 +6,6 @@ import ProductReducer from './ProductSlice';
 import CartReducer from './CartSlice';
 import CheckoutReducer from './CheckoutSlice';
 import TrackingReducer from './TrackingSlice';
-import SearchReducer from './SearchSlice';
 import StatisticReducer from './StatisticSlice';
 
 const store = configureStore({reducer:
@@ -18,7 +17,6 @@ const store = configureStore({reducer:
      cart : CartReducer,
      checkout : CheckoutReducer,
      tracking : TrackingReducer,
-     search : SearchReducer,
      statistic : StatisticReducer,
     }
 })
