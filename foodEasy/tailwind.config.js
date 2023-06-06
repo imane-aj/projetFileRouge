@@ -23,7 +23,10 @@ module.exports = {
             },
       width:{
         contentW: 'calc(100% - 190px)',
-      }
+      },
+      fontFamily: {
+        custom: ['MyCustomFont', 'sans-serif'],
+      },
     },
   },
   plugins: [],

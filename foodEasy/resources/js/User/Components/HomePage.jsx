@@ -132,7 +132,7 @@ function ProductList() {
         <div className='containerHero absolute top-80 aos-init aos-animate flex flex-row justify-between' data-aos="fade-left">
           <div>
             <h1>Best <span className='text-pink'>Quality</span> Ingredients</h1>
-            <h2>A healthy outside Start from healthy inside!</h2>
+            <h2 className='mt-5'>A healthy outside Start from healthy inside!</h2>
             <div className="btns mt-8">
               <a href="#menu" className="btn-menu animated fadeInUp scrollto">Our Menu</a>
             </div>
@@ -167,7 +167,7 @@ function ProductList() {
   
           <div className="section-title pb-[40px]">
             <h2>Why Us</h2>
-            <p>Why Choose Our Meals</p>
+            <p className='title'>Why Choose Our Meals</p>
           </div>
   
           <div className="flex flex-col md:flex-row md:justify-between">
@@ -246,7 +246,7 @@ function ProductList() {
   
           <div className="section-title mb-[40px]">
             <h2>Events</h2>
-            <p>Organize Your Healthy Events</p>
+            <p className='title'>Organize Your Healthy Events</p>
           </div>
   
           <div className="events-slider swiper swiper-initialized swiper-horizontal swiper-pointer-events swiper-backface-hidden aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">

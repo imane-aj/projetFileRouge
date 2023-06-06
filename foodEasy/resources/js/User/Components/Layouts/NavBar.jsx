@@ -119,7 +119,7 @@ function NavBar() {
                 className="!visible mt-2 hidden flex-grow basis-[100%] items-center lg:mt-0 lg:!flex lg:basis-auto"
                 id="navbarSupportedContent4"
                 data-te-collapse-item>
-                <Link className="pr-2 text-4xl font-semibold text-pink" to="/">Foodify</Link>
+                <Link className="pr-2 text-4xl font-semibold text-pink logos" to="/">Foodify</Link>
                 <ul
                     className="list-style-none mr-auto flex flex-col pl-0 lg:flex-row"
                     data-te-navbar-nav-ref>
@@ -191,13 +191,13 @@ function NavBar() {
                         </div>
                         <div>
                         {loggedIn ?
-                            <Link className="btn-link text-base mr-5 hover:text-pink" ><span className="ti-user text-pink"></span> Profile</Link>
-                            :<Link className="reg btn-link mr-5 text-base hover:text-pink" to='/auth/register'><span className="ti-user text-pink"></span> Register</Link>
+                            <Link className="btn-link text-base mr-5 hover:text-pink f" ><span className="ti-user text-pink"></span> Profile</Link>
+                            :<Link className="reg btn-link mr-5 text-base hover:text-pink f" to='/auth/register'><span className="ti-user text-pink"></span> Register</Link>
                         }
                             
                         {loggedIn ?
-                        <button  onClick={handleLogout} className="btn-link text-base mr-5 hover:text-pink"><span className="ti-power-off text-pink"></span> Logout</button>
-                        :<Link className="btn-link text-base hover:text-pink" to='/auth/login'><span className="ti-power-off text-pink"></span> Login</Link>
+                        <button  onClick={handleLogout} className="btn-link text-base mr-5 hover:text-pink f"><span className="ti-power-off text-pink"></span> Logout</button>
+                        :<Link className="btn-link text-base hover:text-pink f" to='/auth/login'><span className="ti-power-off text-pink"></span> Login</Link>
                         }
                         </div>
 

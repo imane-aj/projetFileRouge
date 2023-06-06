@@ -4,6 +4,12 @@
 
 @import './fonts/Merienda-Regular.ttf';
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+@font-face {
+  font-family: 'MyCustomFont';
+  src: url('../fonts/Merienda-Regular.ttf') format('truetype');
+  /* Additional font properties can be added here */
+}
+
 :root {
     --main-color: #027581;
     --main-gradient: linear-gradient(to right, #637d36, #164310);
@@ -24,6 +30,10 @@
     box-sizing: border-box;
     /* font-size: small; */
 }
+h1, h2, h3, h4, h5, h6, .logos, .title, .navFront, .navFront .relative, .frontNavLinks , .f{
+  font-family: 'MyCustomFont' !important;
+}
+
 .hero, .heroLogin{
   width: 100%;
   height: 100vh;
