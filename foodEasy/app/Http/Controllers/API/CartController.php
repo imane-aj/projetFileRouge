@@ -84,9 +84,14 @@ class CartController extends BaseController
         $token = $request->bearerToken();
         $user = JWTAuth::parseToken()->authenticate();
         $cart = Cart::where('id',$id)->where('user_id',$user->id)->first();
+        if (!$cart) {
+            // Cart not found
+            return $this->sendError('Cart not found', 404);
+        }
         $cart = $cart->delete();
+        //dd($cart);
         try{
-            return $this->sendResponse($cart, '');
+            return $this->sendResponse([], '');
         }catch(\Exception $e){
             return $this->sendError($e);
         };
