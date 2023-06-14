@@ -12,15 +12,15 @@ function Order() {
             <th scope="col" className="px-6 py-4 font-medium text-gray-900">Full Name</th>
             <th scope="col" className="px-6 py-4 font-medium text-gray-900">Phone</th>
             <th scope="col" className="px-6 py-4 font-medium text-gray-900">Address</th>
-            <th scope="col" className="px-6 py-4 font-medium text-gray-900">Payment method</th>
-            <th scope="col" className="px-6 py-4 font-medium text-gray-900">Status</th>
-            <th scope="col" className="px-6 py-4 font-medium text-gray-900">Delivey Man</th>
+            <th scope="col" className="px-6 py-4 font-medium text-gray-900">Payment Status</th>
+            <th scope="col" className="px-6 py-4 font-medium text-gray-900">Delivey Status</th>
+            <th scope="col" className="px-6 py-4 font-medium text-gray-900"></th>
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-100 border-t border-gray-100">
               <OrderList/>
           </tbody>
-        </table>
+        </table>  
       </div>
     </div>
   )
