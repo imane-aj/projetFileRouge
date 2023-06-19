@@ -4,7 +4,7 @@
 ## npm i @vitejs/plugin-react --force
 ## npm i @vitejs/plugin-react-refresh --force
 ### Update vite.config.js file
-import reactRefresh from '@vitejs/plugin-react-refresh';
+<!-- import reactRefresh from '@vitejs/plugin-react-refresh';
 
 
 import { defineConfig } from 'vite';
@@ -87,4 +87,4 @@ import '../css/app.css'
 ## npm install react-redux
 
 # react router dom
-## npm i react-router-dom
+## npm i react-router-dom -->
