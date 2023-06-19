@@ -105,7 +105,7 @@ const CartSlice = createSlice({
             state.dataCart = action.payload.data
             state.error = ""
         })
-
+        
         builder.addCase(deletCart.fulfilled, (state, action) => {
             state.isLoading = false;
             state.dataCart = action.payload.data

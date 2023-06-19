@@ -1,0 +1,67 @@
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardview"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="4dp"
+    app:cardBackgroundColor="#EFEEEE"
+    app:cardCornerRadius="8dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:cardElevation="4dp">
+
+    <!-- Data row -->
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="70dp"
+>
+
+    <ImageView
+        android:layout_marginLeft="2dp"
+        android:layout_marginTop="4dp"
+        android:id="@+id/imagePan"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop" />
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+            android:id="@+id/namePan"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="Tajin meat"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="3dp"
+            android:textSize="16sp" />
+
+<!--        <TextView-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:gravity="center"-->
+<!--            android:id="@+id/quantity"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:text="1"-->
+<!--            android:textSize="16sp" />-->
+
+        <ImageButton
+            android:id="@+id/delete"
+            android:textColor="#B82A2A"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="19dp"
+            android:background="@drawable/delete"
+            android:layout_marginRight="4dp"
+
+            />
+
+
+
+</LinearLayout>
+
+</androidx.cardview.widget.CardView>

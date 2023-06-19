@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardview"
+    android:layout_width="match_parent"
+    android:layout_height="250dp"
+    android:layout_margin="4dp"
+    app:cardBackgroundColor="#EFEEEE"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="4dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/row_background"
+        android:layout_width="176dp"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imagePan"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+        <TextView
+            android:id="@+id/namePan"
+            android:layout_width="144dp"
+            android:layout_height="42dp"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="Tajin meat" />
+
+        <TextView
+            android:id="@+id/pricePan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="80px"
+            app:layout_constraintBottom_toTopOf="@+id/namePan"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imagePan"
+            app:layout_constraintVertical_bias="0.48"
+            tools:text="25dh" />
+
+        <ImageButton
+            android:id="@+id/add"
+            android:layout_width="100px"
+            android:layout_height="wrap_content"
+            android:background="@android:color/holo_green_dark"
+            app:srcCompat="@drawable/ic_add"
+            tools:layout_editor_absoluteX="122dp" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph.xml"
+    app:startDestination="@id/managerFragment">
+
+    <fragment
+        android:id="@+id/managerFragment"
+        android:name="prototype.todolist.ui.ManagerFragment"
+        android:label="Foodify"
+        tools:layout="@layout/fragment_manager" >
+        <action
+            android:id="@+id/action_managerFragment_to_panierFragment"
+            app:destination="@id/panierFragment" />
+        <action
+            android:id="@+id/action_managerFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/panierFragment"
+        android:name="prototype.todolist.ui.PanierFragment"
+        android:label="Shipping cart"
+        tools:layout="@layout/fragment_panier" >
+        <argument
+            android:name="mealId"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="LoginFragment"
+        android:label="Login"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_loginFragment_to_managerFragment"
+            app:destination="@id/managerFragment" />
+    </fragment>
+</navigation>
