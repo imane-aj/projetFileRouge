@@ -1,9 +1,4 @@
-# install react in laravel project with vite
-## npm install
-## npm install react@latest react-dom@latest
-## npm i @vitejs/plugin-react --force
-## npm i @vitejs/plugin-react-refresh --force
-### Update vite.config.js file
+
 <!-- import reactRefresh from '@vitejs/plugin-react-refresh';
 
 
